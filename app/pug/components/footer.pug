@@ -1,0 +1,40 @@
+footer.footer
+	.footer__main.main-footer
+		.container
+			.main-footer__body
+				.footer__info 
+					a.footer__logo(href="#")
+						img(src="images/footer-logo.png", alt="логотип")
+					.footer__data
+						.footer__links 
+							a(href="tel:88002014822").footer__link 8 800 201-48-22
+							a(href="mailto:sale@megatex-nn.ru").footer__link sale@megatex-nn.ru
+						.footer__address г. Н.Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304
+						.footer__mode.mode-footer
+							span.mode-footer__label Режим работы:
+							span.mode-footer__value Пн-Пт с 9:00 до 18:00
+				.footer__menu.menu-footer
+					.menu-footer__column 
+						.menu-footer__label Каталог
+						nav.menu-footer__nav 
+							ul.menu-footer__list 
+								each item in menuFooter.column_1
+									li.menu-footer__item 
+										a(href=item.link).menu-footer__link= item.title
+					.menu-footer__column
+						nav.menu-footer__nav 
+							ul.menu-footer__list 
+								each item in menuFooter.column_2
+									li.menu-footer__item 
+										a(href=item.link).menu-footer__link= item.title
+	.footer__bottom.bottom-footer
+		.container
+			.bottom-footer__body
+				.bottom-footer__left 
+					.footer__copy &copy; ООО «Мегатекс» 2023
+					a(href="#" target="_blank").footer__link Политика конфиденциальности
+				.bottom-footer__right
+					.footer-company
+						span.footer-company__label Разработка сайта:
+						a(href="#" target="_blank").footer-company__value 
+							img(src="images/company-logo.svg", alt="логотип компании")

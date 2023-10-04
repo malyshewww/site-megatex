@@ -1,0 +1,40 @@
+header.header#header
+	div.container
+		.header__body
+			.header__top.top-header
+				.top-header__info
+					.top-header__address г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304
+				.top-header__actions
+					.header__search.search-header
+						form(action="#").search-header__form
+							.form-item
+								.search-header__item
+									input(type="text" placeholder="Введите запрос").search-header__input
+									.search-header__buttons
+										button(type="button" id="delete-button").search-header__button.search-header__button--delete
+										button(type="submit").search-header__button.search-header__button--search
+									.search-header__result 
+										ul.search-header__list 
+											each item in searchList
+												li.search-header__list-item 
+													a(href="#").search-header__link= item 
+					a(href="mailto:sale@megatex-nn.ru").header__email sale@megatex-nn.ru
+			.header__bottom.bottom-header
+				.bottom-header__links
+					.header__logo 
+						picture
+							source(srcset="images/logo.png" media="(min-width: 767.98px)")
+							source(srcset="images/logo_mobile.png" media="(min-width: 320px)")
+							img(src="images/logo.png", alt="логотип")
+					.header__menu.menu 
+						a(href="catalog.html").menu__catalog Каталог
+						nav.menu__body 
+							ul.menu__list
+								each item in menu
+									li.menu__item 
+										a(href=item.link).menu__link= item.title 
+				.bottom-header__actions
+					a.header__phone(href="tel:88002014822") 8 800 201-48-22 
+					+button("header__button", "Запросить КП")
+				button.menu-icon(type="button")
+					span

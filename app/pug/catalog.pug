@@ -1,0 +1,49 @@
+extends includes/layout.pug
+
+append variables
+	- let pageTitle = "Каталог";
+	- description += pageTitle;
+block crumbs 
+	- var breadcrumbsList = ["Главная", "Каталог"];
+	+breadcrumbs([...breadcrumbsList], "Защита рук")
+block content
+	.catalog 
+		.container
+			h1.catalog__title.page-title Защита рук
+			section.gloves.categories
+				.heading-block
+					h2.heading-block__title.gloves__title Перчатки и рукавицы
+					.heading-block__controls 
+						button(type="button").slider-button.slider-button-prev 
+						button(type="button").slider-button.slider-button-next
+				.categories__wrapper.swiper
+					.categories__body.swiper-wrapper
+						+categoryList([...category.gloves], "gloves")
+			section.wiping.categories
+				.heading-block
+					h2.heading-block__title.wiping__title Обтирочные материалы
+					.heading-block__controls 
+						button(type="button").slider-button.slider-button-prev 
+						button(type="button").slider-button.slider-button-next
+				.categories__wrapper.swiper
+					.categories__body.swiper-wrapper
+						+categoryList([...category.wiping], "wiping")
+			section.individual.categories
+				.heading-block
+					h2.heading-block__title.individual__title Средства индивидуальной защиты
+					.heading-block__controls 
+						button(type="button").slider-button.slider-button-prev 
+						button(type="button").slider-button.slider-button-next
+				.categories__wrapper.swiper
+					.categories__body.swiper-wrapper
+						+categoryList([...category.individual], "individual")
+			section.packages.categories
+				.heading-block
+					h2.heading-block__title.packages__title Упаковка, инвентарь, бытовая химия
+					.heading-block__controls 
+						button(type="button").slider-button.slider-button-prev 
+						button(type="button").slider-button.slider-button-next
+				.categories__wrapper.swiper
+					.categories__body.swiper-wrapper
+						+categoryList([...category.packages], "packages")
+			+textBlock(false)

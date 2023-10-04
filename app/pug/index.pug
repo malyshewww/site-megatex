@@ -1,0 +1,80 @@
+extends includes/layout.pug
+
+append variables
+	- let pageTitle = "Главная";
+	- description += pageTitle;
+block content
+	.main-screen 
+		.container 
+			.main-screen__body 
+				.main-screen__image
+					img(src="images/main-screen-pc.jpg", alt="первый экран")
+				.main-screen__text 
+					| Производство и оптовая продажа #[span средств индивидуальной защиты]
+	.categories.home-categories
+		.container 
+			.categories__body 
+				each item in homeCategories
+					.categories__item.item-category 
+						.item-category__title= item.title
+						.item-category__image
+							img(src=`images/categories/${item.image}.png`, alt=item.title)
+						span.item-category__icon
+	.popular 
+		.container 
+			.heading-block.home-heading
+				h2.heading-block__title Популярное
+			.popular__body 
+				+product([...popular], "popular__item", "popular")
+				.popular__item.item-product-link
+					.popular-spin
+						a(href="#").popular-spin__link
+							img(src="images/popular/popular-link.svg", class="popular-spin__text" alt="текст спиннера")
+							span.popular-spin__arrow
+	.new 	
+		.container
+			.heading-block.home-heading
+				h2.heading-block__title Новинки
+				.heading-block__controls 
+					button(type="button").slider-button.slider-button-prev 
+					button(type="button").slider-button.slider-button-next 
+			.new__wrapper.swiper
+				.new__body.swiper-wrapper
+					+product([...popular], "new__item", "popular")
+	.about 	
+		.container 
+			.heading-block.home-heading
+				h2.heading-block__title О компании
+				a(href="about.html").heading-block__button.about-button.btn-secondary Узнать больше
+			.about__body 
+				each item, index in about
+					.about__item.item-about
+						.item-about__info 
+							.item-about__title= item.title
+							.item-about__description= item.descr
+						.item-about__image.ibg
+							img(src=`images/about/${index+1}.jpg`, alt=item.title)
+	.offer 
+		.container 
+			.offer__body 
+				form(action="#").offer__form.form-offer.form
+					.form-offer__info
+						.form-offer__title Запросить коммерческое предложение
+						.form-offer__sub-title Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения
+						.form-offer__items 
+							.form-offer-item.form-item
+								input(type="text" name="name" placeholder="Имя").form-input
+								span.error-message Введите корректное имя
+							.form-offer-item.form-item 
+								input(type="tel" name="phone" placeholder="+7 (___) ___-__-__" disabled).form-input
+						.form-offer__bottom 
+							button(type="submit").form-offer__button.btn Отправить заявку
+							.form-offer__file.load-file
+								label.load-file__label 
+									input(type="file").load-file__input.visuallyHidden
+									| прикрепить файл
+							.form-offer__text 
+								| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#" class="form__link")  политикой обработки персональных данных]
+					.form-offer__image.ibg
+						img(src="images/offer/image.jpg", alt="изображение с формы")
+	+textBlock("home-text-block")

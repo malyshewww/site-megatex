@@ -1,0 +1,75 @@
+aside.filter 
+	form(action="#").filter-form 
+		.filter__title Фильтры
+		.filter-groups 	
+			.filter-group 
+				.filter-group__header Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_1")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_2")
+			.filter-group 
+				.filter-group__header Название параметра Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_3")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_4", true)
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_5")
+			.filter-group 
+				.filter-group__header Название параметра Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_6")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_7", true)
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_8")
+			.filter-group 
+				.filter-group__header Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_8")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_9", true)
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_10")
+			.filter-group 
+				.filter-group__header Название параметра Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_11")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_12", true)
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_13")
+			.filter-group 
+				.filter-group__header Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_14")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_15", true)
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_16")
+			.filter-group 
+				.filter-group__header Название параметра Название параметра
+				.filter-group__choices
+					ul.filter-group__list
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_17")
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора в две строки", "parameter_18", true)
+						li.filter-group__item 
+							+checkbox("Название варианта для выбора", "parameter_19")
+		.filter__buttons
+			button(type="submit").filter__button.btn Применить
+			button(type="reset").filter__button--reset.btn-reset Сбросить фильтры

@@ -1,0 +1,31 @@
+.breadcrumbs {
+	padding: 32px 0 28px;
+	&__list {
+		@include reset-list;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+	&__item {
+		font-weight: 400;
+		line-height: 24px;
+		position: relative;
+		color: #676972;
+		& + & {
+			padding-left: 12px;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 0;
+				width: 1px;
+				height: 20px;
+				background-color: #e8e9ef;
+			}
+		}
+	}
+	&__link {
+		color: $mainColor;
+	}
+}

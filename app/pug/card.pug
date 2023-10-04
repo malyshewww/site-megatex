@@ -1,0 +1,145 @@
+extends includes/layout.pug
+
+append variables
+	- let pageTitle = "Карточка товарв";
+	- description += pageTitle;
+block crumbs 
+	- var breadcrumbsList = ["Главная", "Каталог", "Защита рук", "Перчатки и рукавицы"];
+	+breadcrumbs([...breadcrumbsList], "Рабочие х/б перчатки с ПВХ покрытием «Точка»")
+block content 
+	.product-card
+		.container
+			.product-card__wrapper 
+				.product-card__slider.slider-card
+					.slider-card__thumbs.thumbs-slider
+						.thumbs-slider__body.swiper
+							.thumbs-slider__wrapper.swiper-wrapper 
+								each slide in card.slider
+									.thumbs-slider__item.swiper-slide
+										.thumbs-slider__image.ibg
+											img(src=`images/card/slider/${slide.img}.jpg`, alt="изображение превью товара")
+						.thumbs-slider__controls 
+							button(type="button").slider-button.slider-button-prev
+							button(type="button").slider-button.slider-button-next
+					.slider-card__main.main-slider
+						.main-slider__body.swiper
+							.main-slider__wrapper.swiper-wrapper
+								each slide in card.slider
+									.main-slider__item.swiper-slide
+										.main-slider__image.ibg
+											img(src=`images/card/slider/${slide.img}.jpg`, alt="большое изображение товара")
+							.main-slider__controls 
+								button(type="button").slider-button.slider-button-prev
+								button(type="button").slider-button.slider-button-next
+				.product-card__info
+					h1.product-card__title Рабочие х/б перчатки с ПВХ покрытием «Точка»
+					.product-card__article Арт.
+						| #[span ХБ-647]
+					.product-card__description Обеспечивают надёжную защиту от порезов, загрязнений и прочих механических воздействий.
+					.product-card__groups 
+						.product-card__group.group-card
+							.group-card__label Цвет:
+								| #[span Белый]
+							.radiobuttons.color-radiobuttons
+								+colorRadio('color-black')
+								+colorRadio('color-white', true)
+								+colorRadio('color-green')
+								+colorRadio('color-brown')
+								+colorRadio('color-blue')
+						.product-card__group.group-card
+							.group-card__label Размер одежды:
+							.radiobuttons.size-radiobuttons
+								.size-radiobuttons__items
+									+sizeRadio('44', 'size')
+									+sizeRadio('46', 'size', true)
+									+sizeRadio('48', 'size')
+									+sizeRadio('50', 'size')
+									+sizeRadio('52', 'size')
+									+sizeRadio('52', 'size')
+									+sizeRadio('56', 'size')
+									+sizeRadio('58', 'size')
+									+sizeRadio('60', 'size')
+								button(type="button").size-radiobutton__show-more.btn-secondary показать еще 4
+						.product-card__group.group-card.group-card--features
+							.group-card__label Основные характеристики:
+							.group-card__features.features-card
+								ul.features-card__list 
+									li.features-card__item Материал покрытия: Нитрил
+									li.features-card__item Материал основы: Хлопок
+									li.features-card__item Класс вязки: 10
+									li.features-card__item Вес: 100 гр.
+								a(href="#tab_1").features-card__link.btn-more Все характеристики
+					.product-card__bottom
+						.product-card__prices 
+							| от 1 990 руб.
+							| #[span.product-card__prices-label / партия (100 шт.)]
+						.product-card__buttons 
+							button(type="button").product-card__button.btn Заказать
+							button(type="button").product-card__button.btn-secondary Заказать пробную партию
+			.product-card__tabs.tabs 
+				.tabs__body
+					ul.tabs__list 
+						li.tabs__item 
+							a(href="#tab_1").tabs__link.isActive Технические характеристики
+						li.tabs__item 
+							a(href="#tab_2").tabs__link Описание
+						li.tabs__item
+							a(href="#tab_3").tabs__link Документация 
+						li.tabs__item
+							a(href="#tab_4").tabs__link Доставка и оплата
+						li.tabs__item 
+							a(href="#tab_5").tabs__link Название таба #1
+						li.tabs__item 
+							a(href="#tab_6").tabs__link Название таба #2
+						li.tabs__item 
+							a(href="#tab_7").tabs__link Название таба #3
+						li.tabs__item 
+							a(href="#tab_8").tabs__link Название таба #4
+					.tabs-content__wrapper 
+						.tabs__content(id="tab_1").isShow
+							.content
+								each item in card.content
+									p= item
+								table 
+									thead 
+										tr 
+											th Характеристики
+											th Описание
+											th Описание
+									tbody 
+										each itemTable in card.table
+											tr 
+												td= itemTable.title
+												td= itemTable.value
+												td= itemTable.value
+								ul 
+									each item in card.list
+										li= item
+							.certificates
+								.certificates__body
+									each item in card.certificates
+										a(href="#" download).certificate
+											.certificate__name= item.title
+											span.certificate__icon
+						.tabs__content(id="tab_2")
+							.content 
+								p Раздел в разработке
+						.tabs__content(id="tab_3")
+							.content 
+								p Раздел в разработке
+						.tabs__content(id="tab_4")
+							.content 
+								p Раздел в разработке
+						.tabs__content(id="tab_5")
+							.content 
+								p Раздел в разработке
+						.tabs__content(id="tab_6")
+							.content 
+								p Раздел в разработке
+						.tabs__content(id="tab_7")
+							.content 
+								p Раздел в разработке
+						.tabs__content(id="tab_8")
+							.content 
+								p Раздел в разработке
+	+textBlock(false)

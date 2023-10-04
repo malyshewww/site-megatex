@@ -1,0 +1,45 @@
+extends includes/layout.pug
+
+append variables
+	- let pageTitle = "Список товаров";
+	- description += pageTitle;
+	- productList = 1;
+block crumbs 
+	- var breadcrumbsList = ["Главная", "Каталог", "Защита рук"];
+	+breadcrumbs([...breadcrumbsList], "Перчатки и рукавицы")
+block content
+	.category-list
+		.container 
+			.category-list__body
+				include blocks/filter
+				.category-list__wrapper 
+					if productList !== 0
+						.category-list__inner
+							.category-list__products
+								each item in products 
+									section.item-product
+										.item-product__image.ibg
+											img(src=`images/products/${item.img}.jpg`, alt=item.title)
+										.item-product__body 
+											.item-product__info
+												.item-product__article Арт 
+													| #[span #{item.article}]  
+												h2.item-product__title= item.title
+												if item.descr
+													.item-product__description= item.descr
+												ul.item-product__list 
+													each listItem in item.list
+														li.item-product__list-item= listItem
+											.item-product__footer
+												.item-product__price
+													| #{item.price}
+													if item.priceLabel
+														| #[span.item-product__price-value #{item.priceLabel}]
+												a(href="#").item-product__button.btn Подробнее
+							include components/pagination
+					else 
+						.category-list__empty.empty-category
+							.empty-category__title По вашему запросу ничего не найдено
+							.empty-category__description Попробуйте изменить выбор вариантов в фильтрах, чтобы увидеть другие результаты, или вернитесь на главную
+							a(href="#").empty-category__button.btn-secondary Вернуться на главную
+			+textBlock(false)

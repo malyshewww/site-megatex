@@ -1,0 +1,89 @@
+mixin breadcrumbs(items, last)
+	div.breadcrumbs
+		ul.breadcrumbs__list
+			each item in items
+				li.breadcrumbs__item
+					a(href="/" title=item)= item
+			if last 
+				li.breadcrumbs__item.breadcrumbs__item--last= last
+mixin menu([...items])
+	ul.menu__list
+		each item, index in items
+			li.menu__item(class={active: item.title == pageTitle})
+				a.menu__link(href=item.link)= item.title
+				if item.submenu 
+					span.menu__arrow 
+					div.submenu
+						ul.submenu__list 
+							each submenuItem, submenuIndex in item.submenu 
+								li.submenu__item(class={active: submenuItem.title == pageTitle})
+									a.submenu__link(href=submenuItem.link)= submenuItem.title
+mixin svgsprite(name)
+	svg(class=`svg-svg-${name}-dims`)&attributes(attributes)
+		use(xlink:href=`./images/icons/icons.svg#svg-${name}`)
+mixin product([...array], className, imgPath)
+	each item in array
+		section.item-product(class=className)
+			.item-product__image.ibg
+				img(src=`images/${imgPath}/${item.img}.jpg`, alt=item.title)
+			.item-product__body 
+				.item-produc__info
+					h2.item-product__title= item.title
+					.item-product__description= item.descr
+					ul.item-product__list 
+						each listItem in item.list
+							li.item-product__list-item= listItem
+mixin button(className, title)
+	button(type="button" class=className).btn= title
+mixin buttonMore(className, title)
+	button(type="button" class=className).btn-more= title
+mixin categoryList([...array], imgName)
+	each item in array
+		.categories__item.item-category 
+			.item-category__title= item.title
+			.item-category__image
+				img(src=`images/categories/${imgName}-${item.image}.png`, alt=item.title)
+			span.item-category__icon
+mixin textBlock(className)
+	.text-block(class=className)
+		.container 
+			.text-block__info
+				.text-block__description.content
+					each item in textBlock.descr
+						p= item
+				a(href="#").text-block__link.btn-more Читать далее
+mixin breadcrumbs([...array], last)
+	div.breadcrumbs
+		.container
+			nav.breadcrumbs__navigation
+				ul.breadcrumbs__list
+					each item in array
+						li.breadcrumbs__item
+							a(href="/" class="breadcrumbs__link")= item
+					li.breadcrumbs__item= last
+mixin checkbox(title, name, state)
+	if state
+		input(type="checkbox" id=name name=name checked)
+	else 
+		input(type="checkbox" id=name name=name)
+	label(for=name)= title
+		span
+	a(href="#" style="display: none;")= title
+
+mixin colorRadio(className, state)
+	.radiobutton-item
+		label.radiobutton-item__label(class=className)
+			if state
+				input(type="radio" name="color[]" checked).radiobutton-item__input.real-radio
+			else 
+				input(type="radio" name="color[]").radiobutton-item__input.real-radio
+			span.custom-radio
+mixin sizeRadio(value, name, state)
+	.radiobutton-item
+		label.radiobutton-item__label
+			if state
+				input(type="radio" name=name checked).radiobutton-item__input.real-radio
+			else
+				input(type="radio" name=name).radiobutton-item__input.real-radio
+			span.custom-radio #{value}
+

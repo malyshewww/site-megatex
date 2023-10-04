@@ -1,0 +1,66 @@
+.pager {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 60px;
+	& ul {
+		@include reset-list;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+	&__item {
+		width: 32px;
+		height: 32px;
+		flex: 0 0 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #aaacb4;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 24px;
+		cursor: pointer;
+		transition: color 0.2s ease 0s;
+		&.active {
+			color: #181c2d;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #181c2d;
+				}
+			}
+		}
+		&--prev,
+		&--next {
+			&::before {
+				content: "";
+				display: block;
+				background-color: #aaacb4;
+				width: 32px;
+				height: 32px;
+				mask-repeat: no-repeat;
+				mask-position: center;
+				mask-size: 25px 16px;
+				transition: background-color 0.2s ease 0s;
+			}
+		}
+		&--prev {
+			&::before {
+				mask-image: url("../images/icons/arrow-prev.svg");
+			}
+		}
+		&--next {
+			&::before {
+				mask-image: url("../images/icons/arrow-next.svg");
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: #676972;
+				&::before {
+					background-color: #676972;
+				}
+			}
+		}
+	}
+}

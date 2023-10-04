@@ -1,0 +1,247 @@
+.header {
+	background-color: $whiteColor;
+	&__top {
+	}
+	&__bottom {
+		display: grid;
+		grid-template-columns: auto auto;
+		gap: 84px;
+	}
+	&__phone {
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 24px;
+		color: $mainColor;
+		transition: color 0.2s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $blueColor;
+			}
+		}
+	}
+	&__email {
+		display: inline-block;
+		font-weight: 500;
+		line-height: 24px;
+		color: #0d2cb0;
+		margin: 8px 0;
+		transition: color 0.2s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #3d78eb;
+			}
+		}
+	}
+	&__button {
+		width: 169px;
+	}
+}
+.search-header {
+	&__item {
+		display: flex;
+		align-items: center;
+	}
+	&__result {
+		position: absolute;
+		top: calc(100% + 1px);
+		left: 0;
+		border-radius: 0px 0px 12px 12px;
+		background: #fff;
+		box-shadow: 0px 4px 8px 0px rgba(24, 28, 45, 0.03);
+		padding: 20px 24px;
+		display: none;
+	}
+	&__list {
+		@include reset-list;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	&__link {
+		color: #181c2d;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 24px;
+		transition: color 0.2s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #0d2cb0;
+			}
+		}
+	}
+	&__buttons {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+	&__form {
+		position: relative;
+		min-height: 24px;
+		width: 335px;
+		padding: 8px 0;
+		&::before {
+			content: "";
+			display: block;
+			border-bottom: 1px solid #3d78eb;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			bottom: -1px;
+			opacity: 0;
+			transform: scale(0);
+			transition:
+				transform 0.3s ease 0s,
+				opacity 0.3s ease 0s;
+		}
+		&:focus-within {
+			&::before {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+		&.changed {
+			& .search-header__button--delete {
+				display: block;
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+		}
+	}
+	&__input {
+		width: 100%;
+		min-height: 24px;
+		color: #181c2d;
+		font-size: 16px;
+		min-height: 24px;
+		position: relative;
+		font-weight: 500;
+		&::placeholder {
+			color: #676972;
+			font-size: 16px;
+			line-height: 24px;
+			font-weight: 500;
+			font-family: "Gilroy", sans-serif;
+		}
+		padding-right: 30px;
+		position: relative;
+	}
+	&__button {
+		width: 24px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&::before {
+			content: "";
+			display: block;
+			width: 24px;
+			height: 24px;
+			mask-repeat: no-repeat;
+			mask-position: center;
+		}
+		&--delete {
+			display: none;
+			&::before {
+				background-color: #aaacb4;
+				mask-size: 12px 12px;
+				mask-image: url("../images/icons/close-gray.svg");
+			}
+		}
+		&--search {
+			&::before {
+				background-color: #0d2cb0;
+				mask-image: url("../images/icons/search.svg");
+			}
+		}
+	}
+}
+
+.top-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	align-items: flex-end;
+	border-bottom: 1px solid #e8e9ef;
+	&__info {
+	}
+	&__actions {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px 84px;
+	}
+	&__address {
+		font-weight: 500;
+		line-height: 24px;
+		padding: 8px 0;
+	}
+}
+.bottom-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 20px 67px;
+	}
+	&__links {
+		display: flex;
+		align-items: center;
+		gap: 20px 80px;
+	}
+}
+.menu-icon {
+	display: none;
+}
+.menu {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px 40px;
+	&__list {
+		@include reset-list;
+		display: flex;
+		align-items: center;
+		gap: 10px 40px;
+		flex-wrap: wrap;
+	}
+	&__item {
+	}
+	&__link {
+		font-size: 16px;
+		line-height: 20px;
+		color: $mainColor;
+		font-weight: 600;
+		cursor: pointer;
+		transition: color 0.2s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $blueColor;
+			}
+		}
+	}
+	&__catalog {
+		font-weight: 600;
+		cursor: pointer;
+		color: $blueColor;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		&::before {
+			content: "";
+			width: 20px;
+			height: 20px;
+			background-color: $blueColor;
+			mask-image: url("../images/icons/menu-dots.svg");
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mask-size: 12px 12px;
+		}
+	}
+}

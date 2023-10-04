@@ -1,0 +1,19 @@
+@keyframes scroll-down {
+	0% {
+		background-position-y: 50%;
+	}
+	50% {
+		background-position-y: 70%;
+	}
+	100% {
+		background-position-y: 50%;
+	}
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

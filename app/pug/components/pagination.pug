@@ -1,0 +1,10 @@
+- let paginationList = ['1', '2', '3', '4', '5'];
+div.pager
+	ul.pagination__list
+		li.pager__item.pager__item--prev
+			a(href="#").pager__link
+		each item, index in paginationList
+			li.pager__item(class={active: index === 0})
+				a(href="#").pagination__link= item
+		li.pager__item.pager__item--next
+			a(href="#").pager__link
