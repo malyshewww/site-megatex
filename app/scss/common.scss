@@ -13,34 +13,71 @@
 }
 .scroll-top {
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	width: 36px;
-	height: 36px;
+	bottom: 60px;
+	right: 40px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border-radius: 50%;
-	background-color: rgba(24, 28, 45, 0.2);
-	backdrop-filter: blur(2px);
 	cursor: pointer;
 	transition:
 		transform 0.3s ease 0s,
 		opacity 0.3s ease 0s;
+	gap: 12px;
+	&__text {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 24px;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+		transition: color 0.2s ease 0s;
+	}
 	&::before {
 		content: "";
 		display: block;
 		width: 24px;
 		height: 24px;
 		mask-image: url("../images/icons/arrow-top.svg");
-		background-color: $whiteColor;
+		background-color: #0d2cb0;
 		mask-position: center;
 		mask-repeat: no-repeat;
+		transition: background-color 0.2s ease 0s;
 	}
 	&.hidden {
 		transform: translateY(20px);
 		opacity: 0;
 		pointer-events: none;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			& .scroll-top__text {
+				color: #001d9a;
+			}
+			&::before {
+				background-color: #001d9a;
+			}
+		}
+		&.text-hidden {
+			&::before {
+				background-color: $whiteColor;
+			}
+			& .scroll-top__text {
+				display: none;
+			}
+		}
+	}
+	@media screen and (max-width: $md) {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background-color: rgba(24, 28, 45, 0.2);
+		backdrop-filter: blur(2px);
+		&::before {
+			background-color: $whiteColor;
+		}
+		&__text {
+			display: none;
+		}
 	}
 }
 .ibg {
@@ -126,8 +163,8 @@
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 600;
-	background: #0d2cb0;
-	padding: 15px;
+	background-color: #0d2cb0;
+	padding: 16px 32px;
 	min-height: 56px;
 	display: flex;
 	justify-content: center;
@@ -136,7 +173,7 @@
 	transition: background 0.2s ease 0s;
 	@media (any-hover: hover) {
 		&:hover {
-			background: #001d9a;
+			background-color: #001d9a;
 		}
 	}
 	&:focus {
@@ -404,6 +441,13 @@
 		align-items: center;
 		flex-wrap: wrap;
 		max-width: 327px;
+		&.isShow {
+			& .radiobutton-item {
+				&:nth-child(n + 6) {
+					display: block;
+				}
+			}
+		}
 	}
 	& .radiobutton-item {
 		&:nth-child(n + 6) {
@@ -446,4 +490,47 @@
 .size-radiobutton__show-more {
 	min-height: 48px;
 	padding: 10px 19px;
+}
+
+// Переопредление стилей галереи
+.lg-backdrop {
+	background: rgba(#000, 0.8);
+}
+.lg-prev,
+.lg-next {
+	&::before {
+		content: none;
+	}
+	&::after {
+		content: "";
+		display: block;
+		width: 24px;
+		height: 24px;
+		background-color: $whiteColor;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: 20px 20px;
+	}
+}
+.lg-prev {
+	&::after {
+		mask-image: url("../images/icons/arrow-prev.svg");
+	}
+}
+.lg-next {
+	&::after {
+		mask-image: url("../images/icons/arrow-next.svg");
+	}
+}
+.lg-close {
+	width: 40px;
+	height: 40px;
+	&::after {
+		content: "";
+		display: block;
+		mask-image: url("../images/icons/close.svg");
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: 40px 40px;
+	}
 }

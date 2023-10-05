@@ -1,0 +1,52 @@
+extends includes/layout.pug
+
+append variables
+	- let pageTitle = "Текстовая";
+	- description += pageTitle;
+block crumbs 
+	- var breadcrumbsList = ["Главная"];
+	+breadcrumbs([...breadcrumbsList], "Текстовая")
+	.text-page 
+		.container 
+			.text-page__content.content
+				.content-heading
+					h2 Заголовок H2
+					h3 Заголовок H3
+					h4 Заголовок H4
+					h5 Заголовок H5
+					h6 Заголовок H6
+				.text-page-block.text-block-m
+					each item in textPage.textM
+						p= item
+				.text-page-block.text-block-s
+					each item in textPage.textS
+						p= item
+				.text-page-block.text-block-xs
+					each item in textPage.textXS
+						p= item
+				table 
+					thead 
+						tr 
+							th Характеристики
+							th Описание
+							th Описание
+					tbody 
+						each item in textPage.table
+							tr 
+								td= item.title
+								td= item.value 
+								td= item.value
+				ul 
+					each item in textPage.list
+						li= item
+				a(href="#")
+		.text-page__production.production
+			.container
+				.heading-block 
+					.heading-block__title Собственное производство
+				.production__body.lightgallery
+					- for (var i = 1; i < 7; ++i) {
+						a(href=`images/production/${i}.jpg`).production__item.item
+							.production__image.ibg
+								img(src=`images/production/${i}.jpg`, alt="собственное производство")
+					- }

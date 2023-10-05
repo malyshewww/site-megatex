@@ -12,6 +12,10 @@
 }
 
 .filter {
+	&-form {
+		position: sticky;
+		top: 20px;
+	}
 	&__title {
 		color: #181c2d;
 		font-family: "Muller", sans-serif;
@@ -27,6 +31,9 @@
 		margin-top: 40px;
 		gap: 26px;
 		text-align: center;
+		// position: sticky;
+		// bottom: 10px;
+		background-color: #f9f9fb;
 	}
 	&__button {
 		width: 100%;
@@ -49,6 +56,14 @@
 				mask-repeat: no-repeat;
 				mask-position: center;
 			}
+			@media (any-hover: hover) {
+				&:hover {
+					color: #001d9a;
+					&::after {
+						background-color: #001d9a;
+					}
+				}
+			}
 		}
 	}
 }
@@ -56,8 +71,21 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 28px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 .filter-group {
+	&.isOpen {
+		& .filter-group__choices {
+			display: block;
+			padding-top: 16px;
+		}
+		& .filter-group__header {
+			&::after {
+				transform: rotate(180deg);
+			}
+		}
+	}
 	&__header {
 		display: flex;
 		justify-content: space-between;
@@ -81,10 +109,13 @@
 			mask-position: center;
 			background-color: #0d2cb0;
 			mask-size: 24px 24px;
+			transition: transform 0.2s ease 0s;
 		}
 	}
 	&__choices {
-		padding-top: 16px;
+		display: none;
+		padding: 0;
+		transition: all 0.3s ease 0s;
 	}
 	& ul {
 		@include reset-list;

@@ -81,6 +81,8 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>==============================================================================
 // Подключение общих стилей для элементов
 @import "swiper.scss";
+@import "lightgallery-bundle.min.scss";
+@import "graph-modal.min.scss";
 @import "common";
 
 // Подключение общих стилей для страниц
@@ -90,12 +92,16 @@ body {
 @import "components/category-item";
 @import "components/product";
 @import "components/pagination";
+@import "components/modal";
 
 // Подключение стилей для отдельных блоков
 @import "blocks/home";
 @import "blocks/catalog";
 @import "blocks/category";
 @import "blocks/card";
+@import "blocks/contacts";
+@import "blocks/about";
+@import "blocks/text-page";
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>==============================================================================
 

@@ -1,33 +1,33 @@
 aside.filter 
 	form(action="#").filter-form 
 		.filter__title Фильтры
-		.filter-groups 	
-			.filter-group 
+		.filter-groups
+			.filter-group.isOpen
 				.filter-group__header Название параметра
 				.filter-group__choices
 					ul.filter-group__list
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_1")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_2")
-			.filter-group 
+							+checkbox("Название варианта для выбора в две строки", "parameter_2", true)
+			.filter-group.isOpen
 				.filter-group__header Название параметра Название параметра
 				.filter-group__choices
 					ul.filter-group__list
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_3")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_4", true)
+							+checkbox("Название варианта для выбора в две строки", "parameter_4")
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_5")
-			.filter-group 
+			.filter-group.isOpen
 				.filter-group__header Название параметра Название параметра
 				.filter-group__choices
 					ul.filter-group__list
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_6")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_7", true)
+							+checkbox("Название варианта для выбора в две строки", "parameter_7")
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_8")
 			.filter-group 
@@ -37,7 +37,7 @@ aside.filter
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_8")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_9", true)
+							+checkbox("Название варианта для выбора в две строки", "parameter_9")
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_10")
 			.filter-group 
@@ -47,7 +47,7 @@ aside.filter
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_11")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_12", true)
+							+checkbox("Название варианта для выбора в две строки", "parameter_12")
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_13")
 			.filter-group 
@@ -57,7 +57,7 @@ aside.filter
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_14")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_15", true)
+							+checkbox("Название варианта для выбора в две строки", "parameter_15")
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_16")
 			.filter-group 
@@ -67,7 +67,7 @@ aside.filter
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_17")
 						li.filter-group__item 
-							+checkbox("Название варианта для выбора в две строки", "parameter_18", true)
+							+checkbox("Название варианта для выбора в две строки", "parameter_18")
 						li.filter-group__item 
 							+checkbox("Название варианта для выбора", "parameter_19")
 		.filter__buttons

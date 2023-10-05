@@ -1,0 +1,50 @@
++modal("offer", "Запросить коммерческое предложение", null, "Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения")
+	form.modal__form(action="#" enctype="multipart/form-data").form
+		.form-item
+			input(type="text" placeholder="Имя").form-input
+		.form-item
+			input(type="tel" placeholder="Телефон*").form-input
+		.form__bottom.modal-bottom
+			button(type="submit").form__button.btn Отправить запрос
+			.form__load.load-file
+				label.load-file__label 
+					input(type="file").load-file__input.visuallyHidden
+					| прикрепить файл
+	.modal__text 
+		| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#") политикой обработки персональных данных]
++modal("order", "Заказать", "Рабочие х/б перчатки с ПВХ покрытием «Точка»", null)
+	form.modal__form(action="#").form
+		.form-item
+			input(type="text" placeholder="Имя").form-input
+		.form-item
+			input(type="tel" placeholder="Телефон*").form-input
+		.form__bottom.modal-bottom
+			button(type="submit").form__button.btn Отправить
+	.modal__text 
+		| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#") политикой обработки персональных данных]
++modal("part", "Заказ пробной партии", "Рабочие х/б перчатки с ПВХ покрытием «Точка»", "Заполните форму, чтобы бесплатно заказать пробную партию перчаток (1 мешок), и убедитесь в высоком качестве нашей продукции")
+	form.modal__form(action="#").form
+		.form-item
+			input(type="text" placeholder="Имя").form-input
+		.form-item
+			input(type="tel" placeholder="Телефон*").form-input
+		.form__bottom.modal-bottom
+			button(type="submit").form__button.btn Отправить
+	.modal__text 
+		| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#") политикой обработки персональных данных]
++modal("sale", "Нашли дешевле чем на нашем сайте?", null, "Заполните форму и мы постараемся сделать вам более выгодное предложение")
+	form.modal__form(action="#").form
+		.form-item
+			input(type="text" placeholder="Имя").form-input
+		.form-item
+			input(type="tel" placeholder="Телефон*").form-input
+		.form-item
+			textarea.form-input
+		.form__bottom.modal-bottom
+			button(type="submit").form__button.btn Отправить
+	.modal__text 
+		| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#") политикой обработки персональных данных]
++modal("success", "Спасибо!", null, "Форма успешно отправлена. В ближайшее время с вами свяжется наш специалист для уточнения деталей")
+	.modal-bottom
+		button(type="submit").js-modal-close.btn Закрыть
+

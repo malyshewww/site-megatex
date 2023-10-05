@@ -35,7 +35,7 @@ html(lang="ru")
 			meta(name="format-detection" content="address=no")
 			meta(name="format-detection" content="email=no")
 			meta(name="format-detection" content="date=no")
-	body(class={home: pageTitle == 'Главная'})
+	body(class={home: pageTitle == 'Главная' || pageTitle == "О компании"})
 		div.wrapper#wrapper
 			include ../components/header
 			block crumbs
@@ -43,6 +43,8 @@ html(lang="ru")
 				block content
 			include ../components/footer
 			button(type="button").scroll-top.hidden
+				.scroll-top__text Наверх
+			include ../components/modals
 		block scripts
 			script(src="scripts/libs.js")
 			script(src="scripts/main.js")

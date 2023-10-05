@@ -1,8 +1,3 @@
-// import 'fslightbox'; // Lightbox: npm install fslightbox, site: https://fslightbox.com/javascript/documentation
-// import Swiper from 'swiper'; // Slider: npm install swiper, site: https://swiperjs.com/get-started
-// import AirDatepicker from 'air-datepicker'; // Datepicker: npm i air-datepicker -S, site: https://air-datepicker.com/ru
-console.log('main init');
-
 // Инициализация слайдеров
 function initSliders() {
 	const newSlider = document.querySelector(".new__wrapper");
@@ -18,7 +13,7 @@ function initSliders() {
 			},
 		});
 	};
-
+	// Слайдер категорий
 	const sliderCategories = document.querySelectorAll('.catalog .categories__wrapper');
 	[...sliderCategories].forEach(slider => {
 		const children = slider.children[0].children.length;
@@ -39,10 +34,11 @@ function initSliders() {
 			slider.classList.add('tile');
 		}
 	})
+	// Слайдеры в карточке товара
 	const cardMainSlider = document.querySelector('.main-slider__body');
 	const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
-	const cardThumbschildren = cardThumbsSlider.children[0].children.length;
-	const cardMainChildren = cardMainSlider.children[0].children.length;
+	const cardThumbschildren = cardThumbsSlider?.children[0].children.length;
+	const cardMainChildren = cardMainSlider?.children[0].children.length;
 	let cardNavSwiper;
 	if (cardThumbsSlider && cardThumbschildren <= 6) {
 		cardThumbsSlider.nextElementSibling.remove();
@@ -65,10 +61,11 @@ function initSliders() {
 		})
 		let cardMainSwiper = new Swiper(cardMainSlider, {
 			slidesPerView: 1,
-			// mousewheel: {
-			// 	releaseOnEdges: true,
-			// },
-			// direction: 'vertical',
+			mousewheel: {
+				releaseOnEdges: true,
+				invert: false,
+			},
+			direction: 'vertical',
 			grabCursor: false,
 			slideClass: "main-slider__item",
 			wrapperClass: "main-slider__wrapper",
@@ -114,7 +111,7 @@ if (deleteButton) {
 	})
 }
 
-// Блок табов
+// Блок табов с добавление в url hash из ссылки
 window.addEventListener('hashchange', getHash);
 function getHash(event) {
 	event.preventDefault();
@@ -227,3 +224,78 @@ function maskPhone(elem = document) {
 	};
 };
 maskPhone();
+
+
+// Accordeon на странице с фильтрами
+const filterGroups = document.querySelectorAll(".filter-group");
+if (filterGroups) {
+	[...filterGroups].forEach((item, index) => {
+		const parent = item.closest('.filter-groups');
+		filterOpen(item);
+		resetFilter(parent);
+	})
+}
+// Показ / скрытие кнопки "Сбросить фильтры" при клике на чекбоксы на странице с фильтрами
+function resetFilter(parent) {
+	const checkboxes = parent.querySelectorAll('input');
+	const btnReset = document.querySelector('.btn-reset');
+	const checkboxesChecked = parent.querySelectorAll('input:checked');
+	btnReset.style.display = "none";
+	checkboxesChecked.length > 0 ? btnReset.style.display = "flex" : btnReset.style.display = "none";
+	const arr = [];
+	[...checkboxes].forEach((checkbox, i) => {
+		checkbox.addEventListener('change', () => {
+			checkbox.checked ? arr.push(i) : arr.splice(arr.indexOf(i), 1);
+			arr.length > 0 ? btnReset.style.display = "flex" : btnReset.style.display = "none";
+		})
+	})
+}
+// Открытие фильтров
+function filterOpen(item) {
+	let button = item.querySelector(".filter-group__header");
+	button.addEventListener("click", (event) => {
+		item.classList.toggle("isOpen");
+	})
+	// let description = item.querySelector(".filter-group__choices");
+	// if (item.classList.contains("isOpen")) {
+	// 	description.style.height = `${description.scrollHeight}px`;
+	// } else {
+	// 	description.style.height = "0px";
+	// }
+}
+// Закрытие всех пунктов кроме текущешл
+// function removeOpen(index1) {
+// 	box.forEach((item2, index2) => {
+// 		if (index1 != index2) {
+// 			item2.classList.remove("open");
+// 			let des = item2.querySelector(".author-box__body");
+// 			let btnText = item2.querySelector(".author-box__button-text");
+// 			btnText.textContent = "Развернуть";
+// 			// des.style.height = "0px";
+// 		}
+// 	})
+// }
+
+// Показать скрытые радиокнопки на странице Товара (Размер одежды, Размер обуви)
+const groupCards = document.querySelectorAll('.group-card');
+if (groupCards) {
+	[...groupCards].forEach(groupItem => {
+		const btnShow = groupItem.querySelector('.show-btn');
+		if (btnShow) {
+			btnShow.addEventListener('click', (event) => {
+				const radiobuttons = btnShow.previousElementSibling;
+				btnShow.remove();
+				radiobuttons.classList.add('isShow');
+			})
+		}
+	})
+}
+// Галерея на странице Карточка товара
+const galleries = document.querySelectorAll('.lightgallery');
+[...galleries].forEach(gallery => {
+	lightGallery(gallery, {
+		speed: 500,
+		selector: '.item'
+		// ... other settings
+	});
+})

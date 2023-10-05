@@ -86,4 +86,17 @@ mixin sizeRadio(value, name, state)
 			else
 				input(type="radio" name=name).radiobutton-item__input.real-radio
 			span.custom-radio #{value}
-
+mixin modal(modalId, title, subTitle, text)
+	div(class="graph-modal modal")
+		div(class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target=modalId)
+			button(class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно")
+			div(class="graph-modal__content modal__content")
+				.modal__header
+					.modal__title= title
+					if subTitle
+						.modal__subtitle= subTitle
+					if text 
+						.modal__text= text
+				.modal__body
+					if block 
+						block

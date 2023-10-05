@@ -21,13 +21,14 @@ block content
 						.thumbs-slider__controls 
 							button(type="button").slider-button.slider-button-prev
 							button(type="button").slider-button.slider-button-next
-					.slider-card__main.main-slider
+					.slider-card__main.main-slider.lightgallery
 						.main-slider__body.swiper
 							.main-slider__wrapper.swiper-wrapper
 								each slide in card.slider
 									.main-slider__item.swiper-slide
-										.main-slider__image.ibg
-											img(src=`images/card/slider/${slide.img}.jpg`, alt="большое изображение товара")
+										a(href=`images/card/slider/${slide.img}.jpg` class="item") 
+											.main-slider__image.ibg
+												img(src=`images/card/slider/${slide.img}.jpg`, alt="большое изображение товара")
 							.main-slider__controls 
 								button(type="button").slider-button.slider-button-prev
 								button(type="button").slider-button.slider-button-next
@@ -59,7 +60,7 @@ block content
 									+sizeRadio('56', 'size')
 									+sizeRadio('58', 'size')
 									+sizeRadio('60', 'size')
-								button(type="button").size-radiobutton__show-more.btn-secondary показать еще 4
+								button(type="button").size-radiobutton__show-more.show-btn.btn-secondary показать еще 4
 						.product-card__group.group-card.group-card--features
 							.group-card__label Основные характеристики:
 							.group-card__features.features-card
@@ -74,7 +75,7 @@ block content
 							| от 1 990 руб.
 							| #[span.product-card__prices-label / партия (100 шт.)]
 						.product-card__buttons 
-							button(type="button").product-card__button.btn Заказать
+							button(type="button" data-graph-path="order").product-card__button.btn Заказать
 							button(type="button").product-card__button.btn-secondary Заказать пробную партию
 			.product-card__tabs.tabs 
 				.tabs__body
