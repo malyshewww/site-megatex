@@ -16,17 +16,16 @@ block crumbs
 					.top-about__image.ibg
 						img(src="images/about/img-banner.jpg", alt=`баннер ${pageTitle}`)
 			.about-page__content.content
-				ul 
-					each item in about.list
-						li= item
-		.about-page__slider.slider-about
+				each item in about.list
+					p= item
+		.about-page__slider.slider-about.gallery
 			.container
 				.slider-about__body.swiper
 					.slider-about__wrapper.swiper-wrapper 
 						each slide in about.slider
-							.slider-about__item.swiper-slide 	
+							a(href=`images/about/slide-${slide.img}.jpg`).slider-about__item.swiper-slide.gallery-item
 								.slider-about__image.ibg
-									img(src=`images/about/slide-${slide.img}.jpg`, alt="изоюражени слайда")
+									img(src=`images/about/slide-${slide.img}.jpg`, alt="изображение слайда" loading="lazy")
 				.slider-about__controls 
 					button(type="button").slider-button.slider-button-prev 
 					button(type="button").slider-button.slider-button-next 

@@ -13,15 +13,16 @@ header.header#header
 									.search-header__buttons
 										button(type="button" id="delete-button").search-header__button.search-header__button--delete
 										button(type="submit").search-header__button.search-header__button--search
-									.search-header__result 
-										ul.search-header__list 
-											each item in searchList
-												li.search-header__list-item 
-													a(href="#").search-header__link= item 
+									.search-header__result(hidden)
+										.search-header__result-wrapper(data-simplebar)
+											ul.search-header__list 
+												each item in searchList
+													li.search-header__list-item 
+														a(href="#").search-header__link= item 
 					a(href="mailto:sale@megatex-nn.ru").header__email sale@megatex-nn.ru
 			.header__bottom.bottom-header
 				.bottom-header__links
-					.header__logo 
+					a(href="index.html").header__logo 
 						picture
 							source(srcset="images/logo.png" media="(min-width: 767.98px)")
 							source(srcset="images/logo_mobile.png" media="(min-width: 320px)")
@@ -31,10 +32,10 @@ header.header#header
 						nav.menu__body 
 							ul.menu__list
 								each item in menu
-									li.menu__item 
+									li.menu__item(class={active: item.title == pageTitle})
 										a(href=item.link).menu__link= item.title 
 				.bottom-header__actions
-					a.header__phone(href="tel:88002014822") 8 800 201-48-22 
-					+button("header__button", "Запросить КП")
+					a.header__phone(href="tel:88002014822") 8 800 201-48-22
+					button(type="button" data-graph-path="offer").header__button.btn Запросить КП
 				button.menu-icon(type="button")
 					span

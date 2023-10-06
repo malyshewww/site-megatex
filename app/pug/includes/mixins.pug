@@ -25,7 +25,7 @@ mixin product([...array], className, imgPath)
 	each item in array
 		section.item-product(class=className)
 			.item-product__image.ibg
-				img(src=`images/${imgPath}/${item.img}.jpg`, alt=item.title)
+				img(src=`images/${imgPath}/${item.img}.jpg`, alt=item.title loading="lazy")
 			.item-product__body 
 				.item-produc__info
 					h2.item-product__title= item.title
@@ -42,13 +42,16 @@ mixin categoryList([...array], imgName)
 		.categories__item.item-category 
 			.item-category__title= item.title
 			.item-category__image
-				img(src=`images/categories/${imgName}-${item.image}.png`, alt=item.title)
+				img(src=`images/categories/${imgName}-${item.image}.png`, alt=item.title loading="lazy")
 			span.item-category__icon
 mixin textBlock(className)
 	.text-block(class=className)
 		.container 
 			.text-block__info
 				.text-block__description.content
+					.text-block__gradient
+					each item in textBlock.descr
+						p= item
 					each item in textBlock.descr
 						p= item
 				a(href="#").text-block__link.btn-more Читать далее
@@ -86,17 +89,51 @@ mixin sizeRadio(value, name, state)
 			else
 				input(type="radio" name=name).radiobutton-item__input.real-radio
 			span.custom-radio #{value}
-mixin modal(modalId, title, subTitle, text)
-	div(class="graph-modal modal")
-		div(class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target=modalId)
-			button(class="btn-reset graph-modal__close js-modal-close" aria-label="Закрыть модальное окно")
-			div(class="graph-modal__content modal__content")
-				.modal__header
-					.modal__title= title
-					if subTitle
-						.modal__subtitle= subTitle
-					if text 
-						.modal__text= text
-				.modal__body
-					if block 
-						block
+mixin modal(modalId, title, subTitle, text, btntTitle, modalClass)
+	div(class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target=modalId class=modalClass)
+		button(class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно")
+		div(class="graph-modal__content modal__content")
+			.modal__header
+				.modal__title= title
+				if subTitle
+					.modal__subtitle= subTitle
+				if text 
+					.modal__description= text
+			.modal__body
+				case modalId
+					when "offer"
+						form.modal__form(action="#")
+							.form__items
+								.form-item
+									input(type="text" placeholder="Имя" name="name").form-input
+									span.error-message Введите корректное имя
+								.form-item
+									input(type="tel" placeholder="Телефон*" name="phone").form-input
+									span.error-message Введите корректный телефон
+							.form__bottom.modal-bottom
+								input(type="submit" value=btntTitle).form__button.btn
+								.form__load.load-file
+									label.load-file__label 
+										input(type="file").load-file__input.visuallyHidden
+										| прикрепить файл
+								.modal__text 
+									| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#").modal__link политикой обработки персональных данных]
+					when "success"
+						.modal-bottom
+							button(type="button").js-modal-close.btn= btntTitle
+					default
+						form.modal__form(action="#").form
+							.form__items
+								.form-item
+									input(type="text" placeholder="Имя" name="name").form-input
+									span.error-message Введите корректное имя
+								.form-item
+									input(type="tel" placeholder="Телефон*" name="phone").form-input
+									span.error-message Введите корректный телефон
+								if modalId == "sale"
+									.form-item
+										textarea(placeholder="Комментарий" name="comment").form-textarea
+							.form__bottom.modal-bottom
+								input(type="submit" value=btntTitle).form__button.btn
+								.modal__text 
+									| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#").modal__link политикой обработки персональных данных]

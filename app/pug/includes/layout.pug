@@ -44,6 +44,12 @@ html(lang="ru")
 			include ../components/footer
 			button(type="button").scroll-top.hidden
 				.scroll-top__text Наверх
+			if pageTitle !== 'Главная' 
+				.badge-sale(data-graph-path="sale")
+					.badge-sale__icon 
+					.badge-sale__text 
+						span Нашли дешевле?
+						span Сделаем скидку!
 			include ../components/modals
 		block scripts
 			script(src="scripts/libs.js")

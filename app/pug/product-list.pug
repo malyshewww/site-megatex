@@ -10,6 +10,7 @@ block crumbs
 block content
 	.category-list
 		.container 
+			.category-list__title.page-title Перчатки и рукавицы
 			.category-list__body
 				include blocks/filter
 				.category-list__wrapper 
@@ -19,7 +20,7 @@ block content
 								each item in products 
 									section.item-product
 										.item-product__image.ibg
-											img(src=`images/products/${item.img}.jpg`, alt=item.title)
+											img(src=`images/products/${item.img}.jpg`, alt=item.title loading="lazy")
 										.item-product__body 
 											.item-product__info
 												.item-product__article Арт 
@@ -41,5 +42,5 @@ block content
 						.category-list__empty.empty-category
 							.empty-category__title По вашему запросу ничего не найдено
 							.empty-category__description Попробуйте изменить выбор вариантов в фильтрах, чтобы увидеть другие результаты, или вернитесь на главную
-							a(href="#").empty-category__button.btn-secondary Вернуться на главную
+							a(href="/").empty-category__button.btn-secondary Вернуться на главную
 			+textBlock(false)

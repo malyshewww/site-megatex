@@ -11,12 +11,16 @@ block crumbs
 			h1.contacts__title.page-title #{pageTitle}
 			.contacts__top 
 				.contacts__body 
-					.contacts__map 
-						.contacts__map-box(id="ymap")
+					.contacts__map#map
 						.contacts__tabs.tabs-contacts
+							.tabs-contacts__content 
+								//- .tabs-contacts__content-item(data-tab-content="office-ymap").isShow
+								.contacts__map-box(id="office-ymap").isShow
+								//- .tabs-contacts__content-item(data-tab-content="stock-ymap")
+								.contacts__map-box(id="stock-ymap")
 							ul.tabs-contacts__list 
-								li.tabs-contacts__item.current Офис
-								li.tabs-contacts__item Склад
+								li.tabs-contacts__list-item(data-id="office-ymap").isActive Офис
+								li.tabs-contacts__list-item(data-id="stock-ymap") Склад
 					.contacts__info.info-contacts
 						.info-contacts__items
 							.info-contacts__item
@@ -41,7 +45,7 @@ block crumbs
 										a(href="#").info-contacts__link.info-contacts__link--phone +7 (999) 000-00-00
 									li.info-contacts__list-item 
 										a(href="#").info-contacts__link.info-contacts__link--email sale@megatex-nn.ru
-						button(type="button").info-contacts__button.btn Заказать звонок
+						button(type="button").info-contacts__button.btn(data-graph-path="order") Заказать звонок
 			.contacts__main.main-contacts
 				.main-contacts__body 
 					.main-contacts__column
@@ -100,4 +104,5 @@ block crumbs
 										li.main-contacts__list-item 
 											a(href="tel:79101331015").main-contacts__link +7 (910) 133-10-15
 prepend scripts
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js") 
 	script(src="https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU")

@@ -21,12 +21,12 @@ block content
 						.thumbs-slider__controls 
 							button(type="button").slider-button.slider-button-prev
 							button(type="button").slider-button.slider-button-next
-					.slider-card__main.main-slider.lightgallery
+					.slider-card__main.main-slider.gallery
 						.main-slider__body.swiper
 							.main-slider__wrapper.swiper-wrapper
 								each slide in card.slider
 									.main-slider__item.swiper-slide
-										a(href=`images/card/slider/${slide.img}.jpg` class="item") 
+										a(href=`images/card/slider/${slide.img}.jpg` class="gallery-item") 
 											.main-slider__image.ibg
 												img(src=`images/card/slider/${slide.img}.jpg`, alt="большое изображение товара")
 							.main-slider__controls 
@@ -76,7 +76,7 @@ block content
 							| #[span.product-card__prices-label / партия (100 шт.)]
 						.product-card__buttons 
 							button(type="button" data-graph-path="order").product-card__button.btn Заказать
-							button(type="button").product-card__button.btn-secondary Заказать пробную партию
+							button(type="button" data-graph-path="part").product-card__button.btn-secondary Заказать пробную партию
 			.product-card__tabs.tabs 
 				.tabs__body
 					ul.tabs__list 
@@ -119,7 +119,7 @@ block content
 							.certificates
 								.certificates__body
 									each item in card.certificates
-										a(href="#" download).certificate
+										a(href="#" download="hello.txt" target="_blank").certificate
 											.certificate__name= item.title
 											span.certificate__icon
 						.tabs__content(id="tab_2")

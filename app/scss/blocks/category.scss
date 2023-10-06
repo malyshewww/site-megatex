@@ -3,6 +3,7 @@
 		display: grid;
 		grid-template-columns: 285px 1fr;
 		gap: 20px 70px;
+		box-sizing: border-box;
 	}
 	&__products {
 		display: grid;
@@ -129,7 +130,7 @@
 	}
 	& input {
 		@extend %visuallyHidden;
-		&:checked + label {
+		&:checked ~ label {
 			& span {
 				background-color: #0d2cb0;
 				&::before {
@@ -137,7 +138,7 @@
 				}
 			}
 		}
-		&:checked + label:hover {
+		&:checked ~ label:hover {
 			& span {
 				&::before {
 					background-color: $whiteColor;
@@ -209,6 +210,7 @@
 	flex-direction: column;
 	max-width: 690px;
 	gap: 20px;
+	margin: 66px 0 0 118px;
 	&__title {
 		color: #181c2d;
 		font-family: "Muller", sans-serif;

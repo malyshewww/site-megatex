@@ -8,32 +8,34 @@ function initSliders() {
 			slidesPerView: 4,
 			spaceBetween: 20,
 			navigation: {
-				prevEl: newSlider.previousElementSibling.querySelector('.slider-button-prev'),
-				nextEl: newSlider.previousElementSibling.querySelector('.slider-button-next'),
+				prevEl: newSlider.previousElementSibling?.querySelector('.slider-button-prev'),
+				nextEl: newSlider.previousElementSibling?.querySelector('.slider-button-next'),
 			},
 		});
 	};
 	// Слайдер категорий
 	const sliderCategories = document.querySelectorAll('.catalog .categories__wrapper');
-	[...sliderCategories].forEach(slider => {
-		const children = slider.children[0].children.length;
-		if (children > 4) {
-			const categorySwiper = new Swiper(slider, {
-				wrapperClass: "categories__body",
-				slideClass: "categories__item",
-				slidesPerView: 4,
-				spaceBetween: 20,
-				navigation: {
-					prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
-					nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
-				},
-				speed: 800,
-			});
-		} else {
-			slider.previousElementSibling.querySelector('.heading-block__controls').style.display = "none";
-			slider.classList.add('tile');
-		}
-	})
+	if (sliderCategories) {
+		[...sliderCategories].forEach(slider => {
+			let children = slider.children[0].children.length;
+			if (children > 4) {
+				const categorySwiper = new Swiper(slider, {
+					slideClass: "categories__item",
+					wrapperClass: "categories__body",
+					slidesPerView: 4,
+					spaceBetween: 20,
+					navigation: {
+						prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
+						nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
+					},
+					speed: 800,
+				});
+			} else {
+				slider.previousElementSibling.querySelector('.heading-block__controls').style.display = "none";
+				slider.classList.add('tile');
+			}
+		})
+	}
 	// Слайдеры в карточке товара
 	const cardMainSlider = document.querySelector('.main-slider__body');
 	const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
@@ -88,10 +90,20 @@ function initSliders() {
 			}
 		})
 	}
+	const aboutSlider = document.querySelector('.slider-about__body');
+	if (aboutSlider) {
+		const aboutSwiper = new Swiper(aboutSlider, {
+			slidesPerView: 'auto',
+			spaceBetween: 20,
+			speed: 800,
+			navigation: {
+				nextEl: aboutSlider.nextElementSibling?.querySelector(".slider-button-next"),
+				prevEl: aboutSlider.nextElementSibling?.querySelector(".slider-button-prev"),
+			},
+		})
+	}
 }
-window.addEventListener('load', () => {
-	initSliders();
-})
+
 // Поле поиска
 const searchInput = document.querySelector('.search-header__input');
 if (searchInput) {
@@ -117,7 +129,7 @@ function getHash(event) {
 	event.preventDefault();
 	let hash = window.location.hash;
 	let target = event.target;
-	const hashLink = document.querySelector(`.tabs__link[href$="${hash}"]`);
+	const hashLink = document.querySelector(`.product-card .tabs__link[href$="${hash}"]`);
 	const hashElement = document.querySelector(hash);
 	document.querySelectorAll('.tabs__link').forEach((child) => {
 		child.classList.remove('isActive');
@@ -291,11 +303,140 @@ if (groupCards) {
 	})
 }
 // Галерея на странице Карточка товара
-const galleries = document.querySelectorAll('.lightgallery');
-[...galleries].forEach(gallery => {
-	lightGallery(gallery, {
-		speed: 500,
-		selector: '.item'
-		// ... other settings
+function initGallery() {
+	const galleries = document.querySelectorAll('.gallery');
+	[...galleries].forEach(gallery => {
+		lightGallery(gallery, {
+			speed: 500,
+			selector: '.gallery-item'
+			// ... other settings
+		});
+	})
+}
+
+// Объект с данным для карт
+const yMapArr = [
+	{
+		"id": "office-ymap",
+		"center": [56.248821, 43.877393],
+		"zoom": 16,
+		"content": "Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304",
+		"iconPath": "../images/icons/location.svg",
+	},
+	{
+		"id": "stock-ymap",
+		"center": [43.427229, 56.249281],
+		"zoom": 16,
+		"content": "Нижегородская область, г. Дзержинск, проспект Ленина 1/202",
+		"iconPath": "../images/icons/location.svg",
+	},
+];
+
+
+// Яндекс карта
+const mapElem = document.getElementById("map");
+if (mapElem) {
+	let isLoaded = false;
+	function loadMap() {
+		var script = document.createElement("script");
+		script.src = "https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU";
+		document.body.appendChild(script);
+		isLoaded = true;
+		script.onload = () => {
+			if (typeof ymaps === 'undefined') {
+				return;
+			}
+			ymaps.ready(() => {
+				let myMap = new ymaps.Map('office-ymap', {
+					center: [56.248821, 43.877393],
+					zoom: 16
+				}, {
+					searchControlProvider: 'yandex#search'
+				}),
+					myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+						balloonContent: 'Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304'
+					}, {
+						iconLayout: 'default#image',
+						iconImageHref: '../images/icons/location.svg',
+						iconImageSize: [44, 49],
+						iconImageOffset: [-10, -30]
+					});
+				myMap.geoObjects.add(myPlacemark);
+				myMap.behaviors.disable('scrollZoom');
+				let myMapStock = new ymaps.Map('stock-ymap', {
+					center: [43.427229, 56.249281],
+					zoom: 17
+				}, {
+					searchControlProvider: 'yandex#search'
+				}),
+					myPlacemarkTwo = new ymaps.Placemark(myMapStock.getCenter(), {
+						balloonContent: 'Нижегородская область, г. Дзержинск, проспект Ленина 1/202'
+					}, {
+						iconLayout: 'default#image',
+						iconImageHref: '../images/icons/location.svg',
+						iconImageSize: [44, 49],
+						iconImageOffset: [0, 0]
+					});
+				myMapStock.geoObjects.add(myPlacemarkTwo);
+				myMapStock.behaviors.disable('scrollZoom');
+			});
+		};
+	}
+	if (mapElem.getBoundingClientRect().top < window.innerHeight) {
+		loadMap();
+	}
+	window.addEventListener("scroll", function () {
+		if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
+			loadMap();
+		}
 	});
+}
+
+// Табы для блока с яндекс картами
+const mapTabTrigger = document.querySelectorAll('[data-id]');
+const mapTabContent = document.querySelectorAll('.contacts__map-box');
+[...mapTabTrigger].forEach(tab => {
+	tab.addEventListener('click', () => {
+		const id = tab.dataset.id;
+		const content = document.querySelector(`#${id}`);
+		[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
+		[...mapTabContent].forEach(item => item.classList.remove('isShow'));
+		tab.classList.add('isActive')
+		content.classList.add('isShow');
+	})
+})
+
+// Подключение библиотеки для модальных окон
+const modal = new GraphModal(
+	{
+		isOpen: (modal) => {
+			const inputs = modal.modalContainer.querySelectorAll('input');
+			if (inputs) {
+				setTimeout(() => {
+					inputs[0].focus();
+				}, 200);
+			}
+		},
+	}
+);
+
+// Подключение кастомного скроллбара
+Array.prototype.forEach.call(
+	document.querySelectorAll('[data-simplebar]'),
+	(el) => new SimpleBar(el)
+);
+
+// Раскрытие информации в тектсовом блоке
+const textBlock = document.querySelector('.text-block');
+textBlock.addEventListener('click', (event) => {
+	event.preventDefault();
+	let target = event.target;
+	if (target.closest('.text-block__gradient') || target.closest('.text-block__link')) {
+		textBlock.classList.add('isOpen');
+	}
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+	initGallery();
+	initSliders();
 })

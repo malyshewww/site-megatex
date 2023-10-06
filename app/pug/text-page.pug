@@ -44,9 +44,9 @@ block crumbs
 			.container
 				.heading-block 
 					.heading-block__title Собственное производство
-				.production__body.lightgallery
+				.production__body.gallery
 					- for (var i = 1; i < 7; ++i) {
-						a(href=`images/production/${i}.jpg`).production__item.item
+						a(href=`images/production/${i}.jpg`).production__item.gallery-item
 							.production__image.ibg
-								img(src=`images/production/${i}.jpg`, alt="собственное производство")
+								img(src=`images/production/${i}.jpg`, alt="собственное производство" loading="lazy")
 					- }

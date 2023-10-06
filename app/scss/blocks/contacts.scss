@@ -10,9 +10,13 @@
 		border-radius: 16px;
 		&-box {
 			height: 100%;
-		}
-		& > ymaps {
-			width: 100%;
+			display: none;
+			&.isShow {
+				display: block;
+			}
+			& > ymaps {
+				width: 100%;
+			}
 		}
 	}
 	&__body {
@@ -103,9 +107,9 @@
 		}
 		@media (any-hover: hover) {
 			&:hover {
-				color: #001d9a;
+				color: #3d78eb;
 				&::before {
-					background-color: #001d9a;
+					background-color: #3d78eb;
 				}
 			}
 		}
@@ -159,14 +163,28 @@
 	}
 }
 .tabs-contacts {
-	position: absolute;
-	top: 0;
-	left: 0;
+	height: 100%;
+	position: relative;
+	&__content {
+		height: 100%;
+		&-item {
+			height: 560px;
+			display: none;
+			&.isShow {
+				display: block;
+			}
+		}
+	}
 	&__list {
 		@include reset-list;
-		display: flex;
+		display: inline-flex;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
 	}
-	&__item {
+	&__list-item {
 		min-height: 48px;
 		cursor: pointer;
 		padding: 12px 36px;
@@ -180,7 +198,7 @@
 		&:last-child {
 			border-radius: 0 0 16px 0;
 		}
-		&.current {
+		&.isActive {
 			background-color: #181c2d;
 			color: $whiteColor;
 		}

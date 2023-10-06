@@ -27,5 +27,11 @@
 	}
 	&__link {
 		color: $mainColor;
+		transition: color 0.2s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #0d2cb0;
+			}
+		}
 	}
 }

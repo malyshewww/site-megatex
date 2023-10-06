@@ -24,6 +24,8 @@
 		transform 0.3s ease 0s,
 		opacity 0.3s ease 0s;
 	gap: 12px;
+	z-index: 5;
+	color: #181c2d;
 	&__text {
 		font-size: 16px;
 		font-weight: 600;
@@ -31,6 +33,21 @@
 		writing-mode: vertical-rl;
 		transform: rotate(180deg);
 		transition: color 0.2s ease 0s;
+		position: relative;
+		z-index: 4;
+		color: #181c2d;
+		&::after {
+			color: $whiteColor;
+			display: block;
+			// content: "Наверх";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			mix-blend-mode: multiply;
+			z-index: -1;
+		}
 	}
 	&::before {
 		content: "";
@@ -109,10 +126,10 @@
 	}
 }
 .home-heading {
-	padding-left: 16px;
+	// padding-left: 16px;
 	& .heading-block__controls {
 		position: relative;
-		right: -22px;
+		right: -6px;
 	}
 	& .heading-block__title {
 		font-size: 48px;
@@ -170,6 +187,7 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 8px;
+	cursor: pointer;
 	transition: background 0.2s ease 0s;
 	@media (any-hover: hover) {
 		&:hover {
@@ -190,7 +208,7 @@
 .btn-secondary {
 	border-radius: 8px;
 	border: 2px solid #b8cff2;
-	min-height: 57px;
+	min-height: 56px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -200,7 +218,8 @@
 	font-weight: 600;
 	line-height: 24px;
 	transition: border-color 0.2s ease 0s;
-	padding: 16px;
+	padding: 14px 24px;
+	cursor: pointer;
 	@media (any-hover: hover) {
 		&:hover {
 			border-color: #0d2cb0;
@@ -221,7 +240,7 @@
 	color: #0d2cb0;
 	font-weight: 600;
 	line-height: 24px;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	gap: 4px;
 	cursor: pointer;
@@ -275,9 +294,10 @@
 .error-message {
 	display: none;
 }
-.form-input {
+.form-input,
+.form-textarea {
 	min-height: 56px;
-	padding: 16px 24px;
+	padding: 15px 24px;
 	font-family: "Gilroy", sans-serif;
 	font-size: 16px;
 	font-weight: 500;
@@ -311,6 +331,10 @@
 			color: #e8e9ef;
 		}
 	}
+}
+.form-textarea {
+	max-height: 56px;
+	resize: none;
 }
 .form-input[type="tel"] {
 	&::placeholder {
@@ -532,5 +556,31 @@
 		mask-repeat: no-repeat;
 		mask-position: center;
 		mask-size: 40px 40px;
+	}
+}
+.badge-sale {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	position: absolute;
+	right: 0;
+	top: 173px;
+	padding: 12px 24px 12px 20px;
+	border-radius: 8px 0px 0px 8px;
+	background: linear-gradient(100deg, #fff 0%, #f9f9fb 59.38%);
+	box-shadow: 4px 4px 12px 0px rgba(24, 28, 45, 0.06);
+	cursor: pointer;
+	&__icon {
+		width: 44px;
+		height: 44px;
+		background-image: url("../images/icons/percent.svg");
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	&__text {
+		color: #0d2cb0;
+		font-weight: 600;
+		display: flex;
+		flex-direction: column;
 	}
 }
