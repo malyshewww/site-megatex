@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Список товаров</title>
+	<meta name="description" content="Описание на странице - Список товаров">
+	<meta name="keywords" content="Перечень ключевых слов">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://example.com">
+	<meta property="og:title" content="Список товаров">
+	<meta property="og:description" content="Описание на странице - Список товаров">
+	<meta property="twitter:title" content="Список товаров">
+	<meta property="twitter:description" content="description">
+	<link rel="canonical" href="https://example.com">
+	<link rel="preload" href="./fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+	<link href="styles/main.min.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-title" content="Название">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="format-detection" content="date=no">
+</head>
+
+<body>
+	<div class="wrapper" id="wrapper">
+		<header class="header" id="header">
+			<div class="container">
+				<div class="header__body">
+					<div class="header__top top-header">
+						<div class="top-header__info">
+							<div class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+						</div>
+						<div class="top-header__actions">
+							<div class="header__search search-header">
+								<form class="search-header__form" action="#">
+									<div class="form-item">
+										<div class="search-header__item">
+											<input class="search-header__input" type="text" placeholder="Введите запрос">
+											<div class="search-header__buttons">
+												<button class="search-header__button search-header__button--delete" type="button" id="delete-button"></button>
+												<button class="search-header__button search-header__button--search" type="submit"></button>
+											</div>
+											<div class="search-header__result" hidden>
+												<div class="search-header__result-wrapper" data-simplebar>
+													<ul class="search-header__list">
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки рабочие</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки обливные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки защитные одинарный облив перчатки защитные одинарный облив</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки хозяйственные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки рабочие</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки обливные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки защитные одинарный облив перчатки защитные одинарный облив</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки хозяйственные</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<a class="header__email" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
+						</div>
+					</div>
+					<div class="header__bottom bottom-header">
+						<div class="bottom-header__links">
+							<a class="header__logo" href="index.html">
+								<picture>
+									<source srcset="images/logo.png" media="(min-width: 767.98px)">
+									<source srcset="images/logo_mobile.png" media="(min-width: 320px)">
+									<img src="images/logo.png" alt="логотип">
+								</picture>
+							</a>
+							<div class="header__menu menu">
+								<a class="menu__catalog" href="catalog.html">Каталог</a>
+								<nav class="menu__body">
+									<ul class="menu__list">
+										<li class="menu__item">
+											<a class="menu__link" href="delivery.html">Доставка</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="about.html">О компании</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="contacts.html">Контакты</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="scheme.html">Схема проезда</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="bottom-header__actions">
+							<a class="header__phone" href="tel:88002014822">8 800 201-48-22</a>
+							<button class="header__button btn" type="button" data-graph-path="offer">Запросить КП</button>
+						</div>
+						<button class="menu-icon" type="button">
+							<span></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="breadcrumbs">
+			<div class="container">
+				<nav class="breadcrumbs__navigation">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Главная</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Каталог</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Защита рук</a>
+						</li>
+						<li class="breadcrumbs__item">Перчатки и рукавицы</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<main class="main">
+			<div class="category-list">
+				<div class="container">
+					<div class="category-list__title page-title">Перчатки и рукавицы</div>
+					<div class="category-list__body">
+						<aside class="filter">
+							<form class="filter-form" action="#">
+								<div class="filter__title">Фильтры</div>
+								<div class="filter-groups">
+									<div class="filter-group isOpen">
+										<div class="filter-group__header">Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_1" name="parameter_1">
+													<label for="parameter_1">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_2" name="parameter_2" checked>
+													<label for="parameter_2">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+											</ul>
+											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+										</div>
+									</div>
+									<div class="filter-group isOpen">
+										<div class="filter-group__header">Название параметра Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_3" name="parameter_3">
+													<label for="parameter_3">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_4" name="parameter_4">
+													<label for="parameter_4">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_5" name="parameter_5">
+													<label for="parameter_5">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+											</ul>
+											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+										</div>
+									</div>
+									<div class="filter-group isOpen">
+										<div class="filter-group__header">Название параметра Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_6" name="parameter_6">
+													<label for="parameter_6">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_7" name="parameter_7">
+													<label for="parameter_7">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_8" name="parameter_8">
+													<label for="parameter_8">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+											</ul>
+											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+										</div>
+									</div>
+									<div class="filter-group">
+										<div class="filter-group__header">Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_8" name="parameter_8">
+													<label for="parameter_8">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_9" name="parameter_9">
+													<label for="parameter_9">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_10" name="parameter_10">
+													<label for="parameter_10">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="filter-group">
+										<div class="filter-group__header">Название параметра Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_11" name="parameter_11">
+													<label for="parameter_11">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_12" name="parameter_12">
+													<label for="parameter_12">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_13" name="parameter_13">
+													<label for="parameter_13">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+											</ul>
+											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+										</div>
+									</div>
+									<div class="filter-group">
+										<div class="filter-group__header">Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_14" name="parameter_14">
+													<label for="parameter_14">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_15" name="parameter_15">
+													<label for="parameter_15">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_16" name="parameter_16">
+													<label for="parameter_16">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+											</ul>
+											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+										</div>
+									</div>
+									<div class="filter-group">
+										<div class="filter-group__header">Название параметра Название параметра</div>
+										<div class="filter-group__choices">
+											<ul class="filter-group__list">
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_17" name="parameter_17">
+													<label for="parameter_17">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_18" name="parameter_18">
+													<label for="parameter_18">Название варианта для выбора в две строки<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+												</li>
+												<li class="filter-group__item">
+													<input type="checkbox" id="parameter_19" name="parameter_19">
+													<label for="parameter_19">Название варианта для выбора<span></span>
+													</label>
+													<a href="#" style="display: none;">Название варианта для выбора</a>
+												</li>
+											</ul>
+											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+										</div>
+									</div>
+								</div>
+								<div class="filter__buttons">
+									<button class="filter__button btn" type="submit">Применить</button>
+									<button class="filter__button--reset btn-reset" type="reset">Сбросить фильтры</button>
+								</div>
+							</form>
+						</aside>
+						<div class="category-list__wrapper">
+							<div class="category-list__empty empty-category">
+								<div class="empty-category__title">По вашему запросу ничего не найдено</div>
+								<div class="empty-category__description">Попробуйте изменить выбор вариантов в фильтрах, чтобы увидеть другие результаты, или вернитесь на главную</div>
+								<a class="empty-category__button btn-secondary" href="/">Вернуться на главную</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__main main-footer">
+				<div class="container">
+					<div class="main-footer__body">
+						<div class="footer__info">
+							<a class="footer__logo" href="index.html">
+								<img src="images/footer-logo.png" alt="логотип">
+							</a>
+							<div class="footer__data">
+								<div class="footer__links">
+									<a class="footer__link" href="tel:88002014822">8 800 201-48-22</a>
+									<a class="footer__link" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
+								</div>
+								<div class="footer__address">г. Н.Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+								<div class="footer__mode mode-footer">
+									<span class="mode-footer__label">Режим работы:</span>
+									<span class="mode-footer__value">Пн-Пт с 9:00 до 18:00</span>
+								</div>
+							</div>
+						</div>
+						<div class="footer__menu menu-footer">
+							<div class="menu-footer__column">
+								<div class="menu-footer__label">Каталог</div>
+								<nav class="menu-footer__nav">
+									<ul class="menu-footer__list">
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Защита рук</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Обтирочные материалы</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Средства индивидуальной защиты</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Хозяйственная группа</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="menu-footer__column">
+								<nav class="menu-footer__nav">
+									<ul class="menu-footer__list">
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">О компании</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Доставка</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Доставка и оплата</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Схема проезда</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom bottom-footer">
+				<div class="container">
+					<div class="bottom-footer__body">
+						<div class="bottom-footer__left">
+							<div class="footer__copy">&copy; ООО «Мегатекс» 2023</div>
+							<a class="footer__link" href="#" target="_blank">Политика конфиденциальности</a>
+						</div>
+						<div class="bottom-footer__right">
+							<div class="footer-company">
+								<span class="footer-company__label">Разработка сайта:</span>
+								<a class="footer-company__value" href="#" target="_blank">
+									<img src="images/company-logo.svg" alt="логотип компании">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<button class="scroll-top hidden" type="button">
+			<div class="scroll-top__text">Наверх</div>
+		</button>
+		<div class="graph-modal modal">
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="offer">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Запросить коммерческое предложение</div>
+						<div class="modal__description">Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить запрос">
+								<div class="form__load load-file">
+									<label class="load-file__label">
+										<input class="load-file__input visuallyHidden" type="file">прикрепить файл
+									</label>
+								</div>
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="order">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказать</div>
+						<div class="modal__subtitle">Рабочие х/б перчатки с ПВХ покрытием «Точка»</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="part">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказ пробной партии</div>
+						<div class="modal__subtitle">Рабочие х/б перчатки с ПВХ покрытием «Точка»</div>
+						<div class="modal__description">Заполните форму, чтобы бесплатно заказать пробную партию перчаток (1 мешок), и убедитесь в высоком качестве нашей продукции</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="sale">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Нашли дешевле чем на нашем сайте?</div>
+						<div class="modal__description">Заполните форму и мы постараемся сделать вам более выгодное предложение</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+								<div class="form-item">
+									<textarea class="form-textarea" placeholder="Комментарий" name="comment"></textarea>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="success">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Спасибо!</div>
+						<div class="modal__description">Форма успешно отправлена. В ближайшее время с вами свяжется наш специалист для уточнения деталей</div>
+					</div>
+					<div class="modal__body">
+						<div class="modal-bottom">
+							<button class="js-modal-close btn" type="button">Закрыть</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/libs.js"></script>
+	<script src="scripts/main.js"></script>
+</body>
+
+</html>

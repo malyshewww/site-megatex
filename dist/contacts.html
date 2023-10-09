@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Контакты</title>
+	<meta name="description" content="Описание на странице - Контакты">
+	<meta name="keywords" content="Перечень ключевых слов">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://example.com">
+	<meta property="og:title" content="Контакты">
+	<meta property="og:description" content="Описание на странице - Контакты">
+	<meta property="twitter:title" content="Контакты">
+	<meta property="twitter:description" content="description">
+	<link rel="canonical" href="https://example.com">
+	<link rel="preload" href="./fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+	<link href="styles/main.min.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-title" content="Название">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="format-detection" content="date=no">
+</head>
+
+<body>
+	<div class="wrapper" id="wrapper">
+		<header class="header" id="header">
+			<div class="container">
+				<div class="header__body">
+					<div class="header__top top-header">
+						<div class="top-header__info">
+							<div class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+						</div>
+						<div class="top-header__actions">
+							<div class="header__search search-header">
+								<form class="search-header__form" action="#">
+									<div class="form-item">
+										<div class="search-header__item">
+											<input class="search-header__input" type="text" placeholder="Введите запрос">
+											<div class="search-header__buttons">
+												<button class="search-header__button search-header__button--delete" type="button" id="delete-button"></button>
+												<button class="search-header__button search-header__button--search" type="submit"></button>
+											</div>
+											<div class="search-header__result" hidden>
+												<div class="search-header__result-wrapper" data-simplebar>
+													<ul class="search-header__list">
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки рабочие</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки обливные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки защитные одинарный облив перчатки защитные одинарный облив</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки хозяйственные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки рабочие</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки обливные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки защитные одинарный облив перчатки защитные одинарный облив</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки хозяйственные</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<a class="header__email" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
+						</div>
+					</div>
+					<div class="header__bottom bottom-header">
+						<div class="bottom-header__links">
+							<a class="header__logo" href="index.html">
+								<picture>
+									<source srcset="images/logo.png" media="(min-width: 767.98px)">
+									<source srcset="images/logo_mobile.png" media="(min-width: 320px)">
+									<img src="images/logo.png" alt="логотип">
+								</picture>
+							</a>
+							<div class="header__menu menu">
+								<a class="menu__catalog" href="catalog.html">Каталог</a>
+								<nav class="menu__body">
+									<ul class="menu__list">
+										<li class="menu__item">
+											<a class="menu__link" href="delivery.html">Доставка</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="about.html">О компании</a>
+										</li>
+										<li class="menu__item active">
+											<a class="menu__link" href="contacts.html">Контакты</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="scheme.html">Схема проезда</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="bottom-header__actions">
+							<a class="header__phone" href="tel:88002014822">8 800 201-48-22</a>
+							<button class="header__button btn" type="button" data-graph-path="offer">Запросить КП</button>
+						</div>
+						<button class="menu-icon" type="button">
+							<span></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="breadcrumbs">
+			<div class="container">
+				<nav class="breadcrumbs__navigation">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Главная</a>
+						</li>
+						<li class="breadcrumbs__item">Контакты</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class="contacts">
+			<div class="container">
+				<h1 class="contacts__title page-title">Контакты</h1>
+				<div class="contacts__top">
+					<div class="contacts__body">
+						<div class="contacts__map" id="map">
+							<div class="contacts__tabs tabs-contacts">
+								<div class="tabs-contacts__content">
+									<div class="contacts__map-box isShow" id="office-ymap"></div>
+								</div>
+								<ul class="tabs-contacts__list">
+									<li class="tabs-contacts__list-item isActive" data-id="office-ymap" data-lat="56.248821" data-ling="43.877393" data-address="Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304">Офис</li>
+									<li class="tabs-contacts__list-item" data-id="stock-ymap" data-lat="43.427229" data-ling="56.24928" data-address="Нижегородская область, г. Дзержинск, проспект Ленина 1/202">Склад</li>
+								</ul>
+							</div>
+						</div>
+						<div class="contacts__info info-contacts">
+							<div class="info-contacts__items">
+								<div class="info-contacts__item">
+									<div class="info-contacts__label contacts-label">Офис</div>
+									<p class="info-contacts__address">Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304</p>
+									<ul class="info-contacts__list">
+										<li class="info-contacts__list-item">
+											Пн-Пт: <span>с 9:00 до 17:00</span>
+										</li>
+										<li class="info-contacts__list-item">Сб-Вс: <span>выходной</span>
+										</li>
+									</ul>
+								</div>
+								<div class="info-contacts__item">
+									<div class="info-contacts__label contacts-label">Склад</div>
+									<p class="info-contacts__address">Нижегородская область, г. Дзержинск, проспект Ленина 1/202</p>
+									<ul class="info-contacts__list">
+										<li class="info-contacts__list-item">
+											Пн-Пт: <span>с 8:00 до 17:00</span>
+										</li>
+										<li class="info-contacts__list-item">Сб-Вс: <span>выходной</span>
+										</li>
+									</ul>
+								</div>
+								<div class="info-contacts__item info-contacts__item--links">
+									<ul class="info-contacts__list">
+										<li class="info-contacts__list-item">
+											<a class="info-contacts__link info-contacts__link--phone" href="#">+7 (999) 000-00-00</a>
+										</li>
+										<li class="info-contacts__list-item">
+											<a class="info-contacts__link info-contacts__link--email" href="#">sale@megatex-nn.ru</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<button class="info-contacts__button btn" type="button" data-graph-path="order">Заказать звонок</button>
+						</div>
+					</div>
+				</div>
+				<div class="contacts__main main-contacts">
+					<div class="main-contacts__body">
+						<div class="main-contacts__column">
+							<div class="main-contacts__item">
+								<div class="main-contacts__label contacts-label">Коммерческий директор</div>
+								<ul class="main-contacts__list">
+									<li class="main-contacts__list-item">Юлия Ёлкина</li>
+									<li class="main-contacts__list-item">
+										<a class="main-contacts__link main-contacts__link--email" href="mailto:komdir@megatex-nn.ru">komdir@megatex-nn.ru</a>
+									</li>
+									<li class="main-contacts__list-item">
+										<a class="main-contacts__link main-contacts__link--phone" href="tel:79506152580">+7 (950) 615-25-80</a>
+									</li>
+								</ul>
+							</div>
+							<div class="main-contacts__item">
+								<div class="main-contacts__label contacts-label">Тендерный отдел</div>
+								<ul class="main-contacts__list">
+									<li class="main-contacts__list-item">Ирина Сучкова</li>
+									<li class="main-contacts__list-item">
+										<a class="main-contacts__link main-contacts__link--email" href="mailto:irina@megatex-nn.ru">irina@megatex-nn.ru</a>
+									</li>
+									<li class="main-contacts__list-item">
+										<a class="main-contacts__link main-contacts__link--phone" href="tel:79087589099">+7 (908) 758-90-99</a>
+									</li>
+								</ul>
+							</div>
+							<div class="main-contacts__item">
+								<div class="main-contacts__label contacts-label">Отдел закупок</div>
+								<ul class="main-contacts__list">
+									<li class="main-contacts__list-item">Елена Куликова</li>
+									<li class="main-contacts__list-item">
+										<a class="main-contacts__link main-contacts__link--email" href="mailto:elena@megatex-nn.ru">elena@megatex-nn.ru</a>
+									</li>
+									<li class="main-contacts__list-item">
+										<a class="main-contacts__link main-contacts__link--phone" href="tel:79082358847">+7 (908) 235-88-47</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="main-contacts__column">
+							<div class="main-contacts__item">
+								<div class="main-contacts__label contacts-label">Отдел продаж</div>
+								<div class="main-contacts__list-boxes">
+									<div class="main-contacts__list-box">
+										<ul class="main-contacts__list">
+											<li class="main-contacts__list-item">Валентина Кожененкова</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--email" href="mailto:valentinaK@megatex-nn.ru">valentinaK@megatex-nn.ru</a>
+											</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--phone" href="tel:79047878485">+7 (904) 787-84-85</a>
+											</li>
+										</ul>
+										<ul class="main-contacts__list">
+											<li class="main-contacts__list-item">Валентина Яшина</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--email" href="mailto:valentinaK@megatex-nn.ru">valentina@megatex-nn.ru</a>
+											</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--phone" href="tel:79506176280">+7 (904) 787-84-85</a>
+											</li>
+										</ul>
+										<ul class="main-contacts__list">
+											<li class="main-contacts__list-item">Анна Калякина</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--email" href="mailto:anna@megatex-nn.ru">anna@megatex-nn.ru</a>
+											</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--phone" href="tel:79527839811">+7 (952) 783-98-11</a>
+											</li>
+										</ul>
+									</div>
+									<div class="main-contacts__list-box">
+										<ul class="main-contacts__list">
+											<li class="main-contacts__list-item">Ольга Шеметова</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--email" href="mailto:info@megatex52.ru">info@megatex52.ru</a>
+											</li>
+											<li class="main-contacts__list-item">
+												<a class="main-contacts__link main-contacts__link--phone" href="tel:79101331015">+7 (910) 133-10-15</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<main class="main">
+		</main>
+		<footer class="footer">
+			<div class="footer__main main-footer">
+				<div class="container">
+					<div class="main-footer__body">
+						<div class="footer__info">
+							<a class="footer__logo" href="index.html">
+								<img src="images/footer-logo.png" alt="логотип">
+							</a>
+							<div class="footer__data">
+								<div class="footer__links">
+									<a class="footer__link" href="tel:88002014822">8 800 201-48-22</a>
+									<a class="footer__link" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
+								</div>
+								<div class="footer__address">г. Н.Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+								<div class="footer__mode mode-footer">
+									<span class="mode-footer__label">Режим работы:</span>
+									<span class="mode-footer__value">Пн-Пт с 9:00 до 18:00</span>
+								</div>
+							</div>
+						</div>
+						<div class="footer__menu menu-footer">
+							<div class="menu-footer__column">
+								<div class="menu-footer__label">Каталог</div>
+								<nav class="menu-footer__nav">
+									<ul class="menu-footer__list">
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Защита рук</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Обтирочные материалы</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Средства индивидуальной защиты</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Хозяйственная группа</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="menu-footer__column">
+								<nav class="menu-footer__nav">
+									<ul class="menu-footer__list">
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">О компании</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Доставка</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Доставка и оплата</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Схема проезда</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom bottom-footer">
+				<div class="container">
+					<div class="bottom-footer__body">
+						<div class="bottom-footer__left">
+							<div class="footer__copy">&copy; ООО «Мегатекс» 2023</div>
+							<a class="footer__link" href="#" target="_blank">Политика конфиденциальности</a>
+						</div>
+						<div class="bottom-footer__right">
+							<div class="footer-company">
+								<span class="footer-company__label">Разработка сайта:</span>
+								<a class="footer-company__value" href="#" target="_blank">
+									<img src="images/company-logo.svg" alt="логотип компании">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<button class="scroll-top hidden" type="button">
+			<div class="scroll-top__text">Наверх</div>
+		</button>
+		<div class="graph-modal modal">
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="offer">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Запросить коммерческое предложение</div>
+						<div class="modal__description">Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить запрос">
+								<div class="form__load load-file">
+									<label class="load-file__label">
+										<input class="load-file__input visuallyHidden" type="file">прикрепить файл
+									</label>
+								</div>
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="order">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказать</div>
+						<div class="modal__subtitle">Рабочие х/б перчатки с ПВХ покрытием «Точка»</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="part">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказ пробной партии</div>
+						<div class="modal__subtitle">Рабочие х/б перчатки с ПВХ покрытием «Точка»</div>
+						<div class="modal__description">Заполните форму, чтобы бесплатно заказать пробную партию перчаток (1 мешок), и убедитесь в высоком качестве нашей продукции</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="sale">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Нашли дешевле чем на нашем сайте?</div>
+						<div class="modal__description">Заполните форму и мы постараемся сделать вам более выгодное предложение</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+								<div class="form-item">
+									<textarea class="form-textarea" placeholder="Комментарий" name="comment"></textarea>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="success">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Спасибо!</div>
+						<div class="modal__description">Форма успешно отправлена. В ближайшее время с вами свяжется наш специалист для уточнения деталей</div>
+					</div>
+					<div class="modal__body">
+						<div class="modal-bottom">
+							<button class="js-modal-close btn" type="button">Закрыть</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
+	<script src="scripts/libs.js"></script>
+	<script src="scripts/main.js"></script>
+</body>
+
+</html>

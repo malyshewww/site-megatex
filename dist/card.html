@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Карточка товарв</title>
+	<meta name="description" content="Описание на странице - Карточка товарв">
+	<meta name="keywords" content="Перечень ключевых слов">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://example.com">
+	<meta property="og:title" content="Карточка товарв">
+	<meta property="og:description" content="Описание на странице - Карточка товарв">
+	<meta property="twitter:title" content="Карточка товарв">
+	<meta property="twitter:description" content="description">
+	<link rel="canonical" href="https://example.com">
+	<link rel="preload" href="./fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+	<link href="styles/main.min.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-title" content="Название">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="format-detection" content="date=no">
+</head>
+
+<body>
+	<div class="wrapper" id="wrapper">
+		<header class="header" id="header">
+			<div class="container">
+				<div class="header__body">
+					<div class="header__top top-header">
+						<div class="top-header__info">
+							<div class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+						</div>
+						<div class="top-header__actions">
+							<div class="header__search search-header">
+								<form class="search-header__form" action="#">
+									<div class="form-item">
+										<div class="search-header__item">
+											<input class="search-header__input" type="text" placeholder="Введите запрос">
+											<div class="search-header__buttons">
+												<button class="search-header__button search-header__button--delete" type="button" id="delete-button"></button>
+												<button class="search-header__button search-header__button--search" type="submit"></button>
+											</div>
+											<div class="search-header__result" hidden>
+												<div class="search-header__result-wrapper" data-simplebar>
+													<ul class="search-header__list">
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки рабочие</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки обливные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки защитные одинарный облив перчатки защитные одинарный облив</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки хозяйственные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки рабочие</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки обливные</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки защитные одинарный облив перчатки защитные одинарный облив</a>
+														</li>
+														<li class="search-header__list-item">
+															<a class="search-header__link" href="#">Перчатки хозяйственные</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<a class="header__email" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
+						</div>
+					</div>
+					<div class="header__bottom bottom-header">
+						<div class="bottom-header__links">
+							<a class="header__logo" href="index.html">
+								<picture>
+									<source srcset="images/logo.png" media="(min-width: 767.98px)">
+									<source srcset="images/logo_mobile.png" media="(min-width: 320px)">
+									<img src="images/logo.png" alt="логотип">
+								</picture>
+							</a>
+							<div class="header__menu menu">
+								<a class="menu__catalog" href="catalog.html">Каталог</a>
+								<nav class="menu__body">
+									<ul class="menu__list">
+										<li class="menu__item">
+											<a class="menu__link" href="delivery.html">Доставка</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="about.html">О компании</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="contacts.html">Контакты</a>
+										</li>
+										<li class="menu__item">
+											<a class="menu__link" href="scheme.html">Схема проезда</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="bottom-header__actions">
+							<a class="header__phone" href="tel:88002014822">8 800 201-48-22</a>
+							<button class="header__button btn" type="button" data-graph-path="offer">Запросить КП</button>
+						</div>
+						<button class="menu-icon" type="button">
+							<span></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="breadcrumbs">
+			<div class="container">
+				<nav class="breadcrumbs__navigation">
+					<ul class="breadcrumbs__list">
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Главная</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Каталог</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Защита рук</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="breadcrumbs__link" href="/">Перчатки и рукавицы</a>
+						</li>
+						<li class="breadcrumbs__item">Рабочие х/б перчатки с ПВХ покрытием «Точка»</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<main class="main">
+			<div class="product-card">
+				<div class="container">
+					<div class="product-card__wrapper">
+						<div class="product-card__slider slider-card">
+							<div class="slider-card__main main-slider gallery">
+								<div class="main-slider__body swiper">
+									<div class="main-slider__wrapper swiper-wrapper">
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/1.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/1.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/2.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/2.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/3.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/3.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/4.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/4.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/1.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/1.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/2.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/2.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/3.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/3.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+										<div class="main-slider__item swiper-slide">
+											<a class="gallery-item" href="images/card/slider/4.jpg">
+												<div class="main-slider__image ibg">
+													<img src="images/card/slider/4.jpg" alt="большое изображение товара">
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="main-slider__controls">
+										<button class="slider-button slider-button-prev" type="button"></button>
+										<button class="slider-button slider-button-next" type="button"></button>
+									</div>
+								</div>
+							</div>
+							<div class="slider-card__thumbs thumbs-slider">
+								<div class="thumbs-slider__body swiper">
+									<div class="thumbs-slider__wrapper swiper-wrapper">
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/1.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/2.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/3.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/4.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/1.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/2.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/3.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+										<div class="thumbs-slider__item swiper-slide">
+											<div class="thumbs-slider__image ibg">
+												<img src="images/card/slider/4.jpg" alt="изображение превью товара">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="thumbs-slider__controls">
+									<button class="slider-button slider-button-prev" type="button"></button>
+									<button class="slider-button slider-button-next" type="button"></button>
+								</div>
+							</div>
+						</div>
+						<div class="product-card__info">
+							<h1 class="product-card__title">Рабочие х/б перчатки с ПВХ покрытием «Точка»</h1>
+							<div class="product-card__article">
+								Арт.<span>ХБ-647</span>
+							</div>
+							<div class="product-card__description">Обеспечивают надёжную защиту от порезов, загрязнений и прочих механических воздействий.</div>
+							<div class="product-card__groups">
+								<div class="product-card__group group-card">
+									<div class="group-card__label">
+										Цвет:<span>Белый</span>
+									</div>
+									<div class="radiobuttons color-radiobuttons">
+										<ul>
+											<li>
+												<input type="radio" id="color_1" name="color">
+												<label class="color-black" for="color_1">
+													<span></span>
+												</label>
+											</li>
+											<li>
+												<input type="radio" id="color_2" name="color" checked>
+												<label class="color-white" for="color_2">
+													<span></span>
+												</label>
+											</li>
+											<li>
+												<input type="radio" id="color_3" name="color">
+												<label class="color-green" for="color_3">
+													<span></span>
+												</label>
+											</li>
+											<li>
+												<input type="radio" id="color_4" name="color">
+												<label class="color-brown" for="color_4">
+													<span></span>
+												</label>
+											</li>
+											<li>
+												<input type="radio" id="color_5" name="color">
+												<label class="color-blue" for="color_5">
+													<span></span>
+												</label>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="product-card__group group-card">
+									<div class="group-card__label">Размер одежды:</div>
+									<div class="radiobuttons size-radiobuttons">
+										<ul>
+											<li>
+												<input type="radio" id="size_1" name="size">
+												<label for="size_1">44</label>
+											</li>
+											<li>
+												<input type="radio" id="size_2" name="size" checked>
+												<label for="size_2">46</label>
+											</li>
+											<li>
+												<input type="radio" id="size_3" name="size">
+												<label for="size_3">48</label>
+											</li>
+											<li>
+												<input type="radio" id="size_4" name="size">
+												<label for="size_4">50</label>
+											</li>
+											<li>
+												<input type="radio" id="size_5" name="size">
+												<label for="size_5">52</label>
+											</li>
+											<li>
+												<input type="radio" id="size_6" name="size">
+												<label for="size_6">52</label>
+											</li>
+											<li>
+												<input type="radio" id="size_7" name="size">
+												<label for="size_7">56</label>
+											</li>
+											<li>
+												<input type="radio" id="size_8" name="size">
+												<label for="size_8">58</label>
+											</li>
+										</ul>
+										<button class="size-radiobutton__show-more show-btn btn-secondary" type="button">показать еще 4</button>
+									</div>
+								</div>
+								<div class="product-card__group group-card group-card--features">
+									<div class="group-card__label">Основные характеристики:</div>
+									<div class="group-card__features features-card">
+										<ul class="features-card__list">
+											<li class="features-card__item">Материал покрытия: Нитрил</li>
+											<li class="features-card__item">Материал основы: Хлопок</li>
+											<li class="features-card__item">Класс вязки: 10</li>
+											<li class="features-card__item">Вес: 100 гр.</li>
+										</ul>
+										<a class="features-card__link btn-more" href="#description">Все характеристики</a>
+									</div>
+								</div>
+							</div>
+							<div class="product-card__bottom">
+								<div class="product-card__prices">
+									от 1 990 руб.
+									<span class="product-card__prices-label">/ партия (100 шт.)</span>
+								</div>
+								<div class="product-card__buttons">
+									<button class="product-card__button btn" type="button" data-graph-path="order">Заказать</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product-card__tabs tabs">
+						<div class="tabs__body">
+							<div class="product-card__content content" id="description">
+								<h2 class="product-card__content-title">Описание </h2>
+								<p>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</p>
+								<p>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</p>
+								<p>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</p>
+								<p>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</p>
+								<table>
+									<thead>
+										<tr>
+											<th>Характеристики</th>
+											<th>Описание</th>
+											<th>Описание</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Размеры</td>
+											<td>7, 8</td>
+											<td>7, 8</td>
+										</tr>
+										<tr>
+											<td>Основа / Покрытие</td>
+											<td>Хлопок / Нитрил</td>
+											<td>Хлопок / Нитрил</td>
+										</tr>
+										<tr>
+											<td>Размеры</td>
+											<td>7, 8</td>
+											<td>7, 8</td>
+										</tr>
+										<tr>
+											<td>Основа / Покрытие</td>
+											<td>Хлопок / Нитрил</td>
+											<td>Хлопок / Нитрил</td>
+										</tr>
+									</tbody>
+								</table>
+								<ul>
+									<li>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</li>
+									<li>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</li>
+								</ul>
+								<div class="certificates">
+									<div class="certificates__body">
+										<a class="certificate" href="#" download="hello.txt" target="_blank">
+											<div class="certificate__name">Сертификат соответствия качества продукции</div>
+											<span class="certificate__icon"></span>
+										</a>
+										<a class="certificate" href="#" download="hello.txt" target="_blank">
+											<div class="certificate__name">Сертификат соответствия</div>
+											<span class="certificate__icon"></span>
+										</a>
+										<a class="certificate" href="#" download="hello.txt" target="_blank">
+											<div class="certificate__name">Сертификат соответствия качества продукции на пер...</div>
+											<span class="certificate__icon"></span>
+										</a>
+										<a class="certificate" href="#" download="hello.txt" target="_blank">
+											<div class="certificate__name">Сертификат соответствия</div>
+											<span class="certificate__icon"></span>
+										</a>
+										<a class="certificate" href="#" download="hello.txt" target="_blank">
+											<div class="certificate__name">Сертификат соответствия качества продукции на пер...</div>
+											<span class="certificate__icon"></span>
+										</a>
+										<a class="certificate" href="#" download="hello.txt" target="_blank">
+											<div class="certificate__name">Сертификат соответствия качества продукции</div>
+											<span class="certificate__icon"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__main main-footer">
+				<div class="container">
+					<div class="main-footer__body">
+						<div class="footer__info">
+							<a class="footer__logo" href="index.html">
+								<img src="images/footer-logo.png" alt="логотип">
+							</a>
+							<div class="footer__data">
+								<div class="footer__links">
+									<a class="footer__link" href="tel:88002014822">8 800 201-48-22</a>
+									<a class="footer__link" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
+								</div>
+								<div class="footer__address">г. Н.Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+								<div class="footer__mode mode-footer">
+									<span class="mode-footer__label">Режим работы:</span>
+									<span class="mode-footer__value">Пн-Пт с 9:00 до 18:00</span>
+								</div>
+							</div>
+						</div>
+						<div class="footer__menu menu-footer">
+							<div class="menu-footer__column">
+								<div class="menu-footer__label">Каталог</div>
+								<nav class="menu-footer__nav">
+									<ul class="menu-footer__list">
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Защита рук</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Обтирочные материалы</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Средства индивидуальной защиты</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Хозяйственная группа</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="menu-footer__column">
+								<nav class="menu-footer__nav">
+									<ul class="menu-footer__list">
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">О компании</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Доставка</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Доставка и оплата</a>
+										</li>
+										<li class="menu-footer__item">
+											<a class="menu-footer__link" href="#">Схема проезда</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom bottom-footer">
+				<div class="container">
+					<div class="bottom-footer__body">
+						<div class="bottom-footer__left">
+							<div class="footer__copy">&copy; ООО «Мегатекс» 2023</div>
+							<a class="footer__link" href="#" target="_blank">Политика конфиденциальности</a>
+						</div>
+						<div class="bottom-footer__right">
+							<div class="footer-company">
+								<span class="footer-company__label">Разработка сайта:</span>
+								<a class="footer-company__value" href="#" target="_blank">
+									<img src="images/company-logo.svg" alt="логотип компании">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<button class="scroll-top hidden" type="button">
+			<div class="scroll-top__text">Наверх</div>
+		</button>
+		<div class="graph-modal modal">
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="offer">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Запросить коммерческое предложение</div>
+						<div class="modal__description">Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить запрос">
+								<div class="form__load load-file">
+									<label class="load-file__label">
+										<input class="load-file__input visuallyHidden" type="file">прикрепить файл
+									</label>
+								</div>
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="order">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказать</div>
+						<div class="modal__subtitle">Рабочие х/б перчатки с ПВХ покрытием «Точка»</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="part">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказ пробной партии</div>
+						<div class="modal__subtitle">Рабочие х/б перчатки с ПВХ покрытием «Точка»</div>
+						<div class="modal__description">Заполните форму, чтобы бесплатно заказать пробную партию перчаток (1 мешок), и убедитесь в высоком качестве нашей продукции</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="sale">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Нашли дешевле чем на нашем сайте?</div>
+						<div class="modal__description">Заполните форму и мы постараемся сделать вам более выгодное предложение</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+								<div class="form-item">
+									<textarea class="form-textarea" placeholder="Комментарий" name="comment"></textarea>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="success">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Спасибо!</div>
+						<div class="modal__description">Форма успешно отправлена. В ближайшее время с вами свяжется наш специалист для уточнения деталей</div>
+					</div>
+					<div class="modal__body">
+						<div class="modal-bottom">
+							<button class="js-modal-close btn" type="button">Закрыть</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/libs.js"></script>
+	<script src="scripts/main.js"></script>
+</body>
+
+</html>
