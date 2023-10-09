@@ -4,13 +4,13 @@ append variables
 	- let pageTitle = "О компании";
 	- description += pageTitle;
 block crumbs 
-	- var breadcrumbsList = ["О компании"];
+	- var breadcrumbsList = ["Главная"];
 	.about-page
 		.container 
 			.about-page__top.top-about
 				.top-about__body
 					.top-about__info
-						+breadcrumbs([...breadcrumbsList], "Контакты")
+						+breadcrumbs([...breadcrumbsList], "О компании")
 						h1.top-about__title.page-title #{pageTitle}
 						.top-about__description #{about.descr}
 					.top-about__image.ibg
@@ -20,12 +20,14 @@ block crumbs
 					p= item
 		.about-page__slider.slider-about.gallery
 			.container
-				.slider-about__body.swiper
-					.slider-about__wrapper.swiper-wrapper 
+				.heading-block
+					h2.heading-block__title Фотогалерея
+				.slider-about__body
+					.slider-about__wrapper
 						each slide in about.slider
-							a(href=`images/about/slide-${slide.img}.jpg`).slider-about__item.swiper-slide.gallery-item
+							a(href=`images/about/slide-${slide.img}.jpg`).slider-about__item.gallery-item
 								.slider-about__image.ibg
 									img(src=`images/about/slide-${slide.img}.jpg`, alt="изображение слайда" loading="lazy")
-				.slider-about__controls 
-					button(type="button").slider-button.slider-button-prev 
-					button(type="button").slider-button.slider-button-next 
+				//- .slider-about__controls 
+				//- 	button(type="button").slider-button.slider-button-prev 
+				//- 	button(type="button").slider-button.slider-button-next 

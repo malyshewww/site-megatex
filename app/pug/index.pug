@@ -24,7 +24,6 @@ block content
 		.container 
 			.heading-block.home-heading
 					h2.heading-block__title Популярное
-		.popular__container
 			.popular__body 
 				+product([...popular], "popular__item", "popular")
 				.popular__item.item-product-link
@@ -39,7 +38,6 @@ block content
 				.heading-block__controls 
 					button(type="button").slider-button.slider-button-prev 
 					button(type="button").slider-button.slider-button-next 
-		.new__container
 			.new__wrapper.swiper
 				.new__body.swiper-wrapper
 					+product([...popular], "new__item", "popular")
@@ -68,14 +66,14 @@ block content
 								input(type="text" name="name" placeholder="Имя").form-input
 								span.error-message Введите корректное имя
 							.form-offer-item.form-item 
-								input(type="tel" name="phone" placeholder="+7 (___) ___-__-__" disabled).form-input
+								input(type="tel" name="phone" placeholder="+7 (___) ___-__-__").form-input
 								span.error-message Введите корректный телефон
 						.form-offer__bottom 
 							input(type="submit" value="Отправить заявку").form-offer__button.btn
 							.form-offer__file.load-file
 								label.load-file__label 
 									input(type="file").load-file__input.visuallyHidden
-									| прикрепить файл
+									| Прикрепить файл
 							.form-offer__text 
 								| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#" class="form__link")  политикой обработки персональных данных]
 				.form-offer__image.ibg

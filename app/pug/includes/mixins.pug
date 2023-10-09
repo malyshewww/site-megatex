@@ -27,12 +27,21 @@ mixin product([...array], className, imgPath)
 			.item-product__image.ibg
 				img(src=`images/${imgPath}/${item.img}.jpg`, alt=item.title loading="lazy")
 			.item-product__body 
-				.item-produc__info
+				.item-product__info
+					.item-product__article Арт 
+						| #[span #{item.article}]  
 					h2.item-product__title= item.title
-					.item-product__description= item.descr
+					if item.descr
+						.item-product__description= item.descr
 					ul.item-product__list 
 						each listItem in item.list
 							li.item-product__list-item= listItem
+				.item-product__footer
+					.item-product__price
+						| #{item.price}
+						if item.priceLabel
+							| #[span.item-product__price-value #{item.priceLabel}]
+					a(href="card.html").item-product__button.btn Подробнее
 mixin button(className, title)
 	button(type="button" class=className).btn= title
 mixin buttonMore(className, title)
@@ -73,22 +82,21 @@ mixin checkbox(title, name, state)
 		span
 	a(href="#" style="display: none;")= title
 
-mixin colorRadio(className, state)
-	.radiobutton-item
-		label.radiobutton-item__label(class=className)
-			if state
-				input(type="radio" name="color[]" checked).radiobutton-item__input.real-radio
-			else 
-				input(type="radio" name="color[]").radiobutton-item__input.real-radio
-			span.custom-radio
-mixin sizeRadio(value, name, state)
-	.radiobutton-item
-		label.radiobutton-item__label
-			if state
-				input(type="radio" name=name checked).radiobutton-item__input.real-radio
-			else
-				input(type="radio" name=name).radiobutton-item__input.real-radio
-			span.custom-radio #{value}
+mixin colorRadio(className, id, name, state)
+	li
+		if state
+			input(type="radio" id=id name=name checked)
+		else
+			input(type="radio" id=id name=name)
+		label(for=id class=className)
+			span
+mixin sizeRadio(value, id, name, state)
+	li
+		if state
+			input(type="radio" id=id name=name checked)
+		else
+			input(type="radio" id=id name=name)
+		label(for=id class=className) #{value}
 mixin modal(modalId, title, subTitle, text, btntTitle, modalClass)
 	div(class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target=modalId class=modalClass)
 		button(class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно")

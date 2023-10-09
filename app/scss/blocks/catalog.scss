@@ -1,22 +1,20 @@
 .catalog {
 	&__title {
 	}
-	& .categories__body {
-		display: flex;
-		flex-wrap: nowrap;
-		gap: 0;
-		box-sizing: border-box;
-	}
+	// & .categories__body {
+	// 	display: flex;
+	// 	flex-wrap: nowrap;
+	// 	gap: 0;
+	// 	box-sizing: border-box;
+	// }
 }
 .categories__wrapper {
-	&.tile {
-		& .categories__body {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			gap: 20px;
-			box-sizing: border-box;
-		}
-	}
+}
+.categories__body {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	box-sizing: border-box;
 }
 // GLOVES
 .gloves {

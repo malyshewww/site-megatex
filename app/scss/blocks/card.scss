@@ -4,13 +4,12 @@
 		grid-template-columns: 690px 1fr;
 		align-items: start;
 		gap: 20px 60px;
+		padding: 41px 0 0;
 	}
 	&__slider {
-		display: grid;
-		grid-template-columns: 98px 1fr;
-		gap: 20px;
-		max-width: 690px;
-		height: 520px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
 	}
 	&__title {
 		font-family: "Muller", sans-serif;
@@ -31,18 +30,19 @@
 	}
 	&__description {
 		line-height: 24px;
+		max-width: 532px;
 	}
 	&__groups {
 		margin-top: 32px;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 34px;
+		gap: 32px;
 	}
 	&__bottom {
 		margin-top: 48px;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 26px;
+		gap: 28px;
 	}
 	&__prices {
 		display: inline-flex;
@@ -64,7 +64,16 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 12px;
-		max-width: 546px;
+		max-width: 547px;
+	}
+	&__info {
+	}
+	&__content-title {
+		margin-bottom: 40px;
+		font-family: "Muller", sans-serif;
+		font-size: 28px;
+		font-weight: 500;
+		line-height: 32px;
 	}
 }
 .group-card {
@@ -101,8 +110,9 @@
 	}
 }
 .thumbs-slider {
+	padding: 0 26px 0 54px;
+	position: relative;
 	&__body {
-		height: 520px;
 	}
 	&__wrapper {
 	}
@@ -114,7 +124,7 @@
 		background:
 			lightgray 17.818px 4.655px / 62.826% 87.237% no-repeat,
 			#fff;
-
+		width: 112px;
 		&.swiper-slide-thumb-active {
 			background: 0;
 			opacity: 1;
@@ -122,44 +132,43 @@
 	}
 	&__image {
 		border-radius: 8px;
-		padding-bottom: math.div(80, 98) * 100%;
+		padding-bottom: math.div(85, 112) * 100%;
 		overflow: hidden;
 	}
-	&__controls {
-		margin-top: 8px;
-		display: flex;
-		justify-content: center;
-		& .slider-button {
-			position: relative;
-			z-index: 2;
+	& .slider-button {
+		position: absolute;
+		top: 0;
+		width: 48px;
+		height: 100%;
+		z-index: 10;
+		&::before,
+		&::after {
+			background-color: #aaacb4;
 			width: 24px;
 			height: 24px;
-			flex: 0 0 24px;
-			z-index: 4;
-			position: relative;
-			&::before,
-			&::after {
-				background-color: #aaacb4;
-				width: 24px;
-				height: 24px;
+		}
+		&-next {
+			right: 0;
+			&::before {
+				transform: rotate(-90deg);
+				mask-image: url("../images/icons/arrow-gray-down.svg");
 			}
-			&-next {
-				&::before {
-					mask-image: url("../images/icons/arrow-gray-down.svg");
-				}
-			}
-			&-prev {
-				display: none;
-				transform: rotate(180deg);
-				&::before {
-					mask-image: url("../images/icons/arrow-gray-down.svg");
-				}
+		}
+		&-prev {
+			left: 0;
+			&::before {
+				transform: rotate(90deg);
+				mask-image: url("../images/icons/arrow-gray-down.svg");
 			}
 		}
 	}
+	&__controls {
+		// margin-top: 8px;
+		// display: flex;
+		// justify-content: center;
+	}
 }
 .main-slider {
-	max-width: 572px;
 	height: 520px;
 	overflow: hidden;
 	border-radius: 16px;
@@ -174,7 +183,7 @@
 	}
 	&__image {
 		cursor: url("../images/icons/zoom.svg"), auto;
-		padding-bottom: math.div(520, 572) * 100%;
+		padding-bottom: math.div(520, 690) * 100%;
 	}
 	&__controls {
 		& .slider-button {
@@ -213,7 +222,7 @@
 		display: flex;
 		align-items: center;
 		flex-wrap: nowrap;
-		gap: 20px 40px;
+		gap: 20px 41px;
 		overflow-x: auto;
 		overflow-y: hidden;
 		position: relative;

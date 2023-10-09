@@ -126,11 +126,6 @@
 	}
 }
 .home-heading {
-	// padding-left: 16px;
-	& .heading-block__controls {
-		position: relative;
-		right: -6px;
-	}
 	& .heading-block__title {
 		font-size: 48px;
 		line-height: 56px;
@@ -392,42 +387,15 @@
 .real-radio {
 	@extend .visuallyHidden;
 }
-.radiobutton-item {
-	&__label {
-		cursor: pointer;
-		&.color-black {
-			& .custom-radio::before {
-				background-color: #000000;
-			}
-		}
-		&.color-white {
-			& .custom-radio::before {
-				background-color: #ffffff;
-			}
-		}
-		&.color-green {
-			& .custom-radio::before {
-				background-color: #00c874;
-			}
-		}
-		&.color-brown {
-			& .custom-radio::before {
-				background-color: #444444;
-			}
-		}
-		&.color-blue {
-			& .custom-radio::before {
-				background-color: #3c7eff;
-			}
-		}
-	}
-}
 .color-radiobuttons {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 10px 10px;
-	& .custom-radio {
+	& ul {
+		@include reset-list;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 10px 8px;
+	}
+	& label {
 		display: block;
 		width: 36px;
 		height: 36px;
@@ -435,20 +403,49 @@
 		border-radius: 4px;
 		position: relative;
 		border: 1px solid transparent;
-		&::before {
-			content: "";
+		cursor: pointer;
+		& span {
+			border: 1px solid #e8e9ef;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 32px;
+			height: 32px;
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			width: 32px;
-			height: 32px;
-			border: 1px solid #e8e9ef;
 			border-radius: 4px;
 		}
+		&.color-black {
+			& span {
+				background-color: #000000;
+			}
+		}
+		&.color-white {
+			& span {
+				background-color: #ffffff;
+			}
+		}
+		&.color-green {
+			& span {
+				background-color: #00c874;
+			}
+		}
+		&.color-brown {
+			& span {
+				background-color: #444444;
+			}
+		}
+		&.color-blue {
+			& span {
+				background-color: #3c7eff;
+			}
+		}
 	}
-	.real-radio {
-		&:checked + .custom-radio {
+	& input {
+		@extend .visuallyHidden;
+		&:checked ~ label {
 			border: 1px solid #0d2cb0;
 		}
 	}
@@ -456,29 +453,29 @@
 
 .size-radiobuttons {
 	display: flex;
-	align-items: flex-start;
-	flex-wrap: wrap;
+	align-items: center;
 	gap: 8px;
-	&__items {
+	& ul {
+		@include reset-list;
 		gap: 8px;
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
-		max-width: 327px;
+		max-width: 590px;
 		&.isShow {
-			& .radiobutton-item {
+			& li {
 				&:nth-child(n + 6) {
 					display: block;
 				}
 			}
 		}
 	}
-	& .radiobutton-item {
+	& li {
 		&:nth-child(n + 6) {
 			display: none;
 		}
 	}
-	& .radiobutton-item__label {
+	& label {
 		color: #181c2d;
 		font-weight: 600;
 		line-height: 24px;
@@ -491,14 +488,15 @@
 			}
 		}
 	}
-	& .real-radio {
-		&:checked + .custom-radio {
+	& input {
+		@extend .visuallyHidden;
+		&:checked ~ label {
 			color: $whiteColor;
 			background-color: #0d2cb0;
 			border-color: #0d2cb0;
 		}
 	}
-	& .custom-radio {
+	& label {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -582,5 +580,8 @@
 		font-weight: 600;
 		display: flex;
 		flex-direction: column;
+		& > *:not(:last-child) {
+			margin-bottom: -4px;
+		}
 	}
 }

@@ -66,8 +66,13 @@
 		@include reset-list;
 		color: #676972;
 		line-height: 24px;
+		display: flex;
+		flex-direction: column;
+		line-height: 24px;
 	}
 	&__list-item {
+		display: flex;
+		gap: 4px;
 		&:not(:last-child) {
 			margin-bottom: 4px;
 		}
@@ -80,7 +85,6 @@
 		align-items: center;
 		gap: 8px;
 		color: #181c2d;
-		line-height: 24px;
 		font-weight: 500;
 		transition: color 0.2s ease 0s;
 		&::before {
@@ -120,6 +124,7 @@
 		display: flex;
 		justify-content: space-between;
 		gap: 20px;
+		padding-right: 42px;
 	}
 	&__column {
 		display: grid;
@@ -145,15 +150,26 @@
 	&__link {
 		color: #0d2cb0;
 		transition: color 0.2s ease 0s;
-		@media (any-hover: hover) {
-			&:hover {
-				color: #3d78eb;
+		&--phone {
+			color: #181c2d;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #0d2cb0;
+				}
+			}
+		}
+		&--email {
+			color: #0d2cb0;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #3d78eb;
+				}
 			}
 		}
 	}
 	&__list-boxes {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(2, 213px);
 		gap: 80px;
 	}
 	&__list-box {

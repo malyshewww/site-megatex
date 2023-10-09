@@ -17,10 +17,10 @@ block crumbs
 								//- .tabs-contacts__content-item(data-tab-content="office-ymap").isShow
 								.contacts__map-box(id="office-ymap").isShow
 								//- .tabs-contacts__content-item(data-tab-content="stock-ymap")
-								.contacts__map-box(id="stock-ymap")
+								//- .contacts__map-box(id="stock-ymap")
 							ul.tabs-contacts__list 
-								li.tabs-contacts__list-item(data-id="office-ymap").isActive Офис
-								li.tabs-contacts__list-item(data-id="stock-ymap") Склад
+								li.tabs-contacts__list-item(data-id="office-ymap" data-lat="56.248821" data-ling="43.877393" data-address="Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304").isActive Офис
+								li.tabs-contacts__list-item(data-id="stock-ymap" data-lat="43.427229" data-ling="56.24928" data-address="Нижегородская область, г. Дзержинск, проспект Ленина 1/202") Склад
 					.contacts__info.info-contacts
 						.info-contacts__items
 							.info-contacts__item
@@ -54,25 +54,25 @@ block crumbs
 							ul.main-contacts__list 
 								li.main-contacts__list-item Юлия Ёлкина
 								li.main-contacts__list-item
-									a(href="mailto:komdir@megatex-nn.ru").main-contacts__link komdir@megatex-nn.ru
+									a(href="mailto:komdir@megatex-nn.ru").main-contacts__link.main-contacts__link--email komdir@megatex-nn.ru
 								li.main-contacts__list-item 
-									a(href="tel:79506152580").main-contacts__link +7 (950) 615-25-80
+									a(href="tel:79506152580").main-contacts__link.main-contacts__link--phone +7 (950) 615-25-80
 						.main-contacts__item
 							.main-contacts__label.contacts-label Тендерный отдел
 							ul.main-contacts__list 
 								li.main-contacts__list-item Ирина Сучкова
 								li.main-contacts__list-item
-									a(href="mailto:irina@megatex-nn.ru").main-contacts__link irina@megatex-nn.ru
+									a(href="mailto:irina@megatex-nn.ru").main-contacts__link.main-contacts__link--email irina@megatex-nn.ru
 								li.main-contacts__list-item 
-									a(href="tel:79087589099").main-contacts__link +7 (908) 758-90-99
+									a(href="tel:79087589099").main-contacts__link.main-contacts__link--phone +7 (908) 758-90-99
 						.main-contacts__item
 							.main-contacts__label.contacts-label Отдел закупок
 							ul.main-contacts__list 
 								li.main-contacts__list-item Елена Куликова
 								li.main-contacts__list-item
-									a(href="mailto:elena@megatex-nn.ru").main-contacts__link elena@megatex-nn.ru
+									a(href="mailto:elena@megatex-nn.ru").main-contacts__link.main-contacts__link--email elena@megatex-nn.ru
 								li.main-contacts__list-item 
-									a(href="tel:79082358847").main-contacts__link +7 (908) 235-88-47
+									a(href="tel:79082358847").main-contacts__link.main-contacts__link--phone +7 (908) 235-88-47
 					.main-contacts__column
 						.main-contacts__item
 							.main-contacts__label.contacts-label Отдел продаж
@@ -81,28 +81,28 @@ block crumbs
 									ul.main-contacts__list 
 										li.main-contacts__list-item Валентина Кожененкова
 										li.main-contacts__list-item
-											a(href="mailto:valentinaK@megatex-nn.ru").main-contacts__link valentinaK@megatex-nn.ru
+											a(href="mailto:valentinaK@megatex-nn.ru").main-contacts__link.main-contacts__link--email valentinaK@megatex-nn.ru
 										li.main-contacts__list-item 
-											a(href="tel:79047878485").main-contacts__link +7 (904) 787-84-85
+											a(href="tel:79047878485").main-contacts__link.main-contacts__link--phone +7 (904) 787-84-85
 									ul.main-contacts__list 
 										li.main-contacts__list-item Валентина Яшина
 										li.main-contacts__list-item
-											a(href="mailto:valentinaK@megatex-nn.ru").main-contacts__link valentina@megatex-nn.ru
+											a(href="mailto:valentinaK@megatex-nn.ru").main-contacts__link.main-contacts__link--email valentina@megatex-nn.ru
 										li.main-contacts__list-item 
-											a(href="tel:79506176280").main-contacts__link +7 (904) 787-84-85
+											a(href="tel:79506176280").main-contacts__link.main-contacts__link--phone +7 (904) 787-84-85
 									ul.main-contacts__list 
 										li.main-contacts__list-item Анна Калякина
 										li.main-contacts__list-item
-											a(href="mailto:anna@megatex-nn.ru").main-contacts__link anna@megatex-nn.ru
+											a(href="mailto:anna@megatex-nn.ru").main-contacts__link.main-contacts__link--email anna@megatex-nn.ru
 										li.main-contacts__list-item 
-											a(href="tel:79527839811").main-contacts__link +7 (952) 783-98-11
+											a(href="tel:79527839811").main-contacts__link.main-contacts__link--phone +7 (952) 783-98-11
 								.main-contacts__list-box
 									ul.main-contacts__list 
 										li.main-contacts__list-item Ольга Шеметова
 										li.main-contacts__list-item
-											a(href="mailto:info@megatex52.ru").main-contacts__link info@megatex52.ru
+											a(href="mailto:info@megatex52.ru").main-contacts__link.main-contacts__link--email info@megatex52.ru
 										li.main-contacts__list-item 
-											a(href="tel:79101331015").main-contacts__link +7 (910) 133-10-15
+											a(href="tel:79101331015").main-contacts__link.main-contacts__link--phone +7 (910) 133-10-15
 prepend scripts
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js") 
-	script(src="https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU")
+	//- script(src="https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU")

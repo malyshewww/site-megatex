@@ -63,38 +63,22 @@
 	background-color: #f9f9fb;
 	&__container {
 		max-width: 1464px;
+		padding: 0 48px 0 16px;
 	}
 	&__body {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
+		box-sizing: border-box;
 	}
 	&__item {
-		background: 0;
-		& .item-product__body {
-			display: block;
-			margin: 0 16px;
-			background-color: $whiteColor;
-			border-radius: 0 0 12px 12px;
-			padding-top: 15px;
-		}
-		& .item-product__title {
-			font-size: 24px;
-			line-height: 32px;
-			&:not(:last-child) {
-				margin-bottom: 8px;
-			}
-		}
-		& .item-product__image {
-			border-radius: 16px;
-			overflow: hidden;
-		}
 	}
 }
 .popular {
 	&-spin {
 		width: 335px;
-		height: 240px;
+		height: 335px;
+		border-radius: 50%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -155,29 +139,10 @@
 .new {
 	background-color: #f9f9fb;
 	padding: 70px 0 100px;
-	&__container {
-		max-width: 1464px;
-	}
 	&__body {
+		box-sizing: border-box;
 	}
 	&__item {
-		background: 0;
-		flex-shrink: 0;
-		width: 100%;
-		& .item-product__body {
-			display: block;
-			margin: 0 16px;
-			background-color: $whiteColor;
-			border-radius: 0 0 12px 12px;
-			padding-top: 15px;
-		}
-		& .item-product__title {
-			font-size: 24px;
-			line-height: 32px;
-			&:not(:last-child) {
-				margin-bottom: 8px;
-			}
-		}
 	}
 }
 
@@ -185,6 +150,9 @@
 .about {
 	background-color: $whiteColor;
 	padding: 120px 0 60px;
+	& .heading-block {
+		margin-bottom: 61px;
+	}
 	&-button {
 		width: 176px;
 	}
@@ -196,15 +164,11 @@
 	&__item {
 		&:nth-child(n + 3) {
 			border-top: none;
-			& .item-about__title {
-				font-size: 32px;
-				line-height: 36px;
-			}
 		}
 	}
 }
 .item-about {
-	padding: 36px 63px 40px 32px;
+	padding: 36px 56px 40px 36px;
 	display: grid;
 	grid-template-columns: 1fr 220px;
 	gap: 20px 40px;
@@ -234,7 +198,7 @@
 		&::before {
 			content: "";
 			position: absolute;
-			top: 20px;
+			top: 28px;
 			left: 20px;
 			background-image: url("../images/about/dots.svg");
 			background-repeat: no-repeat;
@@ -358,12 +322,14 @@
 		}
 	}
 	&__gradient {
+		background-image: url("../images/gradient.png");
+		background-repeat: no-repeat;
+		background-size: cover;
 		position: absolute;
 		height: 120px;
 		width: 100%;
 		left: 0;
 		bottom: 0;
-		background: linear-gradient(180deg, rgba(249, 249, 251, 0) 0%, #f9f9fb 100%);
 		transition: opacity 0.4s ease 0s;
 	}
 	&__link {

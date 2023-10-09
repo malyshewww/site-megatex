@@ -1,6 +1,6 @@
 .item-category {
 	border-radius: 12px;
-	padding: 28px;
+	padding: 20px 28px;
 	position: relative;
 	min-height: 352px;
 	cursor: pointer;
@@ -45,7 +45,7 @@
 	&__icon {
 		position: absolute;
 		right: 20px;
-		bottom: 8px;
+		bottom: 20px;
 		width: 40px;
 		height: 40px;
 		display: flex;

@@ -14,28 +14,28 @@ function initSliders() {
 		});
 	};
 	// Слайдер категорий
-	const sliderCategories = document.querySelectorAll('.catalog .categories__wrapper');
-	if (sliderCategories) {
-		[...sliderCategories].forEach(slider => {
-			let children = slider.children[0].children.length;
-			if (children > 4) {
-				const categorySwiper = new Swiper(slider, {
-					slideClass: "categories__item",
-					wrapperClass: "categories__body",
-					slidesPerView: 4,
-					spaceBetween: 20,
-					navigation: {
-						prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
-						nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
-					},
-					speed: 800,
-				});
-			} else {
-				slider.previousElementSibling.querySelector('.heading-block__controls').style.display = "none";
-				slider.classList.add('tile');
-			}
-		})
-	}
+	// const sliderCategories = document.querySelectorAll('.catalog .categories__wrapper');
+	// if (sliderCategories) {
+	// 	[...sliderCategories].forEach(slider => {
+	// 		let children = slider.children[0].children.length;
+	// 		if (children > 4) {
+	// 			const categorySwiper = new Swiper(slider, {
+	// 				slideClass: "categories__item",
+	// 				wrapperClass: "categories__body",
+	// 				slidesPerView: 4,
+	// 				spaceBetween: 20,
+	// 				navigation: {
+	// 					prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
+	// 					nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
+	// 				},
+	// 				speed: 800,
+	// 			});
+	// 		} else {
+	// 			slider.previousElementSibling.querySelector('.heading-block__controls').style.display = "none";
+	// 			slider.classList.add('tile');
+	// 		}
+	// 	})
+	// }
 	// Слайдеры в карточке товара
 	const cardMainSlider = document.querySelector('.main-slider__body');
 	const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
@@ -50,9 +50,8 @@ function initSliders() {
 	}
 	if (cardMainSlider) {
 		cardNavSwiper = new Swiper(cardThumbsSlider, {
-			direction: 'vertical',
-			slidesPerView: 6,
-			spaceBetween: 8,
+			slidesPerView: 5,
+			spaceBetween: 12,
 			slideClass: "thumbs-slider__item",
 			wrapperClass: "thumbs-slider__wrapper",
 			speed: 600,
@@ -124,35 +123,35 @@ if (deleteButton) {
 }
 
 // Блок табов с добавление в url hash из ссылки
-window.addEventListener('hashchange', getHash);
-function getHash(event) {
-	event.preventDefault();
-	let hash = window.location.hash;
-	let target = event.target;
-	const hashLink = document.querySelector(`.product-card .tabs__link[href$="${hash}"]`);
-	const hashElement = document.querySelector(hash);
-	document.querySelectorAll('.tabs__link').forEach((child) => {
-		child.classList.remove('isActive');
-	})
-	setTimeout(() => {
-		document.querySelectorAll('.tabs__content').forEach((child) => {
-			child.classList.remove('isShow');
-		})
-		hashLink.classList.add('isActive');
-		hashElement.classList.add('isShow');
-		const hashElementParent = hashElement.closest('.tabs__body');
-		if (hashElementParent) {
-			const hashElementParentPosition = hashElementParent.getBoundingClientRect().top;
-			const viewportHeight = window.innerHeight;
-			if (hashElementParentPosition > (viewportHeight / 2)) {
-				window.scrollTo({ top: hashElementParent.offsetTop, behavior: "smooth" });
-			}
-		}
-	}, 100)
-}
-if (window.location.hash) {
-	window.dispatchEvent(new Event("hashchange"))
-}
+// window.addEventListener('hashchange', getHash);
+// function getHash(event) {
+// 	event.preventDefault();
+// 	let hash = window.location.hash;
+// 	let target = event.target;
+// 	const hashLink = document.querySelector(`.product-card .tabs__link[href$="${hash}"]`);
+// 	const hashElement = document.querySelector(hash);
+// 	document.querySelectorAll('.tabs__link').forEach((child) => {
+// 		child.classList.remove('isActive');
+// 	})
+// 	setTimeout(() => {
+// 		document.querySelectorAll('.tabs__content').forEach((child) => {
+// 			child.classList.remove('isShow');
+// 		})
+// 		hashLink.classList.add('isActive');
+// 		hashElement.classList.add('isShow');
+// 		const hashElementParent = hashElement.closest('.tabs__body');
+// 		if (hashElementParent) {
+// 			const hashElementParentPosition = hashElementParent.getBoundingClientRect().top;
+// 			const viewportHeight = window.innerHeight;
+// 			if (hashElementParentPosition > (viewportHeight / 2)) {
+// 				window.scrollTo({ top: hashElementParent.offsetTop, behavior: "smooth" });
+// 			}
+// 		}
+// 	}, 100)
+// }
+// if (window.location.hash) {
+// 	window.dispatchEvent(new Event("hashchange"))
+// }
 const featuresLink = document.querySelectorAll('.features-card__link');
 if (featuresLink) {
 	[...featuresLink].forEach(link => {
@@ -161,18 +160,18 @@ if (featuresLink) {
 			event.preventDefault();
 			let href = target.getAttribute('href').substring(1);
 			const scrollTarget = document.getElementById(href);
-			const targetLink = document.querySelector(`.tabs__link[href="#${href}"]`)
-			document.querySelectorAll('.tabs__link').forEach((child) => {
-				child.classList.remove('isActive');
-			})
-			document.querySelectorAll('.tabs__content').forEach((child) => {
-				child.classList.remove('isShow');
-			})
-			scrollTarget.classList.add('isShow');
-			targetLink.classList.add('isActive');
+			// const targetLink = document.querySelector(`.tabs__link[href="#${href}"]`)
+			// document.querySelectorAll('.tabs__link').forEach((child) => {
+			// 	child.classList.remove('isActive');
+			// })
+			// document.querySelectorAll('.tabs__content').forEach((child) => {
+			// 	child.classList.remove('isShow');
+			// })
+			// scrollTarget.classList.add('isShow');
+			// targetLink.classList.add('isActive');
 			const topOffset = document.querySelector('.tabs__body');
-			const elementPosition = scrollTarget.getBoundingClientRect().top;
-			const offsetPosition = elementPosition - topOffset;
+			// const elementPosition = scrollTarget.getBoundingClientRect().top;
+			// const offsetPosition = elementPosition - topOffset;
 			window.scrollTo({ top: topOffset.offsetTop, behavior: "smooth" })
 		});
 	});
@@ -245,6 +244,7 @@ if (filterGroups) {
 		const parent = item.closest('.filter-groups');
 		filterOpen(item);
 		resetFilter(parent);
+		showRadiobuttons(item);
 	})
 }
 // Показ / скрытие кнопки "Сбросить фильтры" при клике на чекбоксы на странице с фильтрами
@@ -261,6 +261,18 @@ function resetFilter(parent) {
 			arr.length > 0 ? btnReset.style.display = "flex" : btnReset.style.display = "none";
 		})
 	})
+}
+function showRadiobuttons(item) {
+	const btnAll = item.querySelector('.filter-group__btn');
+	const items = item.querySelectorAll('.filter-group li');
+	items.length > 5 ? btnAll.removeAttribute('hidden') : btnAll.setAttribute('hidden', true)
+	if (btnAll) {
+		btnAll.addEventListener('click', (event) => {
+			const btnDataText = event.target.dataset.text;
+			item.classList.toggle('isShow');
+			btnAll.innerHTML = item.classList.contains('isShow') ? btnDataText : "Показать все";
+		})
+	}
 }
 // Открытие фильтров
 function filterOpen(item) {
@@ -332,10 +344,11 @@ const yMapArr = [
 	},
 ];
 
-
 // Яндекс карта
 const mapElem = document.getElementById("map");
 if (mapElem) {
+	let myMap,
+		myPlacemark;
 	let isLoaded = false;
 	function loadMap() {
 		var script = document.createElement("script");
@@ -347,7 +360,7 @@ if (mapElem) {
 				return;
 			}
 			ymaps.ready(() => {
-				let myMap = new ymaps.Map('office-ymap', {
+				myMap = new ymaps.Map('office-ymap', {
 					center: [56.248821, 43.877393],
 					zoom: 16
 				}, {
@@ -362,28 +375,48 @@ if (mapElem) {
 						iconImageOffset: [-10, -30]
 					});
 				myMap.geoObjects.add(myPlacemark);
+				myMap.controls.remove('geolocationControl'); // удаляем геолокацию
+				myMap.controls.remove('searchControl'); // удаляем поиск
+				myMap.controls.remove('trafficControl'); // удаляем контроль трафика
+				myMap.controls.remove('typeSelector'); // удаляем тип
+				myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+				myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
+				myMap.controls.remove('rulerControl'); // удаляем контрол правил
 				myMap.behaviors.disable('scrollZoom');
-				let myMapStock = new ymaps.Map('stock-ymap', {
-					center: [43.427229, 56.249281],
-					zoom: 17
-				}, {
-					searchControlProvider: 'yandex#search'
-				}),
-					myPlacemarkTwo = new ymaps.Placemark(myMapStock.getCenter(), {
-						balloonContent: 'Нижегородская область, г. Дзержинск, проспект Ленина 1/202'
-					}, {
-						iconLayout: 'default#image',
-						iconImageHref: '../images/icons/location.svg',
-						iconImageSize: [44, 49],
-						iconImageOffset: [0, 0]
-					});
-				myMapStock.geoObjects.add(myPlacemarkTwo);
-				myMapStock.behaviors.disable('scrollZoom');
+				// myMapStock = new ymaps.Map('stock-ymap', {
+				// 	center: [43.427229, 56.249281],
+				// 	zoom: 17
+				// }, {
+				// 	searchControlProvider: 'yandex#search'
+				// }),
+				// 	myPlacemarkTwo = new ymaps.Placemark(myMapStock.getCenter(), {
+				// 		balloonContent: 'Нижегородская область, г. Дзержинск, проспект Ленина 1/202'
+				// 	}, {
+				// 		iconLayout: 'default#image',
+				// 		iconImageHref: '../images/icons/location.svg',
+				// 		iconImageSize: [44, 49],
+				// 		iconImageOffset: [0, 0]
+				// 	});
+				// myMapStock.geoObjects.add(myPlacemarkTwo);
+				// myMapStock.behaviors.disable('scrollZoom');
+				// Табы для блока с яндекс картами
+				// const mapTabContent = document.querySelectorAll('.contacts__map-box');
 			});
 		};
 	}
 	if (mapElem.getBoundingClientRect().top < window.innerHeight) {
 		loadMap();
+		const mapTabTrigger = document.querySelectorAll('[data-id]');
+		[...mapTabTrigger].forEach(tab => {
+			tab.addEventListener('click', () => {
+				const dataLat = tab.dataset.lat;
+				const dataLing = tab.dataset.ling;
+				[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
+				tab.classList.add('isActive');
+				myMap.setCenter([dataLat, dataLing]);
+				myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
+			})
+		})
 	}
 	window.addEventListener("scroll", function () {
 		if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
@@ -391,20 +424,6 @@ if (mapElem) {
 		}
 	});
 }
-
-// Табы для блока с яндекс картами
-const mapTabTrigger = document.querySelectorAll('[data-id]');
-const mapTabContent = document.querySelectorAll('.contacts__map-box');
-[...mapTabTrigger].forEach(tab => {
-	tab.addEventListener('click', () => {
-		const id = tab.dataset.id;
-		const content = document.querySelector(`#${id}`);
-		[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
-		[...mapTabContent].forEach(item => item.classList.remove('isShow'));
-		tab.classList.add('isActive')
-		content.classList.add('isShow');
-	})
-})
 
 // Подключение библиотеки для модальных окон
 const modal = new GraphModal(
@@ -428,13 +447,15 @@ Array.prototype.forEach.call(
 
 // Раскрытие информации в тектсовом блоке
 const textBlock = document.querySelector('.text-block');
-textBlock.addEventListener('click', (event) => {
-	event.preventDefault();
-	let target = event.target;
-	if (target.closest('.text-block__gradient') || target.closest('.text-block__link')) {
-		textBlock.classList.add('isOpen');
-	}
-})
+if (textBlock) {
+	textBlock.addEventListener('click', (event) => {
+		event.preventDefault();
+		let target = event.target;
+		if (target.closest('.text-block__gradient') || target.closest('.text-block__link')) {
+			textBlock.classList.add('isOpen');
+		}
+	})
+}
 
 window.addEventListener('DOMContentLoaded', () => {
 	initGallery();
