@@ -8,18 +8,22 @@ block content
 		.container 
 			.main-screen__body 
 				.main-screen__image
-					img(src="images/main-screen-pc.jpg", alt="первый экран")
+					picture
+						source(srcset="images/img-banner-pc.png" media="(min-width: 991.98px)")
+						source(srcset="images/img-banner-mobile.png" media="(min-width: 320px)")
+						img(src="images/img-banner-pc.png", alt="баннер")
 				h1.main-screen__title
 					| Производство и оптовая продажа #[span средств индивидуальной защиты]
 	.categories.home-categories
 		.container 
-			.categories__body 
-				each item in homeCategories
-					.categories__item.item-category 
-						.item-category__title= item.title
-						.item-category__image
-							img(src=`images/categories/${item.image}.png`, alt=item.title loading="lazy")
-						span.item-category__icon
+			.categories__wrapper
+				.categories__body 
+					each item in homeCategories
+						.categories__item.item-category 
+							.item-category__title= item.title
+							.item-category__image
+								img(src=`images/categories/${item.image}.png`, alt=item.title loading="lazy")
+							span.item-category__icon
 	.popular 
 		.container 
 			.heading-block.home-heading
@@ -57,7 +61,7 @@ block content
 	.offer 
 		.container 
 			.offer__body 
-				form(action="#" enctype="multipart/form-data").offer__form.form-offer.form
+				form(action="#" enctype="multipart/form-data" id="formOffer").offer__form.form-offer.form
 					.form-offer__info
 						.form-offer__title Запросить коммерческое предложение
 						.form-offer__sub-title Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения
@@ -71,8 +75,9 @@ block content
 						.form-offer__bottom 
 							input(type="submit" value="Отправить заявку").form-offer__button.btn
 							.form-offer__file.load-file
-								label.load-file__label 
-									input(type="file").load-file__input.visuallyHidden
+								#fileList.load-file__list
+								label.load-file__label#loadFile
+									input(type="file" id="upload_file" name="upload").load-file__input.visuallyHidden
 									| Прикрепить файл
 							.form-offer__text 
 								| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#" class="form__link")  политикой обработки персональных данных]

@@ -64,6 +64,9 @@ body {
 }
 .main {
 	padding-bottom: 140px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 70px;
+	}
 }
 .header {
 	flex-shrink: 0;

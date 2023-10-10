@@ -32,11 +32,11 @@
 				<div class="header__body">
 					<div class="header__top top-header">
 						<div class="top-header__info">
-							<div class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+							<address class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</address>
 						</div>
 						<div class="top-header__actions">
 							<div class="header__search search-header">
-								<form class="search-header__form" action="#">
+								<form class="search-header__form" action="#" id="searchForm">
 									<div class="form-item">
 										<div class="search-header__item">
 											<input class="search-header__input" type="text" placeholder="Введите запрос">
@@ -44,8 +44,8 @@
 												<button class="search-header__button search-header__button--delete" type="button" id="delete-button"></button>
 												<button class="search-header__button search-header__button--search" type="submit"></button>
 											</div>
-											<div class="search-header__result" hidden>
-												<div class="search-header__result-wrapper" data-simplebar>
+											<div class="search-header__result" hidden data-simplebar>
+												<div class="search-header__result-wrapper">
 													<ul class="search-header__list">
 														<li class="search-header__list-item">
 															<a class="search-header__link" href="#">Перчатки рабочие</a>
@@ -81,8 +81,8 @@
 							<a class="header__email" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
 						</div>
 					</div>
-					<div class="header__bottom bottom-header">
-						<div class="bottom-header__links">
+					<div class="header__main main-header">
+						<div class="main-header__links">
 							<a class="header__logo" href="index.html">
 								<picture>
 									<source srcset="images/logo.png" media="(min-width: 767.98px)">
@@ -110,13 +110,15 @@
 								</nav>
 							</div>
 						</div>
-						<div class="bottom-header__actions">
+						<div class="main-header__actions">
 							<a class="header__phone" href="tel:88002014822">8 800 201-48-22</a>
 							<button class="header__button btn" type="button" data-graph-path="offer">Запросить КП</button>
+							<button class="menu-icon" type="button">
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
 						</div>
-						<button class="menu-icon" type="button">
-							<span></span>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -124,7 +126,7 @@
 		<div class="breadcrumbs">
 			<div class="container">
 				<nav class="breadcrumbs__navigation">
-					<ul class="breadcrumbs__list">
+					<ul class="breadcrumbs__list" data-simplebar>
 						<li class="breadcrumbs__item">
 							<a class="breadcrumbs__link" href="/">Главная</a>
 						</li>
@@ -295,6 +297,9 @@
 			<div class="footer__main main-footer">
 				<div class="container">
 					<div class="main-footer__body">
+						<a class="footer__logo-mobile" href="index.html">
+							<img src="images/footer-logo.png" alt="логотип">
+						</a>
 						<div class="footer__info">
 							<a class="footer__logo" href="index.html">
 								<img src="images/footer-logo.png" alt="логотип">
@@ -304,7 +309,7 @@
 									<a class="footer__link" href="tel:88002014822">8 800 201-48-22</a>
 									<a class="footer__link" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
 								</div>
-								<div class="footer__address">г. Н.Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+								<div class="footer__address">г.&nbsp;Н.Новгород, проспект&nbsp;Ленина,&nbsp;109, БЦ&nbsp;«Чайка», офис&nbsp;304</div>
 								<div class="footer__mode mode-footer">
 									<span class="mode-footer__label">Режим работы:</span>
 									<span class="mode-footer__value">Пн-Пт с 9:00 до 18:00</span>
@@ -317,16 +322,16 @@
 								<nav class="menu-footer__nav">
 									<ul class="menu-footer__list">
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Защита рук</a>
+											<a class="menu-footer__link" href="catalog.html">Защита рук</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Обтирочные материалы</a>
+											<a class="menu-footer__link" href="catalog.html">Обтирочные материалы</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Средства индивидуальной защиты</a>
+											<a class="menu-footer__link" href="catalog.html">Средства индивидуальной защиты</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Хозяйственная группа</a>
+											<a class="menu-footer__link" href="catalog.html">Хозяйственная группа</a>
 										</li>
 									</ul>
 								</nav>
@@ -335,7 +340,7 @@
 								<nav class="menu-footer__nav">
 									<ul class="menu-footer__list">
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">О компании</a>
+											<a class="menu-footer__link" href="about.html">О компании</a>
 										</li>
 										<li class="menu-footer__item">
 											<a class="menu-footer__link" href="#">Доставка</a>
@@ -344,7 +349,7 @@
 											<a class="menu-footer__link" href="#">Доставка и оплата</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Схема проезда</a>
+											<a class="menu-footer__link" href="contacts.html">Схема проезда</a>
 										</li>
 									</ul>
 								</nav>

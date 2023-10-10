@@ -68,7 +68,7 @@ mixin breadcrumbs([...array], last)
 	div.breadcrumbs
 		.container
 			nav.breadcrumbs__navigation
-				ul.breadcrumbs__list
+				ul.breadcrumbs__list(data-simplebar)
 					each item in array
 						li.breadcrumbs__item
 							a(href="/" class="breadcrumbs__link")= item

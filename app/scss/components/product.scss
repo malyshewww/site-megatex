@@ -28,6 +28,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		@media screen and (max-width: $md) {
+			height: 200px;
+		}
 	}
 	&__image {
 		background-color: $whiteColor;
@@ -51,6 +54,9 @@
 			left: 0;
 			width: 100%;
 		}
+		@media screen and (max-width: $md) {
+			margin: 0 10px;
+		}
 	}
 	&__info {
 		flex: 1 1 auto;
@@ -64,6 +70,10 @@
 		transition: color 0.2s ease 0s;
 		&:not(:last-child) {
 			margin-bottom: 12px;
+		}
+		@media screen and (max-width: $md) {
+			font-size: 18px;
+			line-height: 20px;
 		}
 	}
 	&__description {
@@ -93,11 +103,21 @@
 		&:not(:last-child) {
 			margin-bottom: 4px;
 		}
+		@media screen and (max-width: $md) {
+			font-size: 14px;
+		}
 	}
 	&__button {
 		max-width: 150px;
 		padding: 12px 32px;
 		min-height: 48px;
+		@media screen and (max-width: $md) {
+			min-height: 40px;
+			font-size: 16px;
+		}
+		@media screen and (max-width: $sm) {
+			max-width: 100%;
+		}
 	}
 	&__price {
 		font-family: "Muller", sans-serif;
@@ -107,10 +127,14 @@
 		display: inline-flex;
 		gap: 4px;
 		align-items: center;
+		flex-wrap: wrap;
 		&-value {
 			color: #676972;
 			font-family: "Gilroy", sans-serif;
 			font-size: 16px;
+		}
+		@media screen and (max-width: $md) {
+			font-size: 18px;
 		}
 	}
 	&__footer {

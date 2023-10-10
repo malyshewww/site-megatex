@@ -13,7 +13,7 @@
 }
 .scroll-top {
 	position: fixed;
-	bottom: 60px;
+	bottom: 40px;
 	right: 40px;
 	display: flex;
 	flex-direction: column;
@@ -84,6 +84,8 @@
 		}
 	}
 	@media screen and (max-width: $md) {
+		bottom: 8px;
+		right: 8px;
 		width: 36px;
 		height: 36px;
 		border-radius: 50%;
@@ -109,13 +111,22 @@
 }
 .heading-block {
 	display: flex;
+	align-items: flex-start;
 	justify-content: space-between;
 	gap: 20px;
 	margin-bottom: 60px;
+	flex-wrap: wrap;
+	@media screen and (max-width: $md) {
+		margin-bottom: 30px;
+		gap: 15px;
+	}
 	&__controls {
 		display: flex;
 		align-items: center;
 		gap: 24px;
+		@media screen and (max-width: $md) {
+			gap: 15px;
+		}
 	}
 	&__title {
 		color: #181c2d;
@@ -123,12 +134,20 @@
 		font-size: 36px;
 		font-weight: 500;
 		line-height: 40px;
+		@media screen and (max-width: $md) {
+			font-size: 24px;
+			line-height: 30px;
+		}
 	}
 }
 .home-heading {
 	& .heading-block__title {
 		font-size: 48px;
 		line-height: 56px;
+		@media screen and (max-width: $md) {
+			font-size: 24px;
+			line-height: 30px;
+		}
 	}
 }
 .slider-button {
@@ -147,6 +166,11 @@
 		mask-position: center;
 		background-color: #aaacb4;
 		transition: background-color 0.2s ease 0s;
+	}
+	@media screen and (max-width: $md) {
+		width: 30px;
+		height: 30px;
+		flex: 0 0 30px;
 	}
 	@media (any-hover: hover) {
 		&:hover {
@@ -199,6 +223,10 @@
 		color: #aaacb4;
 		pointer-events: none;
 	}
+	@media screen and (max-width: $md) {
+		padding: 8px 20px;
+		min-height: 48px;
+	}
 }
 .btn-secondary {
 	border-radius: 8px;
@@ -229,6 +257,12 @@
 		color: #aaacb4;
 		border-color: #e8e9ef;
 		pointer-events: none;
+	}
+	@media screen and (max-width: $md) {
+		padding: 8px 20px;
+		min-height: 36px;
+		font-size: 14px;
+		line-height: 20px;
 	}
 }
 .btn-more {
@@ -326,6 +360,10 @@
 			color: #e8e9ef;
 		}
 	}
+	@media screen and (max-width: $md) {
+		padding: 8px 24px;
+		min-height: 48px;
+	}
 }
 .form-textarea {
 	max-height: 56px;
@@ -383,6 +421,11 @@
 	font-weight: 500;
 	line-height: 56px;
 	margin-bottom: 80px;
+	@media screen and (max-width: $md) {
+		font-size: 28px;
+		line-height: 36px;
+		margin-bottom: 30px;
+	}
 }
 .real-radio {
 	@extend .visuallyHidden;
@@ -455,6 +498,7 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	flex-wrap: wrap;
 	& ul {
 		@include reset-list;
 		gap: 8px;

@@ -3,25 +3,25 @@ header.header#header
 		.header__body
 			.header__top.top-header
 				.top-header__info
-					.top-header__address г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304
+					address.top-header__address г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304
 				.top-header__actions
 					.header__search.search-header
-						form(action="#").search-header__form
+						form(action="#" id="searchForm").search-header__form
 							.form-item
 								.search-header__item
 									input(type="text" placeholder="Введите запрос").search-header__input
 									.search-header__buttons
 										button(type="button" id="delete-button").search-header__button.search-header__button--delete
 										button(type="submit").search-header__button.search-header__button--search
-									.search-header__result(hidden)
-										.search-header__result-wrapper(data-simplebar)
+									.search-header__result(hidden data-simplebar) 
+										.search-header__result-wrapper
 											ul.search-header__list 
 												each item in searchList
 													li.search-header__list-item 
 														a(href="#").search-header__link= item 
 					a(href="mailto:sale@megatex-nn.ru").header__email sale@megatex-nn.ru
-			.header__bottom.bottom-header
-				.bottom-header__links
+			.header__main.main-header
+				.main-header__links
 					a(href="index.html").header__logo 
 						picture
 							source(srcset="images/logo.png" media="(min-width: 767.98px)")
@@ -34,8 +34,10 @@ header.header#header
 								each item in menu
 									li.menu__item(class={active: item.title == pageTitle})
 										a(href=item.link).menu__link= item.title 
-				.bottom-header__actions
+				.main-header__actions
 					a.header__phone(href="tel:88002014822") 8 800 201-48-22
 					button(type="button" data-graph-path="offer").header__button.btn Запросить КП
-				button.menu-icon(type="button")
-					span
+					button.menu-icon(type="button")
+						span
+						span
+						span

@@ -32,11 +32,11 @@
 				<div class="header__body">
 					<div class="header__top top-header">
 						<div class="top-header__info">
-							<div class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+							<address class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</address>
 						</div>
 						<div class="top-header__actions">
 							<div class="header__search search-header">
-								<form class="search-header__form" action="#">
+								<form class="search-header__form" action="#" id="searchForm">
 									<div class="form-item">
 										<div class="search-header__item">
 											<input class="search-header__input" type="text" placeholder="Введите запрос">
@@ -44,8 +44,8 @@
 												<button class="search-header__button search-header__button--delete" type="button" id="delete-button"></button>
 												<button class="search-header__button search-header__button--search" type="submit"></button>
 											</div>
-											<div class="search-header__result" hidden>
-												<div class="search-header__result-wrapper" data-simplebar>
+											<div class="search-header__result" hidden data-simplebar>
+												<div class="search-header__result-wrapper">
 													<ul class="search-header__list">
 														<li class="search-header__list-item">
 															<a class="search-header__link" href="#">Перчатки рабочие</a>
@@ -81,8 +81,8 @@
 							<a class="header__email" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
 						</div>
 					</div>
-					<div class="header__bottom bottom-header">
-						<div class="bottom-header__links">
+					<div class="header__main main-header">
+						<div class="main-header__links">
 							<a class="header__logo" href="index.html">
 								<picture>
 									<source srcset="images/logo.png" media="(min-width: 767.98px)">
@@ -110,13 +110,15 @@
 								</nav>
 							</div>
 						</div>
-						<div class="bottom-header__actions">
+						<div class="main-header__actions">
 							<a class="header__phone" href="tel:88002014822">8 800 201-48-22</a>
 							<button class="header__button btn" type="button" data-graph-path="offer">Запросить КП</button>
+							<button class="menu-icon" type="button">
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
 						</div>
-						<button class="menu-icon" type="button">
-							<span></span>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -124,7 +126,7 @@
 		<div class="breadcrumbs">
 			<div class="container">
 				<nav class="breadcrumbs__navigation">
-					<ul class="breadcrumbs__list">
+					<ul class="breadcrumbs__list" data-simplebar>
 						<li class="breadcrumbs__item">
 							<a class="breadcrumbs__link" href="/">Главная</a>
 						</li>
@@ -147,186 +149,189 @@
 						<aside class="filter">
 							<form class="filter-form" action="#">
 								<div class="filter__title">Фильтры</div>
-								<div class="filter-groups">
-									<div class="filter-group isOpen">
-										<div class="filter-group__header">Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_1" name="parameter_1">
-													<label for="parameter_1">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_2" name="parameter_2" checked>
-													<label for="parameter_2">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-											</ul>
-											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+								<button class="filter__mobile-btn" type="button" id="filterBtn">Фильтры</button>
+								<div class="filter__wrapper">
+									<div class="filter-groups">
+										<div class="filter-group isOpen">
+											<div class="filter-group__header">Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_1" name="parameter_1">
+														<label for="parameter_1">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_2" name="parameter_2" checked>
+														<label for="parameter_2">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+												</ul>
+												<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+											</div>
+										</div>
+										<div class="filter-group isOpen">
+											<div class="filter-group__header">Название параметра Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_3" name="parameter_3">
+														<label for="parameter_3">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_4" name="parameter_4">
+														<label for="parameter_4">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_5" name="parameter_5">
+														<label for="parameter_5">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+												</ul>
+												<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+											</div>
+										</div>
+										<div class="filter-group isOpen">
+											<div class="filter-group__header">Название параметра Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_6" name="parameter_6">
+														<label for="parameter_6">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_7" name="parameter_7">
+														<label for="parameter_7">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_8" name="parameter_8">
+														<label for="parameter_8">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+												</ul>
+												<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+											</div>
+										</div>
+										<div class="filter-group">
+											<div class="filter-group__header">Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_8" name="parameter_8">
+														<label for="parameter_8">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_9" name="parameter_9">
+														<label for="parameter_9">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_10" name="parameter_10">
+														<label for="parameter_10">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="filter-group">
+											<div class="filter-group__header">Название параметра Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_11" name="parameter_11">
+														<label for="parameter_11">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_12" name="parameter_12">
+														<label for="parameter_12">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_13" name="parameter_13">
+														<label for="parameter_13">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+												</ul>
+												<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+											</div>
+										</div>
+										<div class="filter-group">
+											<div class="filter-group__header">Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_14" name="parameter_14">
+														<label for="parameter_14">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_15" name="parameter_15">
+														<label for="parameter_15">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_16" name="parameter_16">
+														<label for="parameter_16">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+												</ul>
+												<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+											</div>
+										</div>
+										<div class="filter-group">
+											<div class="filter-group__header">Название параметра Название параметра</div>
+											<div class="filter-group__choices">
+												<ul class="filter-group__list">
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_17" name="parameter_17">
+														<label for="parameter_17">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_18" name="parameter_18">
+														<label for="parameter_18">Название варианта для выбора в две строки<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
+													</li>
+													<li class="filter-group__item">
+														<input type="checkbox" id="parameter_19" name="parameter_19">
+														<label for="parameter_19">Название варианта для выбора<span></span>
+														</label>
+														<a href="#" style="display: none;">Название варианта для выбора</a>
+													</li>
+												</ul>
+												<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
+											</div>
 										</div>
 									</div>
-									<div class="filter-group isOpen">
-										<div class="filter-group__header">Название параметра Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_3" name="parameter_3">
-													<label for="parameter_3">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_4" name="parameter_4">
-													<label for="parameter_4">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_5" name="parameter_5">
-													<label for="parameter_5">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-											</ul>
-											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
-										</div>
+									<div class="filter__buttons">
+										<button class="filter__button btn" type="submit">Применить</button>
+										<button class="filter__button--reset btn-reset" type="reset">Сбросить фильтры</button>
 									</div>
-									<div class="filter-group isOpen">
-										<div class="filter-group__header">Название параметра Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_6" name="parameter_6">
-													<label for="parameter_6">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_7" name="parameter_7">
-													<label for="parameter_7">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_8" name="parameter_8">
-													<label for="parameter_8">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-											</ul>
-											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
-										</div>
-									</div>
-									<div class="filter-group">
-										<div class="filter-group__header">Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_8" name="parameter_8">
-													<label for="parameter_8">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_9" name="parameter_9">
-													<label for="parameter_9">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_10" name="parameter_10">
-													<label for="parameter_10">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="filter-group">
-										<div class="filter-group__header">Название параметра Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_11" name="parameter_11">
-													<label for="parameter_11">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_12" name="parameter_12">
-													<label for="parameter_12">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_13" name="parameter_13">
-													<label for="parameter_13">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-											</ul>
-											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
-										</div>
-									</div>
-									<div class="filter-group">
-										<div class="filter-group__header">Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_14" name="parameter_14">
-													<label for="parameter_14">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_15" name="parameter_15">
-													<label for="parameter_15">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_16" name="parameter_16">
-													<label for="parameter_16">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-											</ul>
-											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
-										</div>
-									</div>
-									<div class="filter-group">
-										<div class="filter-group__header">Название параметра Название параметра</div>
-										<div class="filter-group__choices">
-											<ul class="filter-group__list">
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_17" name="parameter_17">
-													<label for="parameter_17">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_18" name="parameter_18">
-													<label for="parameter_18">Название варианта для выбора в две строки<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора в две строки</a>
-												</li>
-												<li class="filter-group__item">
-													<input type="checkbox" id="parameter_19" name="parameter_19">
-													<label for="parameter_19">Название варианта для выбора<span></span>
-													</label>
-													<a href="#" style="display: none;">Название варианта для выбора</a>
-												</li>
-											</ul>
-											<button class="filter-group__btn" type="button" data-text="Скрыть">Показать все</button>
-										</div>
-									</div>
-								</div>
-								<div class="filter__buttons">
-									<button class="filter__button btn" type="submit">Применить</button>
-									<button class="filter__button--reset btn-reset" type="reset">Сбросить фильтры</button>
 								</div>
 							</form>
 						</aside>
@@ -345,6 +350,9 @@
 			<div class="footer__main main-footer">
 				<div class="container">
 					<div class="main-footer__body">
+						<a class="footer__logo-mobile" href="index.html">
+							<img src="images/footer-logo.png" alt="логотип">
+						</a>
 						<div class="footer__info">
 							<a class="footer__logo" href="index.html">
 								<img src="images/footer-logo.png" alt="логотип">
@@ -354,7 +362,7 @@
 									<a class="footer__link" href="tel:88002014822">8 800 201-48-22</a>
 									<a class="footer__link" href="mailto:sale@megatex-nn.ru">sale@megatex-nn.ru</a>
 								</div>
-								<div class="footer__address">г. Н.Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</div>
+								<div class="footer__address">г.&nbsp;Н.Новгород, проспект&nbsp;Ленина,&nbsp;109, БЦ&nbsp;«Чайка», офис&nbsp;304</div>
 								<div class="footer__mode mode-footer">
 									<span class="mode-footer__label">Режим работы:</span>
 									<span class="mode-footer__value">Пн-Пт с 9:00 до 18:00</span>
@@ -367,16 +375,16 @@
 								<nav class="menu-footer__nav">
 									<ul class="menu-footer__list">
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Защита рук</a>
+											<a class="menu-footer__link" href="catalog.html">Защита рук</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Обтирочные материалы</a>
+											<a class="menu-footer__link" href="catalog.html">Обтирочные материалы</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Средства индивидуальной защиты</a>
+											<a class="menu-footer__link" href="catalog.html">Средства индивидуальной защиты</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Хозяйственная группа</a>
+											<a class="menu-footer__link" href="catalog.html">Хозяйственная группа</a>
 										</li>
 									</ul>
 								</nav>
@@ -385,7 +393,7 @@
 								<nav class="menu-footer__nav">
 									<ul class="menu-footer__list">
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">О компании</a>
+											<a class="menu-footer__link" href="about.html">О компании</a>
 										</li>
 										<li class="menu-footer__item">
 											<a class="menu-footer__link" href="#">Доставка</a>
@@ -394,7 +402,7 @@
 											<a class="menu-footer__link" href="#">Доставка и оплата</a>
 										</li>
 										<li class="menu-footer__item">
-											<a class="menu-footer__link" href="#">Схема проезда</a>
+											<a class="menu-footer__link" href="contacts.html">Схема проезда</a>
 										</li>
 									</ul>
 								</nav>

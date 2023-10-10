@@ -1,18 +1,68 @@
 .category-list {
 	&__body {
 		display: grid;
-		grid-template-columns: 285px 1fr;
+		grid-template-columns: minmax(200px, 285px) 1fr;
 		gap: 20px 70px;
 		box-sizing: border-box;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
 	}
 	&__products {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px 20px;
+		@media screen and (max-width: $xxl) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media screen and (max-width: $lg) {
+			gap: 10px;
+		}
+		@media screen and (max-width: $sm) {
+			grid-template-columns: 1fr;
+		}
 	}
 }
 
 .filter {
+	&__mobile-btn {
+		display: none;
+		@media screen and (max-width: $lg) {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-family: "Muller", sans-serif;
+			font-size: 20px;
+			line-height: 24px;
+			font-weight: 500;
+			margin-left: auto;
+			transition: color 0.2s ease 0s;
+			&::before {
+				content: "";
+				display: block;
+				width: 24px;
+				height: 24px;
+				background-color: #0d2cb0;
+				mask-image: url("../images/icons/filter.svg");
+				mask-repeat: no-repeat;
+				mask-position: center;
+				mask-size: 24px 24px;
+			}
+			&.isActive {
+				color: #0d2cb0;
+			}
+		}
+	}
+	&__wrapper {
+		@media screen and (max-width: $lg) {
+			display: none;
+			margin-top: 20px;
+			&.isOpen {
+				display: block;
+			}
+		}
+	}
 	&-form {
 		position: sticky;
 		top: 20px;
@@ -24,6 +74,9 @@
 		font-weight: 500;
 		line-height: 32px;
 		margin-bottom: 36px;
+		@media screen and (max-width: $lg) {
+			display: none;
+		}
 	}
 	&__buttons {
 		display: flex;
@@ -232,12 +285,19 @@
 	max-width: 690px;
 	gap: 20px;
 	margin: 61px 0 0 118px;
+	@media screen and (max-width: $xxl) {
+		margin: 0;
+	}
 	&__title {
 		color: #181c2d;
 		font-family: "Muller", sans-serif;
 		font-size: 32px;
 		font-weight: 500;
 		line-height: 36px;
+		@media screen and (max-width: $lg) {
+			font-size: 24px;
+			line-height: 30px;
+		}
 	}
 	&__description {
 		color: #676972;
@@ -249,5 +309,8 @@
 		display: block;
 		margin-top: 12px;
 		max-width: 234px;
+		@media screen and (max-width: $lg) {
+			margin-top: 0;
+		}
 	}
 }

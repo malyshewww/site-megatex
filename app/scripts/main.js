@@ -1,5 +1,7 @@
 // Инициализация слайдеров
+
 function initSliders() {
+	var sliderType = window.innerWidth <= 991.98 ? 'mobile' : 'desktop';
 	const newSlider = document.querySelector(".new__wrapper");
 	if (newSlider) {
 		const newSliderSwiper = new Swiper(newSlider, {
@@ -11,38 +13,75 @@ function initSliders() {
 				prevEl: newSlider.previousElementSibling?.querySelector('.slider-button-prev'),
 				nextEl: newSlider.previousElementSibling?.querySelector('.slider-button-next'),
 			},
+			breakpoints: {
+				300: {
+					slidesPerView: 1.1,
+					spaceBetween: 8,
+				},
+				767.98: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+				1200: {
+					slidesPerView: 4,
+					spaceBetween: 20,
+				},
+			}
 		});
 	};
 	// Слайдер категорий
-	// const sliderCategories = document.querySelectorAll('.catalog .categories__wrapper');
-	// if (sliderCategories) {
-	// 	[...sliderCategories].forEach(slider => {
-	// 		let children = slider.children[0].children.length;
-	// 		if (children > 4) {
-	// 			const categorySwiper = new Swiper(slider, {
-	// 				slideClass: "categories__item",
-	// 				wrapperClass: "categories__body",
-	// 				slidesPerView: 4,
-	// 				spaceBetween: 20,
-	// 				navigation: {
-	// 					prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
-	// 					nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
-	// 				},
-	// 				speed: 800,
-	// 			});
-	// 		} else {
-	// 			slider.previousElementSibling.querySelector('.heading-block__controls').style.display = "none";
-	// 			slider.classList.add('tile');
-	// 		}
-	// 	})
-	// }
+	function initCatagorySlider(type) {
+		let categorySwiper;
+		const sliderCategories = document.querySelectorAll('.categories__wrapper');
+		if (sliderCategories) {
+			[...sliderCategories].forEach(slider => {
+				if (type === "mobile") {
+					let children = slider.children[0].children.length;
+					categorySwiper = new Swiper(slider, {
+						slideClass: "categories__item",
+						wrapperClass: "categories__body",
+						slidesPerGroup: 1,
+						freeMode: false,
+						// navigation: {
+						// 	prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
+						// 	nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
+						// },
+						speed: 800,
+						breakpoints: {
+							300: {
+								slidesPerView: 1.1,
+								spaceBetween: 8,
+							},
+							576: {
+								slidesPerView: 'auto',
+								spaceBetween: 20,
+							}
+						}
+					});
+				} else {
+					categorySwiper?.destroy();
+				}
+			})
+		}
+	}
+	initCatagorySlider(sliderType);
+	window.addEventListener("resize", () => {
+		if (window.innerWidth < 991.98 && sliderType == 'desktop') {
+			sliderType = 'mobile';
+			initCatagorySlider(sliderType)
+		} else if (window.innerWidth > 991.98 && sliderType == 'mobile') {
+			sliderType = 'desktop';
+			initCatagorySlider(sliderType)
+		}
+	});
+	window.dispatchEvent(new Event('resize'));
 	// Слайдеры в карточке товара
 	const cardMainSlider = document.querySelector('.main-slider__body');
 	const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
 	const cardThumbschildren = cardThumbsSlider?.children[0].children.length;
 	const cardMainChildren = cardMainSlider?.children[0].children.length;
 	let cardNavSwiper;
-	if (cardThumbsSlider && cardThumbschildren <= 6) {
+	if (cardThumbsSlider && cardThumbschildren <= 5) {
 		cardThumbsSlider.nextElementSibling.remove();
 	}
 	if (cardMainSlider && cardMainChildren <= 1) {
@@ -104,12 +143,26 @@ function initSliders() {
 }
 
 // Поле поиска
-const searchInput = document.querySelector('.search-header__input');
+const searchInput = searchForm.querySelector('.search-header__input');
 if (searchInput) {
 	searchInput.addEventListener('input', (event) => {
 		let target = event.target;
-		const parent = target.closest('form');
-		parent.classList[target.value !== '' ? 'add' : 'remove']('changed');
+		const form = target.closest('form');
+		const result = form.querySelector('.search-header__result');
+		form.classList[target.value !== '' ? 'add' : 'remove']('changed');
+		if (target.value !== '') {
+			result.removeAttribute('hidden');
+		} else {
+			result.setAttribute('hidden', true);
+		}
+	})
+	searchInput.addEventListener('blur', (event) => {
+		let target = event.target;
+		target.value = "";
+		const form = target.closest('form');
+		const result = form.querySelector('.search-header__result');
+		result.setAttribute('hidden', true);
+		form.classList.remove('changed');
 	})
 }
 // Кнопка удаления введенной информации из поля поиска
@@ -117,8 +170,8 @@ const deleteButton = document.getElementById('delete-button');
 if (deleteButton) {
 	deleteButton.addEventListener('click', (event) => {
 		let target = event.target;
-		target.remove();
 		searchInput.value = "";
+		target.remove();
 	})
 }
 
@@ -264,9 +317,9 @@ function resetFilter(parent) {
 }
 function showRadiobuttons(item) {
 	const btnAll = item.querySelector('.filter-group__btn');
-	const items = item.querySelectorAll('.filter-group li');
-	items.length > 5 ? btnAll.removeAttribute('hidden') : btnAll.setAttribute('hidden', true)
 	if (btnAll) {
+		const items = item.querySelectorAll('.filter-group li');
+		items.length > 5 ? btnAll.removeAttribute('hidden') : btnAll.setAttribute('hidden', true)
 		btnAll.addEventListener('click', (event) => {
 			const btnDataText = event.target.dataset.text;
 			item.classList.toggle('isShow');
@@ -326,24 +379,6 @@ function initGallery() {
 	})
 }
 
-// Объект с данным для карт
-const yMapArr = [
-	{
-		"id": "office-ymap",
-		"center": [56.248821, 43.877393],
-		"zoom": 16,
-		"content": "Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304",
-		"iconPath": "../images/icons/location.svg",
-	},
-	{
-		"id": "stock-ymap",
-		"center": [43.427229, 56.249281],
-		"zoom": 16,
-		"content": "Нижегородская область, г. Дзержинск, проспект Ленина 1/202",
-		"iconPath": "../images/icons/location.svg",
-	},
-];
-
 // Яндекс карта
 const mapElem = document.getElementById("map");
 if (mapElem) {
@@ -370,7 +405,7 @@ if (mapElem) {
 						balloonContent: 'Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304'
 					}, {
 						iconLayout: 'default#image',
-						iconImageHref: '../images/icons/location.svg',
+						iconImageHref: './images/icons/location.svg',
 						iconImageSize: [44, 49],
 						iconImageOffset: [-10, -30]
 					});
@@ -383,40 +418,25 @@ if (mapElem) {
 				myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
 				myMap.controls.remove('rulerControl'); // удаляем контрол правил
 				myMap.behaviors.disable('scrollZoom');
-				// myMapStock = new ymaps.Map('stock-ymap', {
-				// 	center: [43.427229, 56.249281],
-				// 	zoom: 17
-				// }, {
-				// 	searchControlProvider: 'yandex#search'
-				// }),
-				// 	myPlacemarkTwo = new ymaps.Placemark(myMapStock.getCenter(), {
-				// 		balloonContent: 'Нижегородская область, г. Дзержинск, проспект Ленина 1/202'
-				// 	}, {
-				// 		iconLayout: 'default#image',
-				// 		iconImageHref: '../images/icons/location.svg',
-				// 		iconImageSize: [44, 49],
-				// 		iconImageOffset: [0, 0]
-				// 	});
-				// myMapStock.geoObjects.add(myPlacemarkTwo);
-				// myMapStock.behaviors.disable('scrollZoom');
-				// Табы для блока с яндекс картами
-				// const mapTabContent = document.querySelectorAll('.contacts__map-box');
 			});
+			const mapTabTrigger = document.querySelectorAll('[data-map-trigger]');
+			[...mapTabTrigger].forEach(tab => {
+				tab.addEventListener('click', () => {
+					const dataLat = Number(tab.dataset.lat);
+					const dataLing = Number(tab.dataset.ling);
+					console.log(typeof dataLat, typeof dataLing);
+					[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
+					tab.classList.add('isActive');
+					myMap.setCenter([dataLat, dataLing], 16, {
+						checkZoomRange: true
+					});
+					myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
+				})
+			})
 		};
 	}
 	if (mapElem.getBoundingClientRect().top < window.innerHeight) {
 		loadMap();
-		const mapTabTrigger = document.querySelectorAll('[data-id]');
-		[...mapTabTrigger].forEach(tab => {
-			tab.addEventListener('click', () => {
-				const dataLat = tab.dataset.lat;
-				const dataLing = tab.dataset.ling;
-				[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
-				tab.classList.add('isActive');
-				myMap.setCenter([dataLat, dataLing]);
-				myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
-			})
-		})
 	}
 	window.addEventListener("scroll", function () {
 		if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
@@ -454,6 +474,68 @@ if (textBlock) {
 		if (target.closest('.text-block__gradient') || target.closest('.text-block__link')) {
 			textBlock.classList.add('isOpen');
 		}
+	})
+}
+
+// Загрузка файла
+const formOffer = document.getElementById('formOffer');
+if (formOffer) {
+	const inputUpload = formOffer.querySelector('#upload_file');
+	const fileList = formOffer.querySelector('#fileList');
+	const loadFile = formOffer.querySelector('#loadFile');
+	const emptyList = formOffer.querySelector('#emptyList');
+	let file;
+	let files = inputUpload.files;
+	// checkEmptyList(files);
+	function uploadFile(event) {
+		if (event.target.closest('#upload_file')) {
+			file = event.target.files[0];
+			renderFile(file);
+		}
+	}
+	function deleteFile(event) {
+		// Проверяем если клик был НЕ по кнопке "удалить файл"
+		if (event.target.dataset.action !== 'delete') return;
+		const parentNode = event.target.closest('.file-item');
+		// Удаляем файл из разметки
+		parentNode.remove();
+		checkEmptyList(files);
+	}
+	function checkEmptyList(files) {
+		if (files.length === 0) {
+			const emptyListHTML = `<li id="emptyList">
+				<label class="load-file__label">
+					<input type="file" id="upload_file" class="load-file__input visuallyHidden">
+					Прикрепить файл
+				</label>
+			</li>`;
+			// fileList.insertAdjacentHTML('afterbegin', emptyListHTML);
+			fileList.innerHTML = emptyListHTML;
+		}
+		if (files.length > 0) {
+			const emptyListEl = document.querySelector('#emptyList');
+			emptyListEl ? emptyListEl.remove() : null;
+		}
+	}
+	function renderFile(file) {
+		// Формируем разметку для нового файла
+		let fileItem = `<li class="file-item">
+				<span class="file-item__text">${file.name}</span>
+				<button class="file-item__button" type="button" id="delete_file" data-action="delete"></button>
+			</li>`;
+		// Добавляем данные файла (file.name) на страницу
+		fileList.innerHTML = fileItem;
+		loadFile.remove();
+	}
+	fileList.addEventListener('click', deleteFile);
+	formOffer.addEventListener('change', uploadFile);
+}
+
+const filterBtn = document.getElementById('filterBtn');
+if (filterBtn) {
+	filterBtn.addEventListener('click', (event) => {
+		event.target.classList.toggle('isActive');
+		event.target.nextElementSibling.classList.toggle('isOpen')
 	})
 }
 
