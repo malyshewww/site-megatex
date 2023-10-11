@@ -17,6 +17,27 @@
 	<link rel="canonical" href="https://example.com">
 	<link rel="preload" href="./fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 	<link href="styles/main.min.css" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="36x36" href="images/favicons/android-icon-36x36.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="images/favicons/android-icon-48x48.png">
+	<link rel="icon" type="image/png" sizes="72x72" href="images/favicons/android-icon-72x72.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/favicons/android-icon-96x96.png">
+	<link rel="icon" type="image/png" sizes="144x144" href="images/favicons/android-icon-144x144.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
+	<link rel="shortcut icon" href="/images/favicons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#F9F9FB">
+	<meta name="theme-color" content="#F9F9FB">
 	<meta name="apple-mobile-web-app-title" content="Название">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
@@ -28,9 +49,10 @@
 <body>
 	<div class="wrapper" id="wrapper">
 		<header class="header" id="header">
+			<div class="header-bg"></div>
 			<div class="container">
 				<div class="header__body">
-					<div class="header__top top-header">
+					<div class="header__top top-header" data-da=".header__menu, 991.98, 2">
 						<div class="top-header__info">
 							<address class="top-header__address">г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304</address>
 						</div>
@@ -112,12 +134,8 @@
 						</div>
 						<div class="main-header__actions">
 							<a class="header__phone" href="tel:88002014822">8 800 201-48-22</a>
-							<button class="header__button btn" type="button" data-graph-path="offer">Запросить КП</button>
-							<button class="menu-icon" type="button">
-								<span></span>
-								<span></span>
-								<span></span>
-							</button>
+							<button class="header__button btn" type="button" data-graph-path="offer" data-da=".header__menu, 991.98, 3">Запросить КП</button>
+							<button class="menu-icon" type="button"></button>
 						</div>
 					</div>
 				</div>
@@ -139,11 +157,11 @@
 			<div class="container">
 				<div class="text-page__content content">
 					<div class="content-heading">
+						<h1>Заголовок H1</h1>
 						<h2>Заголовок H2</h2>
 						<h3>Заголовок H3</h3>
 						<h4>Заголовок H4</h4>
 						<h5>Заголовок H5</h5>
-						<h6>Заголовок H6</h6>
 					</div>
 					<div class="text-page-block text-block-m">
 						<p>Текст М</p>
@@ -160,37 +178,39 @@
 						<p>Рынок рабочей спецодежды всегда был для нас одним из приоритетных направлений деятельности, а рабочие перчатки — один из самых ходовых и необходимых товаров на этом рынке.</p>
 						<p>Рынок рабочей спецодежды всегда был для нас одним из приоритетных направлений деятельности, а рабочие перчатки — один из самых ходовых и необходимых товаров на этом рынке.</p>
 					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Характеристики</th>
-								<th>Описание</th>
-								<th>Описание</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Размеры</td>
-								<td>7, 8</td>
-								<td>7, 8</td>
-							</tr>
-							<tr>
-								<td>Основа / Покрытие</td>
-								<td>Хлопок / Нитрил</td>
-								<td>Хлопок / Нитрил</td>
-							</tr>
-							<tr>
-								<td>Размеры</td>
-								<td>7, 8</td>
-								<td>7, 8</td>
-							</tr>
-							<tr>
-								<td>Основа / Покрытие</td>
-								<td>Хлопок / Нитрил</td>
-								<td>Хлопок / Нитрил</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="table" data-simplebar>
+						<table>
+							<thead>
+								<tr>
+									<th>Характеристики</th>
+									<th>Описание</th>
+									<th>Описание</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Размеры</td>
+									<td>7, 8</td>
+									<td>7, 8</td>
+								</tr>
+								<tr>
+									<td>Основа / Покрытие</td>
+									<td>Хлопок / Нитрил</td>
+									<td>Хлопок / Нитрил</td>
+								</tr>
+								<tr>
+									<td>Размеры</td>
+									<td>7, 8</td>
+									<td>7, 8</td>
+								</tr>
+								<tr>
+									<td>Основа / Покрытие</td>
+									<td>Хлопок / Нитрил</td>
+									<td>Хлопок / Нитрил</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 					<ul>
 						<li>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</li>
 						<li>Эффективная и универсальная модель с повышенной износостойкостью и нефтемаслостойкими свойствами, благодаря покрытию из вспененного нитрила. Для тех, кто привык к одинарному/двойному обливу. Всего одна пара способна заменить до 5 пар перчаток с двойным покрытием из натурального латекса. Будущее сегмента доступных и эффективных решений.</li>
@@ -203,37 +223,39 @@
 					<div class="heading-block">
 						<div class="heading-block__title">Собственное производство</div>
 					</div>
-					<div class="production__body gallery">
-						<a class="production__item gallery-item" href="images/production/1.jpg">
-							<div class="production__image ibg">
-								<img src="images/production/1.jpg" alt="собственное производство" loading="lazy">
-							</div>
-						</a>
-						<a class="production__item gallery-item" href="images/production/2.jpg">
-							<div class="production__image ibg">
-								<img src="images/production/2.jpg" alt="собственное производство" loading="lazy">
-							</div>
-						</a>
-						<a class="production__item gallery-item" href="images/production/3.jpg">
-							<div class="production__image ibg">
-								<img src="images/production/3.jpg" alt="собственное производство" loading="lazy">
-							</div>
-						</a>
-						<a class="production__item gallery-item" href="images/production/4.jpg">
-							<div class="production__image ibg">
-								<img src="images/production/4.jpg" alt="собственное производство" loading="lazy">
-							</div>
-						</a>
-						<a class="production__item gallery-item" href="images/production/5.jpg">
-							<div class="production__image ibg">
-								<img src="images/production/5.jpg" alt="собственное производство" loading="lazy">
-							</div>
-						</a>
-						<a class="production__item gallery-item" href="images/production/6.jpg">
-							<div class="production__image ibg">
-								<img src="images/production/6.jpg" alt="собственное производство" loading="lazy">
-							</div>
-						</a>
+					<div class="production__wrapper">
+						<div class="production__body gallery">
+							<a class="production__item gallery-item" href="images/production/1.jpg">
+								<div class="production__image ibg">
+									<img src="images/production/1.jpg" alt="собственное производство" loading="lazy">
+								</div>
+							</a>
+							<a class="production__item gallery-item" href="images/production/2.jpg">
+								<div class="production__image ibg">
+									<img src="images/production/2.jpg" alt="собственное производство" loading="lazy">
+								</div>
+							</a>
+							<a class="production__item gallery-item" href="images/production/3.jpg">
+								<div class="production__image ibg">
+									<img src="images/production/3.jpg" alt="собственное производство" loading="lazy">
+								</div>
+							</a>
+							<a class="production__item gallery-item" href="images/production/4.jpg">
+								<div class="production__image ibg">
+									<img src="images/production/4.jpg" alt="собственное производство" loading="lazy">
+								</div>
+							</a>
+							<a class="production__item gallery-item" href="images/production/5.jpg">
+								<div class="production__image ibg">
+									<img src="images/production/5.jpg" alt="собственное производство" loading="lazy">
+								</div>
+							</a>
+							<a class="production__item gallery-item" href="images/production/6.jpg">
+								<div class="production__image ibg">
+									<img src="images/production/6.jpg" alt="собственное производство" loading="lazy">
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -325,7 +347,7 @@
 			</div>
 		</footer>
 		<button class="scroll-top hidden" type="button">
-			<div class="scroll-top__text">Наверх</div>
+			<span class="scroll-top__text">Наверх</span>
 		</button>
 		<div class="graph-modal modal">
 			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="offer">
@@ -336,7 +358,7 @@
 						<div class="modal__description">Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения</div>
 					</div>
 					<div class="modal__body">
-						<form class="modal__form" action="#">
+						<form class="modal__form form" action="#" enctype="multipart/form-data" id="formOfferModal">
 							<div class="form__items">
 								<div class="form-item">
 									<input class="form-input" type="text" placeholder="Имя" name="name">
@@ -350,8 +372,9 @@
 							<div class="form__bottom modal-bottom">
 								<input class="form__button btn" type="submit" value="Отправить запрос">
 								<div class="form__load load-file">
-									<label class="load-file__label">
-										<input class="load-file__input visuallyHidden" type="file">прикрепить файл
+									<div class="load-file__list" data-file-list></div>
+									<label class="load-file__label" data-load-file>
+										<input class="load-file__input visuallyHidden" type="file" data-upload-file name="upload">прикрепить файл
 									</label>
 								</div>
 								<div class="modal__text">

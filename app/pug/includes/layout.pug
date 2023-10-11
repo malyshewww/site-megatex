@@ -28,7 +28,7 @@ html(lang="ru")
 				link(href=`https://fonts.googleapis.com/css2?family=${googleFonts}&display=swap` rel="stylesheet")
 			block styles
 				link(href="styles/main.min.css" rel="stylesheet")
-			//- include ../components/favicons
+			include ../components/favicons
 			meta(name="apple-mobile-web-app-title" content="Название")
 			meta(name="apple-mobile-web-app-capable" content="yes")
 			meta(name="format-detection" content="telephone=no")
@@ -43,7 +43,7 @@ html(lang="ru")
 				block content
 			include ../components/footer
 			button(type="button").scroll-top.hidden
-				.scroll-top__text Наверх
+				span.scroll-top__text Наверх
 			//- if pageTitle !== 'Главная' 
 			//- 	.badge-sale(data-graph-path="sale")
 			//- 		.badge-sale__icon 

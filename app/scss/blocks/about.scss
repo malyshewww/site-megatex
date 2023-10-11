@@ -15,6 +15,10 @@
 				margin-bottom: 16px;
 			}
 		}
+		@media screen and (max-width: $lg) {
+			margin: 50px 0;
+			padding-left: 20px;
+		}
 	}
 	&__slider {
 		& .container {
@@ -34,6 +38,9 @@
 		font-weight: 500;
 		line-height: 24px;
 		max-width: 492px;
+		@media screen and (max-width: $xxl) {
+			max-width: 100%;
+		}
 	}
 	&__body {
 		border-radius: 16px;
@@ -42,6 +49,13 @@
 		display: grid;
 		grid-template-columns: 1fr 610px;
 		gap: 20px;
+		@media screen and (max-width: $xxl) {
+			grid-template-columns: 1fr;
+			padding: 0 20px 30px;
+		}
+		@media screen and (max-width: $lg) {
+			margin: 0 -16px;
+		}
 	}
 	& .breadcrumbs {
 		padding-top: 20px;
@@ -58,27 +72,26 @@
 }
 .slider-about {
 	position: relative;
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 320px;
-		width: 477px;
-		background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-		z-index: 3;
-		pointer-events: none;
-	}
 	&__body {
-		overflow: visible;
+		overflow: hidden;
+		@media screen and (max-width: $md) {
+			margin: 0 -16px 0 0;
+		}
 	}
 	&__wrapper {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
+		@media screen and (max-width: $lg) {
+			display: flex;
+			flex-flow: row nowrap;
+			gap: 0px;
+		}
 	}
 	&__item {
-		width: 453px;
+		@media screen and (max-width: $lg) {
+			flex-shrink: 0;
+		}
 	}
 	&__image {
 		cursor: url("../images/icons/zoom.svg"), auto;

@@ -10,11 +10,11 @@ block crumbs
 		.container 
 			.text-page__content.content
 				.content-heading
+					h1 Заголовок H1
 					h2 Заголовок H2
 					h3 Заголовок H3
 					h4 Заголовок H4
 					h5 Заголовок H5
-					h6 Заголовок H6
 				.text-page-block.text-block-m
 					each item in textPage.textM
 						p= item
@@ -24,18 +24,19 @@ block crumbs
 				.text-page-block.text-block-xs
 					each item in textPage.textXS
 						p= item
-				table 
-					thead 
-						tr 
-							th Характеристики
-							th Описание
-							th Описание
-					tbody 
-						each item in textPage.table
+				.table(data-simplebar)
+					table 
+						thead 
 							tr 
-								td= item.title
-								td= item.value 
-								td= item.value
+								th Характеристики
+								th Описание
+								th Описание
+						tbody 
+							each item in textPage.table
+								tr 
+									td= item.title
+									td= item.value 
+									td= item.value
 				ul 
 					each item in textPage.list
 						li= item
@@ -44,9 +45,10 @@ block crumbs
 			.container
 				.heading-block 
 					.heading-block__title Собственное производство
-				.production__body.gallery
-					- for (var i = 1; i < 7; ++i) {
-						a(href=`images/production/${i}.jpg`).production__item.gallery-item
-							.production__image.ibg
-								img(src=`images/production/${i}.jpg`, alt="собственное производство" loading="lazy")
-					- }
+				.production__wrapper
+					.production__body.gallery
+						- for (var i = 1; i < 7; ++i) {
+							a(href=`images/production/${i}.jpg`).production__item.gallery-item
+								.production__image.ibg
+									img(src=`images/production/${i}.jpg`, alt="собственное производство" loading="lazy")
+						- }

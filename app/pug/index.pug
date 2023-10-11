@@ -75,9 +75,9 @@ block content
 						.form-offer__bottom 
 							input(type="submit" value="Отправить заявку").form-offer__button.btn
 							.form-offer__file.load-file
-								#fileList.load-file__list
-								label.load-file__label#loadFile
-									input(type="file" id="upload_file" name="upload").load-file__input.visuallyHidden
+								.load-file__list(data-file-list)
+								label.load-file__label(data-load-file)
+									input(type="file" data-upload-file name="upload").load-file__input.visuallyHidden
 									| Прикрепить файл
 							.form-offer__text 
 								| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#" class="form__link")  политикой обработки персональных данных]

@@ -18,12 +18,21 @@
 				width: 100%;
 			}
 		}
+		@media screen and (max-width: $lg) {
+			height: 350px;
+		}
 	}
 	&__body {
 		display: grid;
 		grid-template-columns: 1fr minmax(300px, 413px);
 		align-items: start;
 		gap: 60px;
+		@media screen and (max-width: $xxxl) {
+			gap: 20px 30px;
+		}
+		@media screen and (max-width: $lg) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__info {
 	}
@@ -31,6 +40,9 @@
 	}
 	&__main {
 		padding-top: 100px;
+		@media screen and (max-width: $lg) {
+			padding-top: 50px;
+		}
 	}
 }
 .contacts-label {
@@ -44,10 +56,16 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 40px;
+		@media screen and (max-width: $lg) {
+			gap: 20px;
+		}
 	}
 	&__item {
 		&--links {
 			padding: 20px 0 24px;
+			@media screen and (max-width: $lg) {
+				padding: 10px 0 10px;
+			}
 		}
 	}
 	&__label {
@@ -125,17 +143,33 @@
 		justify-content: space-between;
 		gap: 20px;
 		padding-right: 42px;
+		@media screen and (max-width: $xxxl) {
+			padding-right: 0;
+		}
+		@media screen and (max-width: $lg) {
+			flex-direction: column;
+		}
 	}
 	&__column {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 40px;
+		@media screen and (max-width: $xxxl) {
+			gap: 30px;
+		}
 	}
 	&__item {
 		display: grid;
 		grid-template-columns: 200px 1fr;
 		gap: 20px 60px;
 		align-items: start;
+		@media screen and (max-width: $xxxl) {
+			gap: 20px;
+		}
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr;
+			gap: 10px;
+		}
 	}
 	&__list {
 		@include reset-list;
@@ -171,11 +205,22 @@
 		display: grid;
 		grid-template-columns: repeat(2, 213px);
 		gap: 80px;
+		@media screen and (max-width: $xxxl) {
+			gap: 40px;
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media screen and (max-width: $md) {
+			gap: 20px;
+			grid-template-columns: 1fr;
+		}
 	}
 	&__list-box {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 40px;
+		@media screen and (max-width: $xxxl) {
+			gap: 20px;
+		}
 	}
 }
 .tabs-contacts {

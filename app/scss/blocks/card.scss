@@ -10,13 +10,24 @@
 			gap: 20px;
 		}
 		@media screen and (max-width: $lg) {
-			// grid-template-columns: 1fr;
+			display: block;
+			& > *:not(:last-child) {
+				margin-bottom: 20px;
+			}
+		}
+		@media screen and (max-width: $md) {
+			padding-top: 20px;
 		}
 	}
 	&__slider {
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		@media screen and (max-width: $lg) {
+			max-width: 600px;
+			margin: 0 auto;
+			display: block;
+		}
 	}
 	&__title {
 		font-family: "Muller", sans-serif;
@@ -24,6 +35,10 @@
 		font-weight: 500;
 		line-height: 40px;
 		margin-bottom: 12px;
+		@media screen and (max-width: $md) {
+			font-size: 26px;
+			line-height: 36px;
+		}
 	}
 	&__article {
 		display: inline-flex;
@@ -33,6 +48,9 @@
 		margin-bottom: 16px;
 		& span {
 			color: #676972;
+		}
+		@media screen and (max-width: $md) {
+			margin-bottom: 16px;
 		}
 	}
 	&__description {
@@ -44,16 +62,25 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 32px;
+		@media screen and (max-width: $md) {
+			gap: 20px;
+			margin-top: 20px;
+		}
 	}
 	&__bottom {
 		margin-top: 48px;
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 28px;
+		@media screen and (max-width: $md) {
+			margin-top: 20px;
+			gap: 20px;
+		}
 	}
 	&__prices {
 		display: inline-flex;
 		align-items: flex-end;
+		flex-wrap: wrap;
 		gap: 4px;
 		font-family: "Muller", sans-serif;
 		font-size: 28px;
@@ -66,12 +93,19 @@
 			font-weight: 500;
 			line-height: 24px;
 		}
+		@media screen and (max-width: $md) {
+			font-size: 24px;
+			line-height: 28px;
+		}
 	}
 	&__buttons {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 12px;
-		max-width: 547px;
+	}
+	&__button {
+		width: 100%;
+		max-width: 267px;
+		@media screen and (max-width: $md) {
+			min-width: 100%;
+		}
 	}
 	&__info {
 	}
@@ -81,6 +115,11 @@
 		font-size: 28px;
 		font-weight: 500;
 		line-height: 32px;
+		@media screen and (max-width: $md) {
+			font-size: 24px;
+			line-height: 28px;
+			margin-bottom: 20px;
+		}
 	}
 }
 .group-card {
@@ -119,6 +158,9 @@
 .thumbs-slider {
 	padding: 0 26px 0 54px;
 	position: relative;
+	@media screen and (max-width: $lg) {
+		display: none;
+	}
 	&__body {
 	}
 	&__wrapper {
@@ -132,9 +174,15 @@
 			lightgray 17.818px 4.655px / 62.826% 87.237% no-repeat,
 			#fff;
 		width: 112px;
+		transition: opacity 0.2s ease 0s;
 		&.swiper-slide-thumb-active {
 			background: 0;
 			opacity: 1;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 	&__image {
@@ -182,15 +230,15 @@
 	@media screen and (max-width: $xxl) {
 		height: 400px;
 	}
+	@media screen and (max-width: $lg) {
+		height: 100%;
+	}
 	&__body {
 		width: 100%;
 		height: 100%;
 		border-radius: 16px;
 		background: $whiteColor;
 		overflow: hidden;
-		@media screen and (max-width: $xxl) {
-			height: 400px;
-		}
 	}
 	&__wrapper {
 	}
@@ -202,6 +250,9 @@
 		padding-bottom: math.div(520, 690) * 100%;
 		@media screen and (max-width: $xxl) {
 			padding-bottom: math.div(400, 500) * 100%;
+		}
+		@media screen and (max-width: $lg) {
+			padding-bottom: 100%;
 		}
 	}
 	&__controls {
@@ -236,6 +287,9 @@
 }
 .tabs {
 	padding-top: 100px;
+	@media screen and (max-width: $md) {
+		padding-top: 50px;
+	}
 	&__list {
 		@include reset-list;
 		display: flex;
@@ -298,6 +352,8 @@
 .tabs__content {
 	max-width: 1045px;
 	display: none;
+	&-title {
+	}
 	&.isShow {
 		display: block;
 	}
@@ -309,10 +365,19 @@
 }
 .certificates {
 	padding-top: 60px;
+	@media screen and (max-width: $md) {
+		padding-top: 30px;
+	}
 	&__body {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr;
+		}
 	}
 }
 .content a.certificate {

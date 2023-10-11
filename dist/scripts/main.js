@@ -1,145 +1,202 @@
 // Инициализация слайдеров
-
-function initSliders() {
-	var sliderType = window.innerWidth <= 991.98 ? 'mobile' : 'desktop';
-	const newSlider = document.querySelector(".new__wrapper");
-	if (newSlider) {
-		const newSliderSwiper = new Swiper(newSlider, {
-			wrapperClass: "new__body",
-			slideClass: "new__item",
-			slidesPerView: 4,
-			spaceBetween: 20,
-			navigation: {
-				prevEl: newSlider.previousElementSibling?.querySelector('.slider-button-prev'),
-				nextEl: newSlider.previousElementSibling?.querySelector('.slider-button-next'),
+let sliderType = window.innerWidth < 991.98 ? 'mobile' : 'desktop';
+// Слайдер "новинки"
+const newSlider = document.querySelector(".new__wrapper");
+if (newSlider) {
+	const newSwiper = new Swiper(newSlider, {
+		wrapperClass: "new__body",
+		slideClass: "new__item",
+		slidesPerView: 4,
+		spaceBetween: 20,
+		navigation: {
+			prevEl: newSlider.previousElementSibling?.querySelector('.slider-button-prev'),
+			nextEl: newSlider.previousElementSibling?.querySelector('.slider-button-next'),
+		},
+		breakpoints: {
+			300: {
+				slidesPerView: 1.1,
+				spaceBetween: 8,
 			},
+			767.98: {
+				slidesPerView: 3,
+				spaceBetween: 20,
+			},
+			1200: {
+				slidesPerView: 4,
+				spaceBetween: 20,
+			},
+		}
+	});
+};
+// Слайдер категорий
+let categorySwiper = null;
+const sliderCategories = document.querySelectorAll('.categories__wrapper');
+function initCatagorySlider(type) {
+	if (!categorySwiper) {
+		[...sliderCategories].forEach(slider => {
+			let children = slider.children[0].children.length;
+			if (type == "mobile") {
+				categorySwiper = new Swiper(slider, {
+					slideClass: "categories__item",
+					wrapperClass: "categories__body",
+					slidesPerGroup: 1,
+					freeMode: false,
+					// navigation: {
+					// 	prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
+					// 	nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
+					// },
+					speed: 800,
+					breakpoints: {
+						300: {
+							slidesPerView: 1.1,
+							spaceBetween: 8,
+						},
+						576: {
+							slidesPerView: 'auto',
+							spaceBetween: 20,
+						}
+					}
+				});
+			}
+			else {
+				categorySwiper?.destroy(true);
+				categorySwiper = null;
+			}
+		})
+	}
+}
+initCatagorySlider(sliderType);
+// Слайдер на странице "О компании" и на текстовой странице
+const aboutSlider = document.querySelector('.slider-about__body');
+const productionSlider = document.querySelector('.production__wrapper');
+let aboutSwiper = null;
+let productionSwiper = null;
+function initGallerySlider() {
+	if (!aboutSwiper) {
+		aboutSwiper = new Swiper(aboutSlider, {
+			slideClass: 'slider-about__item',
+			wrapperClass: 'slider-about__wrapper',
+			spaceBetween: 20,
+			slidesPerView: 3,
+			speed: 800,
 			breakpoints: {
 				300: {
-					slidesPerView: 1.1,
+					slidesPerView: 1.5,
 					spaceBetween: 8,
 				},
 				767.98: {
 					slidesPerView: 3,
 					spaceBetween: 20,
-				},
-				1200: {
-					slidesPerView: 4,
-					spaceBetween: 20,
-				},
-			}
-		});
-	};
-	// Слайдер категорий
-	function initCatagorySlider(type) {
-		let categorySwiper;
-		const sliderCategories = document.querySelectorAll('.categories__wrapper');
-		if (sliderCategories) {
-			[...sliderCategories].forEach(slider => {
-				if (type === "mobile") {
-					let children = slider.children[0].children.length;
-					categorySwiper = new Swiper(slider, {
-						slideClass: "categories__item",
-						wrapperClass: "categories__body",
-						slidesPerGroup: 1,
-						freeMode: false,
-						// navigation: {
-						// 	prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
-						// 	nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
-						// },
-						speed: 800,
-						breakpoints: {
-							300: {
-								slidesPerView: 1.1,
-								spaceBetween: 8,
-							},
-							576: {
-								slidesPerView: 'auto',
-								spaceBetween: 20,
-							}
-						}
-					});
-				} else {
-					categorySwiper?.destroy();
 				}
-			})
-		}
-	}
-	initCatagorySlider(sliderType);
-	window.addEventListener("resize", () => {
-		if (window.innerWidth < 991.98 && sliderType == 'desktop') {
-			sliderType = 'mobile';
-			initCatagorySlider(sliderType)
-		} else if (window.innerWidth > 991.98 && sliderType == 'mobile') {
-			sliderType = 'desktop';
-			initCatagorySlider(sliderType)
-		}
-	});
-	window.dispatchEvent(new Event('resize'));
-	// Слайдеры в карточке товара
-	const cardMainSlider = document.querySelector('.main-slider__body');
-	const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
-	const cardThumbschildren = cardThumbsSlider?.children[0].children.length;
-	const cardMainChildren = cardMainSlider?.children[0].children.length;
-	let cardNavSwiper;
-	if (cardThumbsSlider && cardThumbschildren <= 5) {
-		cardThumbsSlider.nextElementSibling.remove();
-	}
-	if (cardMainSlider && cardMainChildren <= 1) {
-		cardMainSlider.querySelector('.main-slider__controls').remove();
-	}
-	if (cardMainSlider) {
-		cardNavSwiper = new Swiper(cardThumbsSlider, {
-			slidesPerView: 5,
-			spaceBetween: 12,
-			slideClass: "thumbs-slider__item",
-			wrapperClass: "thumbs-slider__wrapper",
-			speed: 600,
-			navigation: {
-				nextEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-next"),
-				prevEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-prev"),
-			},
+			}
 		})
-		let cardMainSwiper = new Swiper(cardMainSlider, {
-			slidesPerView: 1,
-			mousewheel: {
-				releaseOnEdges: true,
-				invert: false,
-			},
-			direction: 'vertical',
-			grabCursor: false,
-			slideClass: "main-slider__item",
-			wrapperClass: "main-slider__wrapper",
-			speed: 600,
-			spaceBetween: 10,
-			thumbs: {
-				swiper: cardNavSwiper,
-			},
-			navigation: {
-				nextEl: ".slider-button-next",
-				prevEl: ".slider-button-prev",
-			},
+	}
+	if (!productionSwiper) {
+		productionSwiper = new Swiper(productionSlider, {
+			slideClass: 'production__item',
+			wrapperClass: 'production__body',
+			spaceBetween: 20,
+			slidesPerView: 3,
+			speed: 800,
 			breakpoints: {
 				300: {
-					allowTouchMove: true,
+					slidesPerView: 1.5,
+					spaceBetween: 8,
 				},
 				767.98: {
-					allowTouchMove: false,
-				},
+					slidesPerView: 3,
+					spaceBetween: 20,
+				}
 			}
 		})
 	}
-	const aboutSlider = document.querySelector('.slider-about__body');
-	if (aboutSlider) {
-		const aboutSwiper = new Swiper(aboutSlider, {
-			slidesPerView: 'auto',
-			spaceBetween: 20,
-			speed: 800,
-			navigation: {
-				nextEl: aboutSlider.nextElementSibling?.querySelector(".slider-button-next"),
-				prevEl: aboutSlider.nextElementSibling?.querySelector(".slider-button-prev"),
-			},
-		})
+}
+function destroyGallerySlider() {
+	if (aboutSwiper) {
+		aboutSwiper.destroy();
+		aboutSwiper = null;
 	}
+	if (productionSwiper) {
+		productionSwiper.destroy();
+		productionSwiper = null;
+	}
+}
+function resizeOptions() {
+	if (window.innerWidth < 991.98) {
+		initGallerySlider();
+	} else if (window.innerWidth > 991.98) {
+		destroyGallerySlider();
+	}
+}
+function stateWindow() {
+	if (window.innerWidth < 991.98 && sliderType == 'desktop') {
+		sliderType = 'mobile';
+		initCatagorySlider(sliderType);
+	} else if (window.innerWidth > 991.98 && sliderType == 'mobile') {
+		sliderType = 'desktop';
+		initCatagorySlider(sliderType);
+	}
+}
+
+window.addEventListener("resize", stateWindow);
+window.addEventListener("resize", resizeOptions);
+window.addEventListener("load", stateWindow);
+window.addEventListener("load", resizeOptions);
+
+// Слайдеры в большой карточке товара
+const cardMainSlider = document.querySelector('.main-slider__body');
+const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
+const cardThumbschildren = cardThumbsSlider?.children[0].children.length;
+const cardMainChildren = cardMainSlider?.children[0].children.length;
+let cardNavSwiper;
+if (cardThumbsSlider && cardThumbschildren <= 5) {
+	cardThumbsSlider.nextElementSibling.remove();
+}
+if (cardMainSlider && cardMainChildren <= 1) {
+	cardMainSlider.querySelector('.main-slider__controls').remove();
+}
+if (cardMainSlider) {
+	cardNavSwiper = new Swiper(cardThumbsSlider, {
+		slidesPerView: 5,
+		spaceBetween: 12,
+		slideClass: "thumbs-slider__item",
+		wrapperClass: "thumbs-slider__wrapper",
+		speed: 600,
+		navigation: {
+			nextEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-next"),
+			prevEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-prev"),
+		},
+	})
+	let cardMainSwiper = new Swiper(cardMainSlider, {
+		slidesPerView: 1,
+		mousewheel: {
+			releaseOnEdges: true,
+			invert: false,
+		},
+
+		grabCursor: false,
+		slideClass: "main-slider__item",
+		wrapperClass: "main-slider__wrapper",
+		speed: 600,
+		spaceBetween: 10,
+		thumbs: {
+			swiper: cardNavSwiper,
+		},
+		navigation: {
+			nextEl: ".slider-button-next",
+			prevEl: ".slider-button-prev",
+		},
+		breakpoints: {
+			300: {
+				allowTouchMove: true,
+				direction: 'horizontal',
+			},
+			991.98: {
+				allowTouchMove: false,
+				direction: 'vertical',
+			},
+		}
+	})
 }
 
 // Поле поиска
@@ -175,7 +232,7 @@ if (deleteButton) {
 	})
 }
 
-// Блок табов с добавление в url hash из ссылки
+// Блок табов с добавлением в url hash из ссылки
 // window.addEventListener('hashchange', getHash);
 // function getHash(event) {
 // 	event.preventDefault();
@@ -333,25 +390,7 @@ function filterOpen(item) {
 	button.addEventListener("click", (event) => {
 		item.classList.toggle("isOpen");
 	})
-	// let description = item.querySelector(".filter-group__choices");
-	// if (item.classList.contains("isOpen")) {
-	// 	description.style.height = `${description.scrollHeight}px`;
-	// } else {
-	// 	description.style.height = "0px";
-	// }
 }
-// Закрытие всех пунктов кроме текущешл
-// function removeOpen(index1) {
-// 	box.forEach((item2, index2) => {
-// 		if (index1 != index2) {
-// 			item2.classList.remove("open");
-// 			let des = item2.querySelector(".author-box__body");
-// 			let btnText = item2.querySelector(".author-box__button-text");
-// 			btnText.textContent = "Развернуть";
-// 			// des.style.height = "0px";
-// 		}
-// 	})
-// }
 
 // Показать скрытые радиокнопки на странице Товара (Размер одежды, Размер обуви)
 const groupCards = document.querySelectorAll('.group-card');
@@ -367,7 +406,7 @@ if (groupCards) {
 		}
 	})
 }
-// Галерея на странице Карточка товара
+// Галерея lightgallery.js
 function initGallery() {
 	const galleries = document.querySelectorAll('.gallery');
 	[...galleries].forEach(gallery => {
@@ -397,12 +436,13 @@ if (mapElem) {
 			ymaps.ready(() => {
 				myMap = new ymaps.Map('office-ymap', {
 					center: [56.248821, 43.877393],
-					zoom: 16
+					zoom: 16,
+					controls: ['zoomControl'],
 				}, {
 					searchControlProvider: 'yandex#search'
 				}),
 					myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-						balloonContent: 'Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304'
+						// balloonContent: 'Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304'
 					}, {
 						iconLayout: 'default#image',
 						iconImageHref: './images/icons/location.svg',
@@ -415,22 +455,26 @@ if (mapElem) {
 				myMap.controls.remove('trafficControl'); // удаляем контроль трафика
 				myMap.controls.remove('typeSelector'); // удаляем тип
 				myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-				myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
+				// myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
 				myMap.controls.remove('rulerControl'); // удаляем контрол правил
 				myMap.behaviors.disable('scrollZoom');
+				myMap.behaviors.disable('drag');
 			});
 			const mapTabTrigger = document.querySelectorAll('[data-map-trigger]');
 			[...mapTabTrigger].forEach(tab => {
 				tab.addEventListener('click', () => {
 					const dataLat = Number(tab.dataset.lat);
 					const dataLing = Number(tab.dataset.ling);
-					console.log(typeof dataLat, typeof dataLing);
+					const dataZoom = Number(tab.dataset.zoom);
+					const dataAddress = tab.dataset.address;
 					[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
 					tab.classList.add('isActive');
-					myMap.setCenter([dataLat, dataLing], 16, {
+					myMap.setCenter([dataLat, dataLing], dataZoom, {
 						checkZoomRange: true
 					});
 					myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
+					myPlacemark.setBalloonContent(dataAddress);
+					myMap.addOverlay(myPlacemark);
 				})
 			})
 		};
@@ -465,7 +509,7 @@ Array.prototype.forEach.call(
 	(el) => new SimpleBar(el)
 );
 
-// Раскрытие информации в тектсовом блоке
+// Раскрытие информации в тектсовом блоке (в финальной версии - толкьо главаня страница)
 const textBlock = document.querySelector('.text-block');
 if (textBlock) {
 	textBlock.addEventListener('click', (event) => {
@@ -477,60 +521,65 @@ if (textBlock) {
 	})
 }
 
-// Загрузка файла
-const formOffer = document.getElementById('formOffer');
-if (formOffer) {
-	const inputUpload = formOffer.querySelector('#upload_file');
-	const fileList = formOffer.querySelector('#fileList');
-	const loadFile = formOffer.querySelector('#loadFile');
-	const emptyList = formOffer.querySelector('#emptyList');
-	let file;
-	let files = inputUpload.files;
-	// checkEmptyList(files);
-	function uploadFile(event) {
-		if (event.target.closest('#upload_file')) {
-			file = event.target.files[0];
-			renderFile(file);
+// Загрузка файла (форма - заказать коммерческое предложение)
+function uploadFile(formId) {
+	const form = document.getElementById(formId);
+	if (form) {
+		const inputUpload = form.querySelector('[data-upload-file]');
+		const fileList = form.querySelector('[data-file-list]');
+		const loadFile = form.querySelector('[data-load-file]');
+		const emptyList = form.querySelector('[data-empty-list]');
+		let file;
+		let files = inputUpload?.files;
+		// checkEmptyList(files);
+		function uploadFile(event) {
+			if (event.target.closest('[data-upload-file]')) {
+				file = event.target.files[0];
+				renderFile(file);
+			}
 		}
-	}
-	function deleteFile(event) {
-		// Проверяем если клик был НЕ по кнопке "удалить файл"
-		if (event.target.dataset.action !== 'delete') return;
-		const parentNode = event.target.closest('.file-item');
-		// Удаляем файл из разметки
-		parentNode.remove();
-		checkEmptyList(files);
-	}
-	function checkEmptyList(files) {
-		if (files.length === 0) {
-			const emptyListHTML = `<li id="emptyList">
-				<label class="load-file__label">
-					<input type="file" id="upload_file" class="load-file__input visuallyHidden">
-					Прикрепить файл
-				</label>
-			</li>`;
-			// fileList.insertAdjacentHTML('afterbegin', emptyListHTML);
-			fileList.innerHTML = emptyListHTML;
+		function deleteFile(event) {
+			// Проверяем если клик был НЕ по кнопке "удалить файл"
+			if (event.target.dataset.action !== 'delete') return;
+			const parentNode = event.target.closest('.file-item');
+			// Удаляем файл из разметки
+			parentNode.remove();
+			checkEmptyList(files);
 		}
-		if (files.length > 0) {
-			const emptyListEl = document.querySelector('#emptyList');
-			emptyListEl ? emptyListEl.remove() : null;
+		function checkEmptyList(files) {
+			if (files.length === 0) {
+				const emptyListHTML = `<li data-empty-list>
+						<label class="load-file__label">
+							<input type="file" id="upload_file" class="load-file__input visuallyHidden">
+							Прикрепить файл
+						</label>
+					</li>`;
+				// fileList.insertAdjacentHTML('afterbegin', emptyListHTML);
+				fileList.innerHTML = emptyListHTML;
+			}
+			if (files.length > 0) {
+				const emptyListEl = document.querySelector('#emptyList');
+				emptyListEl ? emptyListEl.remove() : null;
+			}
 		}
+		function renderFile(file) {
+			// Формируем разметку для нового файла
+			let fileItem = `<li class="file-item">
+						<span class="file-item__text">${file.name}</span>
+						<button class="file-item__button" type="button" data-action="delete"></button>
+					</li>`;
+			// Добавляем данные файла (file.name) на страницу
+			fileList.innerHTML = fileItem;
+			loadFile.remove();
+		}
+		fileList.addEventListener('click', deleteFile);
+		form.addEventListener('change', uploadFile);
 	}
-	function renderFile(file) {
-		// Формируем разметку для нового файла
-		let fileItem = `<li class="file-item">
-				<span class="file-item__text">${file.name}</span>
-				<button class="file-item__button" type="button" id="delete_file" data-action="delete"></button>
-			</li>`;
-		// Добавляем данные файла (file.name) на страницу
-		fileList.innerHTML = fileItem;
-		loadFile.remove();
-	}
-	fileList.addEventListener('click', deleteFile);
-	formOffer.addEventListener('change', uploadFile);
 }
+uploadFile("formOffer")
+uploadFile("formOfferModal")
 
+// Кнопка показать фильтры на мобильной версии
 const filterBtn = document.getElementById('filterBtn');
 if (filterBtn) {
 	filterBtn.addEventListener('click', (event) => {
@@ -539,7 +588,17 @@ if (filterBtn) {
 	})
 }
 
+// Меню
+let iconMenu = document.querySelector(".menu-icon");
+if (iconMenu) {
+	let menuBody = document.querySelector(".menu");
+	iconMenu.addEventListener("click", (event) => {
+		document.body.classList.toggle('lock');
+		event.currentTarget.classList.toggle("active");
+		menuBody.classList.toggle("open");
+	});
+};
+
 window.addEventListener('DOMContentLoaded', () => {
 	initGallery();
-	initSliders();
 })

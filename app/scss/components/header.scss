@@ -1,10 +1,11 @@
-body.user-logged-in .header {
-	@media screen and (min-width: $lg) {
-		position: relative;
-		top: 79px;
-	}
-}
+// body.user-logged-in .header {
+// 	@media screen and (min-width: $lg) {
+// 		position: relative;
+// 		top: 79px;
+// 	}
+// }
 .header {
+	position: relative;
 	background-color: $whiteColor;
 	&__top {
 	}
@@ -68,15 +69,22 @@ body.user-logged-in .header {
 				color: #3d78eb;
 			}
 		}
+		@media screen and (max-width: $lg) {
+			margin: 0;
+		}
 	}
 	&__button {
 		width: 169px;
-		@media screen and (max-width: $lg) {
-			display: none;
-		}
+	}
+	&__body {
+		position: relative;
+		z-index: 20;
 	}
 }
 .search-header {
+	@media screen and (max-width: $lg) {
+		display: none;
+	}
 	&__item {
 		display: flex;
 		align-items: center;
@@ -94,6 +102,7 @@ body.user-logged-in .header {
 		max-height: 210px;
 		overflow-y: auto;
 		overflow-x: hidden;
+		z-index: 20;
 	}
 	&__list {
 		@include reset-list;
@@ -153,7 +162,7 @@ body.user-logged-in .header {
 		}
 		&.changed {
 			& .search-header__button--delete {
-				display: block;
+				display: flex;
 			}
 		}
 		@media (any-hover: hover) {
@@ -173,6 +182,7 @@ body.user-logged-in .header {
 		min-height: 24px;
 		position: relative;
 		font-weight: 500;
+		padding-right: 15px;
 		&::placeholder {
 			color: #676972;
 			font-size: 16px;
@@ -180,8 +190,6 @@ body.user-logged-in .header {
 			font-weight: 500;
 			font-family: "Gilroy", sans-serif;
 		}
-		padding-right: 30px;
-		position: relative;
 	}
 	&__button {
 		width: 24px;
@@ -203,6 +211,14 @@ body.user-logged-in .header {
 				background-color: #aaacb4;
 				mask-size: 12px 12px;
 				mask-image: url("../images/icons/close-gray.svg");
+				transition: background-color 0.2s ease 0s;
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					&::before {
+						background-color: #676972;
+					}
+				}
 			}
 		}
 		&--search {
@@ -217,11 +233,18 @@ body.user-logged-in .header {
 .top-header {
 	display: flex;
 	justify-content: space-between;
-	gap: 20px;
+	gap: 10px 20px;
 	align-items: flex-end;
 	border-bottom: 1px solid #e8e9ef;
+	flex-wrap: wrap;
 	@media screen and (max-width: $lg) {
-		display: none;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		gap: 8px;
+		border-bottom: none;
+		margin: 40px 0 16px;
 	}
 	&__info {
 	}
@@ -241,12 +264,17 @@ body.user-logged-in .header {
 			font-size: 14px;
 			line-height: 20px;
 		}
+		@media screen and (max-width: $lg) {
+			padding: 0;
+		}
 	}
 }
 .main-header {
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
+	position: relative;
+	z-index: 15;
 	@media screen and (max-width: $lg) {
 		padding: 8px 0;
 	}
@@ -268,6 +296,8 @@ body.user-logged-in .header {
 		@media screen and (max-width: $xxxl) {
 			gap: 20px 20px;
 		}
+		position: relative;
+		z-index: 20;
 	}
 }
 .menu-icon {
@@ -282,19 +312,41 @@ body.user-logged-in .header {
 		background: #0d2cb0;
 		position: relative;
 		overflow: hidden;
-		&::before {
+		&::before,
+		&::after {
 			content: "";
 			position: absolute;
 			top: 50%;
-			left: 50%;
 			width: 20px;
 			height: 20px;
 			background-color: $whiteColor;
-			transform: translate(-50%, -50%);
-			mask-image: url("../images/icons/burger.svg");
+			transform: translate(50%, -50%);
 			mask-repeat: no-repeat;
 			mask-position: center;
 			mask-size: 20px 20px;
+			transition:
+				transform 0.2s ease 0s,
+				right 0.2s ease 0s;
+		}
+		&::before {
+			mask-image: url("../images/icons/burger.svg");
+			right: 50%;
+		}
+		&::after {
+			mask-image: url("../images/icons/burger-close.svg");
+			mask-size: 14px 14px;
+			transform: translate(100%, -50%);
+			right: 0;
+		}
+		&.active {
+			&::before {
+				right: 100%;
+				transform: translate(0%, -50%);
+			}
+			&::after {
+				transform: translate(50%, -50%);
+				right: 50%;
+			}
 		}
 	}
 	@media screen and (max-width: $md) {
@@ -310,20 +362,39 @@ body.user-logged-in .header {
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 10px 40px;
+	@media screen and (max-width: $xxxl) {
+		gap: 10px 20px;
+	}
 	@media screen and (max-width: $lg) {
 		position: fixed;
-		top: 0;
-		left: 0;
+		top: 88px;
+		right: -100%;
 		width: 100%;
 		height: 100%;
+		min-height: 100vh;
 		background-color: #f9f9fb;
 		overflow-x: hidden;
 		overflow-y: auto;
-		right: -100%;
-		display: none;
+		z-index: 10;
+		padding: 36px 16px 100px;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 0;
+		opacity: 0;
+		transition:
+			right 0.5s ease 0s,
+			opacity 0.5s ease 0s;
+		transform-origin: left;
+		// display: none;
+		&.open {
+			right: 0;
+			opacity: 1;
+		}
 	}
-	@media screen and (max-width: $xxxl) {
-		gap: 10px 20px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 80px;
+		top: 48px;
 	}
 	& ul {
 		@include reset-list;
@@ -333,6 +404,10 @@ body.user-logged-in .header {
 		flex-wrap: wrap;
 		@media screen and (max-width: $xxxl) {
 			gap: 10px 20px;
+		}
+		@media screen and (max-width: $lg) {
+			gap: 20px;
+			flex-direction: column;
 		}
 	}
 	& li {
@@ -372,6 +447,14 @@ body.user-logged-in .header {
 			mask-repeat: no-repeat;
 			mask-position: center;
 			mask-size: 12px 12px;
+		}
+		@media screen and (max-width: $lg) {
+			display: block;
+			margin-bottom: 20px;
+			color: #181c2d;
+			&::before {
+				content: none;
+			}
 		}
 	}
 }

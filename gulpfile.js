@@ -111,15 +111,15 @@ const path = {
   buildFolder: buildFolder,
   rootFolder: rootFolder,
   srcFolder: srcFolder,
-  ftp: `` // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
+  ftp: `/public_html/` // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
 }
 
 // Настройка FTP соединения
 const configFTP = {
-  host: "", // Адрес FTP сервера
-  user: "", // Имя пользователя
-  password: "", // Пароль
-  parallel: 5 // Кол-во одновременных потоков
+  host: 'html.webshop.ru', // Адрес FTP сервера
+  user: 'htmlshop', // Имя пользователя
+  password: 'L540YD9y', // Пароль
+  parallel: 5 // Количество одновременных потоков
 }
 
 // Раскомментировать, если нужна верстка под MODX
@@ -421,12 +421,15 @@ function zip() {
     .pipe(zipPlugin(`${path.rootFolder}.zip`))
     .pipe(dest('./'));
 }
+// FTP
+import * as nodePath from 'path';
+const repositoryName = nodePath.basename(nodePath.resolve());
 function ftp() {
   configFTP.log = util.log;
   const ftpConnect = vinylFTP.create(configFTP);
   return src(`${path.buildFolder}/**/*.*`, {})
     .pipe(plumber(plumberNotify("FTP")))
-    .pipe(ftpConnect.dest(`/${path.ftp}/${path.rootFolder}`));
+    .pipe(ftpConnect.dest(`/${path.ftp}/${repositoryName}`));
 }
 
 const mainTasks = parallel(images, jsDist, jsLibs, jsMin, buildPug, styles, sprite, fonts, files);
@@ -434,8 +437,8 @@ const mainTasks = parallel(images, jsDist, jsLibs, jsMin, buildPug, styles, spri
 const watch = series(cleandist, mainTasks, parallel(browsersync, startwatch))
 const build = series(cleandist, mainTasks)
 
-const deployFTP = series(build, ftp);
-const deployZIP = series(build, zip);
+const deployFTP = series(parallel(build, ftp));
+const deployZIP = series(parallel(build, zip));
 
 export { build, watch, zip, ftp, cleandist }
 

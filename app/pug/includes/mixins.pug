@@ -1,11 +1,11 @@
-mixin breadcrumbs(items, last)
-	div.breadcrumbs
-		ul.breadcrumbs__list
-			each item in items
-				li.breadcrumbs__item
-					a(href="/" title=item)= item
-			if last 
-				li.breadcrumbs__item.breadcrumbs__item--last= last
+//- mixin breadcrumbs(items, last)
+//- 	div.breadcrumbs
+//- 		ul.breadcrumbs__list
+//- 			each item in items
+//- 				li.breadcrumbs__item
+//- 					a(href="/" title=item)= item
+//- 			if last 
+//- 				li.breadcrumbs__item.breadcrumbs__item--last= last
 mixin menu([...items])
 	ul.menu__list
 		each item, index in items
@@ -110,7 +110,7 @@ mixin modal(modalId, title, subTitle, text, btntTitle, modalClass)
 			.modal__body
 				case modalId
 					when "offer"
-						form.modal__form(action="#")
+						form.modal__form.form(action="#" enctype="multipart/form-data" id="formOfferModal")
 							.form__items
 								.form-item
 									input(type="text" placeholder="Имя" name="name").form-input
@@ -121,8 +121,9 @@ mixin modal(modalId, title, subTitle, text, btntTitle, modalClass)
 							.form__bottom.modal-bottom
 								input(type="submit" value=btntTitle).form__button.btn
 								.form__load.load-file
-									label.load-file__label 
-										input(type="file").load-file__input.visuallyHidden
+									.load-file__list(data-file-list)
+									label.load-file__label(data-load-file)
+										input(type="file" data-upload-file name="upload").load-file__input.visuallyHidden
 										| прикрепить файл
 								.modal__text 
 									| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#").modal__link политикой обработки персональных данных]

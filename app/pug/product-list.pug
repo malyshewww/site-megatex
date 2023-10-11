@@ -3,7 +3,7 @@ extends includes/layout.pug
 append variables
 	- let pageTitle = "Список товаров";
 	- description += pageTitle;
-	- productList = 0;
+	- productList = 1;
 block crumbs 
 	- var breadcrumbsList = ["Главная", "Каталог", "Защита рук"];
 	+breadcrumbs([...breadcrumbsList], "Перчатки и рукавицы")

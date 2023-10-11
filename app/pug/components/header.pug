@@ -1,7 +1,8 @@
 header.header#header
+	.header-bg
 	div.container
 		.header__body
-			.header__top.top-header
+			.header__top.top-header(data-da=".header__menu, 991.98, 2")
 				.top-header__info
 					address.top-header__address г. Н. Новгород, проспект Ленина, 109, БЦ «Чайка», офис 304
 				.top-header__actions
@@ -36,8 +37,5 @@ header.header#header
 										a(href=item.link).menu__link= item.title 
 				.main-header__actions
 					a.header__phone(href="tel:88002014822") 8 800 201-48-22
-					button(type="button" data-graph-path="offer").header__button.btn Запросить КП
+					button(type="button" data-graph-path="offer" data-da=".header__menu, 991.98, 3").header__button.btn Запросить КП
 					button.menu-icon(type="button")
-						span
-						span
-						span

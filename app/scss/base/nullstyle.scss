@@ -4,8 +4,8 @@
 	border: 0px;
 }
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -81,12 +81,15 @@ button {
 	color: inherit;
 	background-color: inherit;
 }
+button::-moz-focus-inner {
+	border: 0;
+}
+button:active,
+button:focus {
+	outline: none;
+}
 a {
 	color: inherit;
-}
-input.error,
-textarea.error {
-	border-color: red;
 }
 a:link,
 a:visited {

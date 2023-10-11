@@ -57,11 +57,15 @@ block content
 									+sizeRadio('48', 'size_3', "size")
 									+sizeRadio('50', 'size_4', "size")
 									+sizeRadio('52', 'size_5', "size")
-									+sizeRadio('52', 'size_6', "size")
+									+sizeRadio('54', 'size_6', "size")
 									+sizeRadio('56', 'size_7', "size")
 									+sizeRadio('58', 'size_8', "size")
-										+sizeRadio('60', 'size_9', "size")
-								button(type="button").size-radiobutton__show-more.show-btn.btn-secondary показать еще 4
+									+sizeRadio('60', 'size_9', "size")
+									+sizeRadio('44', 'size_10', "size")
+									+sizeRadio('46', 'size_11', "size")
+									+sizeRadio('48', 'size_12', "size")
+									+sizeRadio('50', 'size_13', "size")
+								//- button(type="button").size-radiobutton__show-more.show-btn.btn-secondary показать еще 4
 						.product-card__group.group-card.group-card--features
 							.group-card__label Основные характеристики:
 							.group-card__features.features-card
@@ -84,18 +88,19 @@ block content
 						h2.product-card__content-title Описание	
 						each item in card.content
 							p= item
-						table 
-							thead 
-								tr 
-									th Характеристики
-									th Описание
-									th Описание
-							tbody 
-								each itemTable in card.table
+						.table(data-simplebar)
+							table
+								thead 
 									tr 
-										td= itemTable.title
-										td= itemTable.value
-										td= itemTable.value
+										th Характеристики
+										th Описание
+										th Описание
+								tbody 
+									each itemTable in card.table
+										tr 
+											td= itemTable.title
+											td= itemTable.value
+											td= itemTable.value
 						ul 
 							each item in card.list
 								li= item
