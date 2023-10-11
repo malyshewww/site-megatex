@@ -422,14 +422,12 @@ function zip() {
     .pipe(dest('./'));
 }
 // FTP
-import * as nodePath from 'path';
-const repositoryName = nodePath.basename(nodePath.resolve());
 function ftp() {
   configFTP.log = util.log;
   const ftpConnect = vinylFTP.create(configFTP);
   return src(`${path.buildFolder}/**/*.*`, {})
     .pipe(plumber(plumberNotify("FTP")))
-    .pipe(ftpConnect.dest(`/${path.ftp}/${repositoryName}`));
+    .pipe(ftpConnect.dest(`/${path.ftp}/${rootFolder}`));
 }
 
 const mainTasks = parallel(images, jsDist, jsLibs, jsMin, buildPug, styles, sprite, fonts, files);
