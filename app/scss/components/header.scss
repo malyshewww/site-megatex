@@ -339,6 +339,7 @@
 			right: 0;
 		}
 		&.active {
+			background-color: #B8CFF2;
 			&::before {
 				right: 100%;
 				transform: translate(0%, -50%);

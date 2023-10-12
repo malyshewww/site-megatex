@@ -19,16 +19,16 @@ footer.footer
 					.menu-footer__column 
 						.menu-footer__label Каталог
 						nav.menu-footer__nav 
-							ul.menu-footer__list 
+							ul
 								each item in menuFooter.column_1
-									li.menu-footer__item 
-										a(href=item.link).menu-footer__link= item.title
+									li 
+										a(href=item.link)= item.title
 					.menu-footer__column
 						nav.menu-footer__nav 
-							ul.menu-footer__list 
+							ul
 								each item in menuFooter.column_2
-									li.menu-footer__item 
-										a(href=item.link).menu-footer__link= item.title
+									li
+										a(href=item.link)= item.title
 	.footer__bottom.bottom-footer
 		.container
 			.bottom-footer__body

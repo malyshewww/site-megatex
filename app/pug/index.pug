@@ -65,22 +65,7 @@ block content
 					.form-offer__info
 						.form-offer__title Запросить коммерческое предложение
 						.form-offer__sub-title Оставьте заявку, и мы оперативно свяжемся с Вами для формирования коммерческого предложения
-						.form-offer__items 
-							.form-offer-item.form-item
-								input(type="text" name="name" placeholder="Имя").form-input
-								span.error-message Введите корректное имя
-							.form-offer-item.form-item 
-								input(type="tel" name="phone" placeholder="+7 (___) ___-__-__").form-input
-								span.error-message Введите корректный телефон
-						.form-offer__bottom 
-							input(type="submit" value="Отправить заявку").form-offer__button.btn
-							.form-offer__file.load-file
-								.load-file__list(data-file-list)
-								label.load-file__label(data-load-file)
-									input(type="file" data-upload-file name="upload").load-file__input.visuallyHidden
-									| Прикрепить файл
-							.form-offer__text 
-								| Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с #[a(href="#" class="form__link")  политикой обработки персональных данных]
+						+formBody()
 				.form-offer__image.ibg
 					img(src="images/offer/image.jpg", alt="изображение с формы" loading="lazy")
 	+textBlock("home-text-block")

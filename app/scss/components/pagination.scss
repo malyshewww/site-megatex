@@ -36,6 +36,9 @@
 		@media (any-hover: hover) {
 			&:hover {
 				color: #676972;
+				&::before {
+					background-color: #676972;
+				}
 			}
 		}
 		&--prev,
@@ -62,12 +65,14 @@
 				mask-image: url("../images/icons/arrow-next.svg");
 			}
 		}
-		@media (any-hover: hover) {
-			&:hover {
-				color: #676972;
-				&::before {
-					background-color: #676972;
-				}
+		@media screen and (max-width: $md) {
+			flex: 0 0 24px;
+			width: 24px;
+			height: 24px;
+			&::before {
+				width: 24px;
+				height: 24px;
+				mask-size: 24px 24px;
 			}
 		}
 	}

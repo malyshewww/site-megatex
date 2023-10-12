@@ -3,6 +3,7 @@ let sliderType = window.innerWidth < 991.98 ? 'mobile' : 'desktop';
 // Слайдер "новинки"
 const newSlider = document.querySelector(".new__wrapper");
 if (newSlider) {
+	let children = newSlider.children[0].children.length;
 	const newSwiper = new Swiper(newSlider, {
 		wrapperClass: "new__body",
 		slideClass: "new__item",
@@ -12,6 +13,7 @@ if (newSlider) {
 			prevEl: newSlider.previousElementSibling?.querySelector('.slider-button-prev'),
 			nextEl: newSlider.previousElementSibling?.querySelector('.slider-button-next'),
 		},
+		watchOverflow: true,
 		breakpoints: {
 			300: {
 				slidesPerView: 1.1,
@@ -31,21 +33,20 @@ if (newSlider) {
 // Слайдер категорий
 let categorySwiper = null;
 const sliderCategories = document.querySelectorAll('.categories__wrapper');
-function initCatagorySlider(type) {
+function initCategorySlider(type) {
 	if (!categorySwiper) {
 		[...sliderCategories].forEach(slider => {
-			let children = slider.children[0].children.length;
 			if (type == "mobile") {
 				categorySwiper = new Swiper(slider, {
 					slideClass: "categories__item",
 					wrapperClass: "categories__body",
 					slidesPerGroup: 1,
-					freeMode: false,
 					// navigation: {
 					// 	prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
 					// 	nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
 					// },
 					speed: 800,
+					simulateTouch: true,
 					breakpoints: {
 						300: {
 							slidesPerView: 1.1,
@@ -58,90 +59,69 @@ function initCatagorySlider(type) {
 					}
 				});
 			}
-			else {
-				categorySwiper?.destroy(true);
-				categorySwiper = null;
-			}
 		})
 	}
 }
-initCatagorySlider(sliderType);
+initCategorySlider(sliderType);
 // Слайдер на странице "О компании" и на текстовой странице
 const aboutSlider = document.querySelector('.slider-about__body');
 const productionSlider = document.querySelector('.production__wrapper');
 let aboutSwiper = null;
 let productionSwiper = null;
-function initGallerySlider() {
-	if (!aboutSwiper) {
-		aboutSwiper = new Swiper(aboutSlider, {
-			slideClass: 'slider-about__item',
-			wrapperClass: 'slider-about__wrapper',
-			spaceBetween: 20,
-			slidesPerView: 3,
-			speed: 800,
-			breakpoints: {
-				300: {
-					slidesPerView: 1.5,
-					spaceBetween: 8,
-				},
-				767.98: {
-					slidesPerView: 3,
-					spaceBetween: 20,
+function initGallerySlider(type) {
+	if (type == "mobile") {
+		if (!aboutSwiper) {
+			aboutSwiper = new Swiper(aboutSlider, {
+				slideClass: 'slider-about__item',
+				wrapperClass: 'slider-about__wrapper',
+				spaceBetween: 20,
+				slidesPerView: 3,
+				speed: 800,
+				breakpoints: {
+					300: {
+						slidesPerView: 1.5,
+						spaceBetween: 8,
+					},
+					767.98: {
+						slidesPerView: 3,
+						spaceBetween: 20,
+					}
 				}
-			}
-		})
-	}
-	if (!productionSwiper) {
-		productionSwiper = new Swiper(productionSlider, {
-			slideClass: 'production__item',
-			wrapperClass: 'production__body',
-			spaceBetween: 20,
-			slidesPerView: 3,
-			speed: 800,
-			breakpoints: {
-				300: {
-					slidesPerView: 1.5,
-					spaceBetween: 8,
-				},
-				767.98: {
-					slidesPerView: 3,
-					spaceBetween: 20,
+			})
+		}
+		if (!productionSwiper) {
+			productionSwiper = new Swiper(productionSlider, {
+				slideClass: 'production__item',
+				wrapperClass: 'production__body',
+				spaceBetween: 20,
+				slidesPerView: 3,
+				speed: 800,
+				breakpoints: {
+					300: {
+						slidesPerView: 1.5,
+						spaceBetween: 8,
+					},
+					767.98: {
+						slidesPerView: 3,
+						spaceBetween: 20,
+					}
 				}
-			}
-		})
-	}
-}
-function destroyGallerySlider() {
-	if (aboutSwiper) {
-		aboutSwiper.destroy();
-		aboutSwiper = null;
-	}
-	if (productionSwiper) {
-		productionSwiper.destroy();
-		productionSwiper = null;
-	}
-}
-function resizeOptions() {
-	if (window.innerWidth < 991.98) {
-		initGallerySlider();
-	} else if (window.innerWidth > 991.98) {
-		destroyGallerySlider();
+			})
+		}
 	}
 }
 function stateWindow() {
 	if (window.innerWidth < 991.98 && sliderType == 'desktop') {
 		sliderType = 'mobile';
-		initCatagorySlider(sliderType);
+		initCategorySlider(sliderType);
+		initGallerySlider(sliderType);
 	} else if (window.innerWidth > 991.98 && sliderType == 'mobile') {
 		sliderType = 'desktop';
-		initCatagorySlider(sliderType);
+		initCategorySlider(sliderType);
+		initGallerySlider(sliderType);
 	}
 }
-
 window.addEventListener("resize", stateWindow);
-window.addEventListener("resize", resizeOptions);
-window.addEventListener("load", stateWindow);
-window.addEventListener("load", resizeOptions);
 
 // Слайдеры в большой карточке товара
 const cardMainSlider = document.querySelector('.main-slider__body');
@@ -173,7 +153,6 @@ if (cardMainSlider) {
 			releaseOnEdges: true,
 			invert: false,
 		},
-
 		grabCursor: false,
 		slideClass: "main-slider__item",
 		wrapperClass: "main-slider__wrapper",
@@ -269,7 +248,7 @@ if (featuresLink) {
 			const target = event.target;
 			event.preventDefault();
 			let href = target.getAttribute('href').substring(1);
-			const scrollTarget = document.getElementById(href);
+			// const scrollTarget = document.getElementById(href);
 			// const targetLink = document.querySelector(`.tabs__link[href="#${href}"]`)
 			// document.querySelectorAll('.tabs__link').forEach((child) => {
 			// 	child.classList.remove('isActive');
@@ -306,6 +285,24 @@ function scrollTop() {
 			const buttonUp = document.querySelector('.scroll-top');
 			window.scrollY > 600 ? buttonUp.classList.remove('hidden') : buttonUp.classList.add('hidden')
 		})
+		if (window.innerWidth > 767.98) {
+			const footer = document.querySelector('footer');
+			const options = {
+				rootMargin: '0px 0px -45px 0px',
+				threshold: 0,
+			}
+			const observer = new IntersectionObserver(([entry]) => {
+				const targetInfo = entry.boundingClientRect;
+				const rootBoundsInfo = entry.rootBounds;
+				if (targetInfo.top > rootBoundsInfo.bottom || targetInfo.isIntersecting) {
+					// observer.unobserve(entry.target)
+					buttonUp.classList.remove('active');
+				} else {
+					buttonUp.classList.add('active');
+				}
+			}, options)
+			observer.observe(footer);
+		}
 	}
 }
 scrollTop();
@@ -417,13 +414,22 @@ function initGallery() {
 		});
 	})
 }
+window.addEventListener('DOMContentLoaded', () => {
+	initGallery();
+})
 
 // Яндекс карта
 const mapElem = document.getElementById("map");
 if (mapElem) {
+	const map = document.getElementById('office-ymap');
 	let myMap,
 		myPlacemark;
 	let isLoaded = false;
+	let options_map = {
+		once: true, //запуск один раз, и удаление наблюдателя сразу
+		passive: true,
+		capture: true
+	};
 	function loadMap() {
 		var script = document.createElement("script");
 		script.src = "https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU";
@@ -435,6 +441,7 @@ if (mapElem) {
 			}
 			ymaps.ready(() => {
 				myMap = new ymaps.Map('office-ymap', {
+					...options_map,
 					center: [56.248821, 43.877393],
 					zoom: 16,
 					controls: ['zoomControl'],
@@ -455,10 +462,29 @@ if (mapElem) {
 				myMap.controls.remove('trafficControl'); // удаляем контроль трафика
 				myMap.controls.remove('typeSelector'); // удаляем тип
 				myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-				// myMap.controls.remove('zoomControl'); // удаляем контрол зуммирования
 				myMap.controls.remove('rulerControl'); // удаляем контрол правил
 				myMap.behaviors.disable('scrollZoom');
-				myMap.behaviors.disable('drag');
+				if (window.innerWidth < 991.98) {
+					myMap.behaviors.disable('drag');
+					let version = map.firstChild.getAttribute("class").replace('ymaps-', '').replace('-map', '');
+					let pane = document.querySelector(".ymaps-" + version + "-events-pane");
+					pane.innerHTML = "Чтобы переместить карту проведите по ней двумя пальцами";
+					pane.style.cssText = "height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; z-index: 2500; color: #fff; font-size: 22px; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; text-align: center; background-color: rgba(0,0,0,0.45); opacity: 0; transition: opacity 0.45s; padding: 25px; box-sizing: border-box;";
+					// Показать надпись
+					map.addEventListener("touchmove", function (e) {
+						let touches = e.touches.length;
+						if (touches > 1) {
+							// Если точек касания больше одной
+							pane.style.opacity = "0";
+						} else {
+							pane.style.opacity = "1";
+						};
+					});
+					// Скрыть надпись
+					map.addEventListener("touchend", function () {
+						pane.style.opacity = "0";
+					});
+				}
 			});
 			const mapTabTrigger = document.querySelectorAll('[data-map-trigger]');
 			[...mapTabTrigger].forEach(tab => {
@@ -473,20 +499,33 @@ if (mapElem) {
 						checkZoomRange: true
 					});
 					myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
-					myPlacemark.setBalloonContent(dataAddress);
-					myMap.addOverlay(myPlacemark);
+					// myPlacemark.setBalloonContent(dataAddress);
+					// myMap.addOverlay(myPlacemark);
 				})
 			})
 		};
 	}
-	if (mapElem.getBoundingClientRect().top < window.innerHeight) {
-		loadMap();
+	let observerOptions = {
+		// root: по умолчанию window, но можно задать любой элемент-контейнер
+		rootMargin: '0px 0px 0px 0px',
 	}
-	window.addEventListener("scroll", function () {
-		if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
+	let observer = new IntersectionObserver(([entry]) => {
+		const targetInfo = entry.boundingClientRect;
+		const rootBoundsInfo = entry.rootBounds;
+		if (!isLoaded && targetInfo.top < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
 			loadMap();
+			observer.unobserve(entry.target)
 		}
-	});
+	}, observerOptions)
+	observer.observe(mapElem)
+	// if (mapElem.getBoundingClientRect().top < window.innerHeight) {
+	// 	loadMap();
+	// }
+	// window.addEventListener("scroll", function () {
+	// 	if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
+	// 		loadMap();
+	// 	}
+	// });
 }
 
 // Подключение библиотеки для модальных окон
@@ -515,14 +554,15 @@ if (textBlock) {
 	textBlock.addEventListener('click', (event) => {
 		event.preventDefault();
 		let target = event.target;
-		if (target.closest('.text-block__gradient') || target.closest('.text-block__link')) {
+		if (target.closest('.text-block__gradient') || target.closest('.text-block__button')) {
 			textBlock.classList.add('isOpen');
+			target.closest('.text-block__button').remove();
 		}
 	})
 }
 
 // Загрузка файла (форма - заказать коммерческое предложение)
-function uploadFile(formId) {
+function attachFile(formId) {
 	const form = document.getElementById(formId);
 	if (form) {
 		const inputUpload = form.querySelector('[data-upload-file]');
@@ -576,8 +616,8 @@ function uploadFile(formId) {
 		form.addEventListener('change', uploadFile);
 	}
 }
-uploadFile("formOffer")
-uploadFile("formOfferModal")
+attachFile("formOffer")
+attachFile("formOfferModal")
 
 // Кнопка показать фильтры на мобильной версии
 const filterBtn = document.getElementById('filterBtn');
@@ -598,7 +638,3 @@ if (iconMenu) {
 		menuBody.classList.toggle("open");
 	});
 };
-
-window.addEventListener('DOMContentLoaded', () => {
-	initGallery();
-})

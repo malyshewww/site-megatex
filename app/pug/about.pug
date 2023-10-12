@@ -14,7 +14,7 @@ block crumbs
 						h1.top-about__title.page-title #{pageTitle}
 						.top-about__description #{about.descr}
 					.top-about__image.ibg
-						img(src="images/about/img-banner.jpg", alt=`баннер ${pageTitle}`)
+						img(src="images/about/img-banner.jpg", alt=`баннер ${pageTitle}` loading="lazy")
 			.about-page__content.content
 				each item in about.list
 					p= item

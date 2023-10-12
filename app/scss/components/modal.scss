@@ -1,24 +1,31 @@
 .modal {
 	background: rgba(24, 28, 45, 0.6);
 	backdrop-filter: blur(10px);
+	
 	&__container {
 		padding: 60px 120px 64px 80px;
 		border-radius: 16px;
 		background: #f9f9fb;
-		width: 690px;
+		max-width: 690px;
 		@media screen and (max-width: $md) {
 			padding: 50px 30px;
+		}
+		&.success-modal {
+			& .modal__header {
+				margin-bottom: 32px;
+				@media screen and (max-width: $md) {
+					margin-bottom: 20px;
+				}
+			}
 		}
 	}
 	&__content {
 	}
 	&__header {
-		margin-bottom: 32px;
+		// margin-bottom: 32px;
 		font-family: "Muller", sans-serif;
 		font-weight: 500;
-		@media screen and (max-width: $md) {
-			margin-bottom: 20px;
-		}
+		
 	}
 	&__title {
 		font-size: 36px;

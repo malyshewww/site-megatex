@@ -30,10 +30,10 @@ $xxxl: 1399.98px;
 @if ($responsiveType == 1) {
 	// Отзывчивая
 	[class*="__container"] {
-		@if ($maxWidthContainer > 0) {
-			max-width: $maxWidthContainer + px;
-			margin: 0 auto;
-		}
+		// @if ($maxWidthContainer > 0) {
+		// 	max-width: $maxWidthContainer + px;
+		// 	margin: 0 auto;
+		// }
 		@if ($containerPadding > 0) {
 			padding: 0 math.div($containerPadding, 2) + px;
 		}

@@ -89,19 +89,21 @@ const path = {
     html: `${srcFolder}/*.html`,
     pug: `${srcFolder}/pug/*.pug`,
     js: `${srcFolder}/scripts/main.js`,
+    jsLibs: `${srcFolder}/scripts/libs/**/*.js`,
     scss: `${srcFolder}/scss/**/main.scss`,
     images: `${srcFolder}/images/**/*.{jpg,jpeg,png,gif,webp,ico,json}`,
     svg: `${srcFolder}/images/**/*.svg`,
     fonts: `${srcFolder}/fonts/*.*`,
     files: `${srcFolder}/files/**/*.*`,
     svgicons: `${srcFolder}/svgicons/*.svg`,
-    jsLibs: `${srcFolder}/scripts/libs/**/*.js`,
+    styleLibs: `${srcFolder}/style/libs/**/*.css`,
   },
-
   watch: {
     pug: `${srcFolder}/pug/**/*.pug`,
     scss: `${srcFolder}/scss/**/*.scss`,
+    styleLibs: `${srcFolder}/style/libs/**/*.css`,
     js: `${srcFolder}/scripts/**/*.js`,
+    jsLibs: `${srcFolder}/scripts/libs/**/*.js`,
     images: `${srcFolder}/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp,json}`,
     fonts: `${srcFolder}/fonts/**/*`,
     svgicons: `${srcFolder}/svgicons/*.svg`,
@@ -111,7 +113,7 @@ const path = {
   buildFolder: buildFolder,
   rootFolder: rootFolder,
   srcFolder: srcFolder,
-  ftp: `/public_html/` // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
+  ftp: `public_html` // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
 }
 
 // Настройка FTP соединения
@@ -223,11 +225,19 @@ function styles() {
     ]))
     .pipe(rename({ suffix: ".min" }))
     .pipe(dest(path.build.css))
-    // Раскомментировать, если нужно добавлять в папку assets/template
-    // .pipe(dest(`${pathModxTemplate}styles/`))
     .pipe(browserSync.stream())
 }
-
+function stylesLibs() {
+	return src(path.src.styleLibs)
+    .pipe(plumber(plumberNotify("STYLE LIBS")))
+		.pipe(concat('libs.css'))
+		.pipe(dest(path.build.css))
+    .pipe(postCss([
+      cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
+    ]))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(dest(path.build.css))
+};
 // function scripts() {
 //   return src(path.src.js)
 //     .pipe(plumber(plumberNotify("JS")))
@@ -332,24 +342,18 @@ function images() {
 
     .pipe(src(path.src.svg))
     .pipe(dest(path.build.images))
-    // Раскомментировать, если нужно добавлять в папку assets/template
-    // .pipe(dest(`${pathModxTemplate}images/`))
     .pipe(browserSync.stream())
 }
 function fonts() {
   return src(path.src.fonts)
     .pipe(plumber(plumberNotify("FONTS")))
     .pipe(dest(path.build.fonts))
-    // Раскомментировать, если нужно добавлять в папку assets/template
-    // .pipe(dest(`${pathModxTemplate}fonts/`))
     .pipe(browserSync.stream())
 }
 function files() {
   return src(path.src.files)
     .pipe(plumber(plumberNotify("FILES")))
     .pipe(dest(path.build.files))
-  // Раскомментировать, если нужно добавлять в папку assets/template
-  // .pipe(dest(`${pathModxTemplate}files/`))
 }
 function sprite() {
   return src(path.src.svgicons)
@@ -394,8 +398,6 @@ function sprite() {
       }
     }))
     .pipe(dest(path.build.images))
-    // Раскомментировать, если нужно добавлять в папку assets/template
-    // .pipe(dest(`${pathModxTemplate}images/`))
     .pipe(browserSync.stream())
 }
 const cleandist = () => {
@@ -405,15 +407,17 @@ const cleandist = () => {
 function startwatch() {
   gulpWatch([path.watch.pug], { usePolling: true }, buildPug)
   gulpWatch([path.watch.scss], { usePolling: true }, styles)
+  gulpWatch([path.watch.styleLibs], { usePolling: true }, stylesLibs)
   // gulpWatch([path.watch.js], { usePolling: true }, scripts)
-  gulpWatch([path.src.js], { usePolling: true }, jsDist)
-  gulpWatch([path.src.jsLibs], { usePolling: true }, jsLibs)
+  gulpWatch([path.watch.js], { usePolling: true }, jsDist)
+  gulpWatch([path.watch.jsLibs], { usePolling: true }, jsLibs)
   gulpWatch([path.watch.images], { usePolling: true }, images)
   gulpWatch([path.watch.fonts], { usePolling: true }, fonts)
   gulpWatch([path.watch.svgicons], { usePolling: true }, sprite)
   gulpWatch([path.watch.files], { usePolling: true }, files)
   gulpWatch([`${buildFolder}/**/*.*`], { usePolling: true }).on('change', browserSync.reload)
 }
+// ZIP
 function zip() {
   deleteAsync(`./${path.rootFolder}.zip`);
   return src(`${path.buildFolder}/**/*.*`, {})
@@ -430,17 +434,18 @@ function ftp() {
     .pipe(ftpConnect.dest(`/${path.ftp}/${rootFolder}`));
 }
 
-const mainTasks = parallel(images, jsDist, jsLibs, jsMin, buildPug, styles, sprite, fonts, files);
+const mainTasks = parallel(images, jsDist, jsLibs, jsMin, buildPug, styles, stylesLibs, sprite, fonts, files);
 // Добавлена задача cleandist в watch
 const watch = series(cleandist, mainTasks, parallel(browsersync, startwatch))
 const build = series(cleandist, mainTasks)
 
-const deployFTP = series(parallel(build, ftp));
-const deployZIP = series(parallel(build, zip));
+const deployFTP = series(build, ftp);
+const deployZIP = series(build, zip);
 
 export { build, watch, zip, ftp, cleandist }
 
 export { deployFTP }
+
 export { deployZIP }
 
 export default watch;

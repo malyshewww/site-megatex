@@ -10,10 +10,7 @@
 		border-radius: 16px;
 		&-box {
 			height: 100%;
-			display: none;
-			&.isShow {
-				display: block;
-			}
+			display: block;
 			& > ymaps {
 				width: 100%;
 			}

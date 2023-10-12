@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "gulp",
 		"build": "gulp build --build",
-		"deploy": "gulp deployFTP --build",
+		"ftp": "gulp deployFTP --build",
 		"zip": "gulp deployZIP --build"
 	},
 	"devDependencies": {

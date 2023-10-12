@@ -36,6 +36,7 @@
 		position: relative;
 		z-index: 4;
 		color: #181c2d;
+		transition: color 0.3s ease 0s;
 		&::after {
 			color: $whiteColor;
 			display: block;
@@ -65,6 +66,27 @@
 		opacity: 0;
 		pointer-events: none;
 	}
+	@media screen and (min-width: $md) {
+		&.active {
+			mix-blend-mode: difference;
+			& .scroll-top__text {
+				color: $whiteColor;
+			}
+			&::before {
+				background-color: $whiteColor;
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					& .scroll-top__text {
+						color: $whiteColor;
+					}
+					&::before {
+						background-color: $whiteColor;
+					}
+				}
+			}
+		}
+	}
 	@media (any-hover: hover) {
 		&:hover {
 			& .scroll-top__text {
@@ -72,14 +94,6 @@
 			}
 			&::before {
 				background-color: #001d9a;
-			}
-		}
-		&.text-hidden {
-			&::before {
-				background-color: $whiteColor;
-			}
-			& .scroll-top__text {
-				display: none;
 			}
 		}
 	}
@@ -273,7 +287,7 @@
 	align-items: center;
 	gap: 4px;
 	cursor: pointer;
-	transition: color 0.2s ease 0s;
+	transition: all 0.2s ease 0s;
 	&::after {
 		content: "";
 		display: block;
@@ -291,6 +305,12 @@
 			&::after {
 				background-color: #001d9a;
 			}
+		}
+		&:focus {
+			padding: 8px 16px;
+			border: 1px solid #56b8ff;
+			box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
+			border-radius: 8px;
 		}
 	}
 	&.disabled,
@@ -346,10 +366,16 @@ input.error {
 	&:focus {
 		border-color: #56b8ff;
 		box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
+		&:hover {
+			border-color: #56b8ff;
+		}
 	}
 	@media (any-hover: hover) {
 		&:hover {
 			border-color: #aaacb4;
+			&:focus {
+				border-color: #56b8ff;
+			}
 		}
 	}
 	&:disabled {
@@ -524,11 +550,10 @@ input.error {
 		font-weight: 600;
 		line-height: 24px;
 		background-color: $whiteColor;
+		cursor: pointer;
 		@media (any-hover: hover) {
 			&:hover {
-				& .custom-radio {
-					border-color: #0d2cb0;
-				}
+				border-color: #0d2cb0;
 			}
 		}
 	}

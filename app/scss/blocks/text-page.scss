@@ -145,12 +145,27 @@
 		}
 	}
 	& a {
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 24px;
 		color: #0d2cb0;
 		transition: color 0.2s ease 0s;
-		@media (any-hover) {
+		@media (any-hover: hover) {
 			&:hover {
 				color: #3d78eb;
 			}
+		}
+		&:link {
+			color: #0d2cb0;
+		}
+		&:visited {
+			color: #601dec;
+		}
+	}
+	& .text-page__links {
+		padding-top: 60px;
+		@media screen and (max-width: $md) {
+			padding-top: 30px;
 		}
 	}
 	& .text-page-block {
@@ -166,6 +181,11 @@
 		font-size: 14px;
 		line-height: 20px;
 		font-weight: 400;
+		& p {
+			&:not(:last-child) {
+				margin-bottom: 12px;
+			}
+		}
 	}
 }
 

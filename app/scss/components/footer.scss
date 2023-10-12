@@ -1,7 +1,7 @@
 .footer {
 	background-color: #181c2d;
 	color: $whiteColor;
-	background-image: url("../images/footer-bg.png");
+	// background-image: url("../images/footer-bg.png");
 	&__main {
 	}
 	&__bottom {
@@ -119,13 +119,13 @@
 		font-weight: 600;
 		line-height: 20px;
 	}
-	&__list {
+	& ul {
 		@include reset-list;
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
 	}
-	&__link {
+	& a {
 		color: $whiteColor;
 		font-weight: 500;
 		line-height: 24px;
