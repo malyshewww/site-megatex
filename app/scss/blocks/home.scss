@@ -48,8 +48,8 @@
 			line-height: 38px;
 		}
 		@media screen and (max-width: $md) {
-			font-size: 20px;
-			line-height: 24px;
+			font-size: 26px;
+			line-height: 30px;
 			max-width: 80%;
 		}
 	}
@@ -143,12 +143,14 @@
 		animation-timing-function: linear;
 		animation-duration: 15s;
 		animation-iteration-count: infinite;
-		&:hover {
-			-webkit-animation-play-state: paused;
-			-moz-animation-play-state: paused;
-			-o-animation-play-state: paused;
-			animation-play-state: paused;
-			cursor: pointer;
+		@media (any-hover: hover) {
+			&:hover {
+				-webkit-animation-play-state: paused;
+				-moz-animation-play-state: paused;
+				-o-animation-play-state: paused;
+				animation-play-state: paused;
+				cursor: pointer;
+			}
 		}
 	}
 	&__link {
@@ -219,6 +221,16 @@
 	}
 	&-button {
 		width: 176px;
+		@media screen and (max-width: $md) {
+			display: none;
+		}
+		&-mobile {
+			display: none;
+			margin-top: 30px;
+			@media screen and (max-width: $md) {
+				display: block;
+			}
+		}
 	}
 	&__body {
 		display: grid;
@@ -420,7 +432,7 @@
 }
 .text-block {
 	padding: 100px 0 0;
-	transition: all 0.4s ease 0s;
+	// transition: all 0.4s ease 0s;
 	@media screen and (max-width: $md) {
 		padding: 50px 0 0;
 	}
@@ -431,9 +443,6 @@
 		}
 		& .text-block__description {
 			max-height: 100%;
-		}
-		& .text-block__link {
-			display: none;
 		}
 	}
 	&__info {
@@ -449,7 +458,7 @@
 		position: relative;
 		max-height: 156px;
 		overflow: hidden;
-		transition: max-height 1s ease 0s;
+		transition: max-height .3s linear 0s;
 		&.content {
 			font-size: 14px;
 			line-height: 20px;
@@ -464,7 +473,7 @@
 		width: 100%;
 		left: 0;
 		bottom: 0;
-		transition: opacity 0.4s ease 0s;
+		transition: opacity 0.3s linear 0s;
 	}
 	&__link {
 	}
@@ -478,6 +487,9 @@
 }
 
 .load-file {
+	@media screen and (max-width: $lg) {
+		order: -1;
+	}
 	&__list {
 		@include reset-list;
 	}

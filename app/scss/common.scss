@@ -13,7 +13,7 @@
 }
 .scroll-top {
 	position: fixed;
-	bottom: 40px;
+	bottom: 80px;
 	right: 40px;
 	display: flex;
 	flex-direction: column;
@@ -62,7 +62,7 @@
 		transition: background-color 0.2s ease 0s;
 	}
 	&.hidden {
-		transform: translateY(20px);
+		transform: translateY(150%);
 		opacity: 0;
 		pointer-events: none;
 	}
@@ -97,8 +97,8 @@
 			}
 		}
 	}
-	@media screen and (max-width: $md) {
-		bottom: 8px;
+	@media screen and (max-width: $lg) {
+		bottom: 40px;
 		right: 8px;
 		width: 36px;
 		height: 36px;
@@ -111,6 +111,9 @@
 		&__text {
 			display: none;
 		}
+	}
+	@media screen and (max-width: $md) {
+		bottom: 8px;
 	}
 }
 .ibg {
@@ -139,7 +142,7 @@
 		align-items: center;
 		gap: 24px;
 		@media screen and (max-width: $md) {
-			gap: 15px;
+			gap: 20px;
 		}
 	}
 	&__title {
@@ -182,9 +185,14 @@
 		transition: background-color 0.2s ease 0s;
 	}
 	@media screen and (max-width: $md) {
-		width: 30px;
-		height: 30px;
-		flex: 0 0 30px;
+		width: 24px;
+		height: 24px;
+		flex: 0 0 24px;
+		&::before {
+			width: 24px;
+			height: 24px;
+			mask-size: 20px 20px;
+		}
 	}
 	@media (any-hover: hover) {
 		&:hover {
@@ -297,7 +305,12 @@
 		mask-repeat: no-repeat;
 		mask-position: center;
 		background-color: #0d2cb0;
-		transition: background-color 0.2s ease 0s;
+		transition: background-color 0.2s ease 0s, transform .4s ease 0s;
+	}
+	&.isActive {
+		&::after {
+			transform: rotate(-90deg);
+		}
 	}
 	@media (any-hover: hover) {
 		&:hover {

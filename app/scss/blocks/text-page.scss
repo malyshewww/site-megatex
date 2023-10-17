@@ -162,6 +162,19 @@
 			color: #601dec;
 		}
 	}
+	& a.certificate {
+		@media (any-hover: hover) {
+			&:hover {
+				color: #0D2CB0;
+			}
+		}
+		&:link {
+			color: #181C2D;
+		}
+		&:visited {
+			color: #181C2D;
+		}
+	}
 	& .text-page__links {
 		padding-top: 60px;
 		@media screen and (max-width: $md) {

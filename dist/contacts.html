@@ -16,8 +16,8 @@
 	<meta property="twitter:description" content="description">
 	<link rel="canonical" href="https://example.com">
 	<link rel="preload" href="./fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-	<link href="styles/libs.css?_v=20231012161620" rel="stylesheet">
-	<link href="styles/main.min.css?_v=20231012161620" rel="stylesheet">
+	<link href="styles/libs.css" rel="stylesheet">
+	<link href="styles/main.min.css" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
@@ -50,7 +50,6 @@
 <body>
 	<div class="wrapper" id="wrapper">
 		<header class="header" id="header">
-			<div class="header-bg"></div>
 			<div class="container">
 				<div class="header__body">
 					<div class="header__top top-header" data-da=".header__menu, 991.98, 2">
@@ -205,7 +204,7 @@
 									</ul>
 								</div>
 							</div>
-							<button class="info-contacts__button btn" type="button" data-graph-path="order">Заказать звонок</button>
+							<button class="info-contacts__button btn" type="button" data-graph-path="call">Заказать звонок</button>
 						</div>
 					</div>
 				</div>
@@ -307,17 +306,11 @@
 				<div class="container">
 					<div class="main-footer__body">
 						<a class="footer__logo-mobile" href="index.html">
-							<picture>
-								<source srcset="images/footer-logo.webp" type="image/webp">
-								<img src="images/footer-logo.png" alt="логотип">
-							</picture>
+							<img src="images/footer-logo.png" alt="логотип">
 						</a>
 						<div class="footer__info">
 							<a class="footer__logo" href="index.html">
-								<picture>
-									<source srcset="images/footer-logo.webp" type="image/webp">
-									<img src="images/footer-logo.png" alt="логотип">
-								</picture>
+								<img src="images/footer-logo.png" alt="логотип">
 							</a>
 							<div class="footer__data">
 								<div class="footer__links">
@@ -334,7 +327,7 @@
 						<div class="footer__menu menu-footer">
 							<div class="menu-footer__column">
 								<div class="menu-footer__label">Каталог</div>
-								<nav class="menu-footer__nav">
+								<nav class="menu-footer__nav menu-footer__nav--catalog">
 									<ul>
 										<li>
 											<a href="catalog.html">Защита рук</a>
@@ -522,6 +515,34 @@
 					</div>
 				</div>
 			</div>
+			<div class="graph-modal__container modal__container" role="dialog" aria-modal="true" data-graph-target="call">
+				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
+				<div class="graph-modal__content modal__content">
+					<div class="modal__header">
+						<div class="modal__title">Заказать звонок</div>
+					</div>
+					<div class="modal__body">
+						<form class="modal__form form" action="#">
+							<div class="form__items">
+								<div class="form-item">
+									<input class="form-input" type="text" placeholder="Имя" name="name">
+									<span class="error-message">Введите корректное имя</span>
+								</div>
+								<div class="form-item">
+									<input class="form-input" type="tel" placeholder="Телефон*" name="phone">
+									<span class="error-message">Введите корректный телефон</span>
+								</div>
+							</div>
+							<div class="form__bottom modal-bottom">
+								<input class="form__button btn" type="submit" value="Отправить">
+								<div class="modal__text">
+									Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с <a class="modal__link" href="#">политикой обработки персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 			<div class="graph-modal__container modal__container success-modal" role="dialog" aria-modal="true" data-graph-target="success">
 				<button class="btn-reset graph-modal__close js-modal-close modal__close" aria-label="Закрыть модальное окно"></button>
 				<div class="graph-modal__content modal__content">
@@ -538,8 +559,8 @@
 			</div>
 		</div>
 	</div>
-	<script src="scripts/libs.js?_v=20231012161620"></script>
-	<script src="scripts/main.js?_v=20231012161620"></script>
+	<script src="scripts/libs.js"></script>
+	<script src="scripts/main.js"></script>
 </body>
 
 </html>

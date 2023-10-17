@@ -7,6 +7,9 @@
 .header {
 	position: relative;
 	background-color: $whiteColor;
+	@media screen and (max-width: $lg) {
+		box-shadow: 0px 4px 8px 0px rgba(24, 28, 45, 0.03);
+	}
 	&__top {
 	}
 	&__bottom {
@@ -48,12 +51,10 @@
 			}
 		}
 		@media screen and (max-width: $md) {
-			width: 32px;
-			height: 32px;
 			&::before {
-				width: 20px;
-				height: 20px;
-				mask-size: 20px 20px;
+				width: 30px;
+				height: 30px;
+				mask-size: 25px 25px;
 			}
 		}
 	}
@@ -91,18 +92,18 @@
 	}
 	&__result {
 		position: absolute;
-		z-index: 5;
 		width: 100%;
 		top: calc(100% + 1px);
 		left: 0;
 		border-radius: 0px 0px 12px 12px;
 		background: #fff;
 		box-shadow: 0px 4px 8px 0px rgba(24, 28, 45, 0.03);
-		padding: 20px 24px;
-		max-height: 210px;
+		max-height: 190px;
 		overflow-y: auto;
 		overflow-x: hidden;
 		z-index: 20;
+		padding: 20px 24px;
+		padding-bottom: 24px;
 	}
 	&__list {
 		@include reset-list;
@@ -269,6 +270,14 @@
 		}
 	}
 }
+.header-home {
+	& .main-header {
+		border-bottom: 1px solid #E8E9EF;
+		@media screen and (max-width: $lg) {
+			border: none;
+		}	
+	}
+}
 .main-header {
 	display: flex;
 	justify-content: space-between;
@@ -277,6 +286,7 @@
 	z-index: 15;
 	@media screen and (max-width: $lg) {
 		padding: 8px 0;
+		border: none;
 	}
 	&__actions {
 		display: flex;
@@ -351,10 +361,8 @@
 		}
 	}
 	@media screen and (max-width: $md) {
-		width: 32px;
-		height: 32px;
 		&::before {
-			mask-size: 15px 14px;
+			mask-size: 20px 20px;
 		}
 	}
 }
@@ -395,7 +403,7 @@
 	}
 	@media screen and (max-width: $md) {
 		padding-bottom: 80px;
-		top: 48px;
+		top: 70px;
 	}
 	& ul {
 		@include reset-list;

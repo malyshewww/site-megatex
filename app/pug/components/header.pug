@@ -1,5 +1,4 @@
-header.header#header
-	.header-bg
+header.header#header(class=`${pageTitle == "Главная" ? "header-home" : ""}`)
 	div.container
 		.header__body
 			.header__top.top-header(data-da=".header__menu, 991.98, 2")
@@ -16,7 +15,7 @@ header.header#header
 										button(type="submit").search-header__button.search-header__button--search
 									.search-header__result(hidden data-simplebar) 
 										.search-header__result-wrapper
-											ul.search-header__list 
+											ul.search-header__list
 												each item in searchList
 													li.search-header__list-item 
 														a(href="#").search-header__link= item 

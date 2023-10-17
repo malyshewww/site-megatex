@@ -49,7 +49,7 @@ function initCategorySlider(type) {
 					simulateTouch: true,
 					breakpoints: {
 						300: {
-							slidesPerView: 1.1,
+							slidesPerView: 1.3,
 							spaceBetween: 8,
 						},
 						576: {
@@ -110,15 +110,18 @@ function initGallerySlider(type) {
 		}
 	}
 }
+initGallerySlider(sliderType)
 function stateWindow() {
 	if (window.innerWidth < 991.98 && sliderType == 'desktop') {
 		sliderType = 'mobile';
 		initCategorySlider(sliderType);
 		initGallerySlider(sliderType);
+		initCardSlider(sliderType)
 	} else if (window.innerWidth > 991.98 && sliderType == 'mobile') {
 		sliderType = 'desktop';
 		initCategorySlider(sliderType);
 		initGallerySlider(sliderType);
+		initCardSlider(sliderType);
 	}
 }
 window.addEventListener("resize", stateWindow);
@@ -129,54 +132,79 @@ const cardThumbsSlider = document.querySelector('.thumbs-slider__body');
 const cardThumbschildren = cardThumbsSlider?.children[0].children.length;
 const cardMainChildren = cardMainSlider?.children[0].children.length;
 let cardNavSwiper;
-if (cardThumbsSlider && cardThumbschildren <= 5) {
-	cardThumbsSlider.nextElementSibling.remove();
-}
-if (cardMainSlider && cardMainChildren <= 1) {
-	cardMainSlider.querySelector('.main-slider__controls').remove();
-}
-if (cardMainSlider) {
-	cardNavSwiper = new Swiper(cardThumbsSlider, {
-		slidesPerView: 5,
-		spaceBetween: 12,
-		slideClass: "thumbs-slider__item",
-		wrapperClass: "thumbs-slider__wrapper",
-		speed: 600,
-		navigation: {
-			nextEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-next"),
-			prevEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-prev"),
-		},
-	})
-	let cardMainSwiper = new Swiper(cardMainSlider, {
-		slidesPerView: 1,
-		mousewheel: {
-			releaseOnEdges: true,
-			invert: false,
-		},
-		grabCursor: false,
-		slideClass: "main-slider__item",
-		wrapperClass: "main-slider__wrapper",
-		speed: 600,
-		spaceBetween: 10,
-		thumbs: {
-			swiper: cardNavSwiper,
-		},
-		navigation: {
-			nextEl: ".slider-button-next",
-			prevEl: ".slider-button-prev",
-		},
-		breakpoints: {
-			300: {
-				allowTouchMove: true,
-				direction: 'horizontal',
-			},
-			991.98: {
-				allowTouchMove: false,
-				direction: 'vertical',
+let cardMainSwiper;
+function initCardSlider(type) {
+	var sliderSettings = {}
+	if (type === 'mobile') {
+		sliderSettings = {
+			// описание настроек для мобильной вариации.
+			effect: 'slide',
+		}
+	} else {
+		sliderSettings = {
+			// описание настроек для десктопной вариации.
+			effect: 'fade',
+			// allowTouchMove: false,
+			fadeEffect: {
+				crossFade: true
 			},
 		}
-	})
+	}
+	if (cardThumbsSlider && cardThumbschildren <= 5) {
+		cardThumbsSlider.nextElementSibling.remove();
+	}
+	if (cardMainSlider && cardMainChildren <= 1) {
+		cardMainSlider.querySelector('.main-slider__controls').remove();
+	}
+	if (cardMainSlider) {
+		cardNavSwiper = new Swiper(cardThumbsSlider, {
+			slidesPerView: 5,
+			spaceBetween: 12,
+			slideClass: "thumbs-slider__item",
+			wrapperClass: "thumbs-slider__wrapper",
+			speed: 600,
+			navigation: {
+				nextEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-next"),
+				prevEl: cardThumbsSlider.nextElementSibling?.querySelector(".slider-button-prev"),
+			},
+		})
+		cardMainSwiper = new Swiper(cardMainSlider, {
+			...sliderSettings,
+			slidesPerView: 1,
+			mousewheel: {
+				releaseOnEdges: true,
+				invert: false,
+			},
+			grabCursor: false,
+			slideClass: "main-slider__item",
+			wrapperClass: "main-slider__wrapper",
+			speed: 600,
+			spaceBetween: 10,
+			thumbs: {
+				swiper: cardNavSwiper,
+			},
+			navigation: {
+				nextEl: ".slider-button-next",
+				prevEl: ".slider-button-prev",
+			},
+			breakpoints: {
+				300: {
+					allowTouchMove: true,
+					direction: 'horizontal',
+				},
+				991.98: {
+					allowTouchMove: false,
+					direction: 'horizontal',
+				},
+			}
+		})
+	}
+	// Проверяем, есть ли в объекте слайдера метод destroy, и если есть - вызываем его.
+	// if (cardMainSwiper.destroy && typeof cardMainSwiper.destroy === 'function') {
+	// 	cardMainSwiper.destroy(); // Возможно,если в круглые скобки передать true то будет лучше.
+	// }
 }
+initCardSlider(sliderType);
 
 // Поле поиска
 const searchInput = searchForm.querySelector('.search-header__input');
@@ -288,7 +316,7 @@ function scrollTop() {
 		if (window.innerWidth > 767.98) {
 			const footer = document.querySelector('footer');
 			const options = {
-				rootMargin: '0px 0px -45px 0px',
+				rootMargin: "0px 0px -90px 0px",
 				threshold: 0,
 			}
 			const observer = new IntersectionObserver(([entry]) => {
@@ -297,7 +325,11 @@ function scrollTop() {
 				if (targetInfo.top > rootBoundsInfo.bottom || targetInfo.isIntersecting) {
 					// observer.unobserve(entry.target)
 					buttonUp.classList.remove('active');
+					// buttonUp.style.opacity = "1";
+					// buttonUp.style.pointerEvents = "all";
 				} else {
+					// buttonUp.style.opacity = "0";
+					// buttonUp.style.pointerEvents = "none";
 					buttonUp.classList.add('active');
 				}
 			}, options)
@@ -555,10 +587,39 @@ if (textBlock) {
 		event.preventDefault();
 		let target = event.target;
 		if (target.closest('.text-block__gradient') || target.closest('.text-block__button')) {
-			textBlock.classList.add('isOpen');
-			target.closest('.text-block__button').remove();
+			const button = target.closest('.text-block__button');
+			textBlock.classList.toggle('isOpen');
+			button.classList.toggle('isActive');
+			button.innerHTML = textBlock.classList.contains('isOpen') ? "Свернуть" : "Читать далее";
+			// target.closest('.text-block__button').remove();
 		}
 	})
+}
+// Наведение на пункты меню каталога
+const menuCatalog = document.querySelector('.menu-footer__nav--catalog');
+if (menuCatalog) {
+	const menuLinks = menuCatalog.querySelectorAll("a")
+	menuCatalog.addEventListener('mouseover', addMenuClass)
+	menuCatalog.addEventListener('mouseleave', removeMenuClass)
+	function addMenuClass(event) {
+		let target = event.target;
+		if (target.closest('a')) {
+			const activeLink = document.querySelector('a.active');
+			if (activeLink){
+				activeLink.classList.remove('active');
+			}
+			[...menuLinks].forEach((link) => {
+				link.classList.remove('active')
+				link.classList.add('in-active')
+			})
+			target.classList.add('active');
+		}
+	}
+	function removeMenuClass() {
+		[...menuLinks].forEach((link) => {
+			link.removeAttribute('class')
+		})
+	}
 }
 
 // Загрузка файла (форма - заказать коммерческое предложение)
