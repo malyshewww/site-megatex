@@ -234,6 +234,8 @@ const deleteButton = document.getElementById('delete-button');
 if (deleteButton) {
 	deleteButton.addEventListener('click', (event) => {
 		let target = event.target;
+		const form = target.closest('form');
+		form.classList.remove('changed');
 		searchInput.value = "";
 		target.remove();
 	})
@@ -606,6 +608,7 @@ if (menuCatalog) {
 		if (target.closest('a')) {
 			const activeLink = document.querySelector('a.active');
 			if (activeLink){
+				// return;
 				activeLink.classList.remove('active');
 			}
 			[...menuLinks].forEach((link) => {
