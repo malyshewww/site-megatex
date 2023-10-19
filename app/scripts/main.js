@@ -453,6 +453,18 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 // Яндекс карта
+let isMobile = {
+	Android: function () {
+		return navigator.userAgent.match(/Android/i);
+	},
+	BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+	iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+	Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+	Mozilla: function () { return navigator.userAgent.match(/Mozilla/i); },
+	Firefox: function () { return navigator.userAgent.match(/Firefox/i); },
+	Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+	any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+};
 const mapElem = document.getElementById("map");
 if (mapElem) {
 	const map = document.getElementById('office-ymap');
@@ -539,28 +551,39 @@ if (mapElem) {
 			})
 		};
 	}
-	let observerOptions = {
-		// root: по умолчанию window, но можно задать любой элемент-контейнер
-		rootMargin: '0px 0px 0px 0px',
-	}
-	let observer = new IntersectionObserver(([entry]) => {
-		const targetInfo = entry.boundingClientRect;
-		const rootBoundsInfo = entry.rootBounds;
-		if (!isLoaded && targetInfo.top < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
-			loadMap();
-			observer.unobserve(entry.target)
+	if (document.body.classList.contains('_pc')) {
+		let observerOptions = {
+			// root: по умолчанию window, но можно задать любой элемент-контейнер
+			rootMargin: '0px 0px 0px 0px',
 		}
-	}, observerOptions)
-	observer.observe(mapElem)
-	// if (mapElem.getBoundingClientRect().top < window.innerHeight) {
-	// 	loadMap();
-	// }
-	// window.addEventListener("scroll", function () {
-	// 	if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
-	// 		loadMap();
-	// 	}
-	// });
+		let observer = new IntersectionObserver(([entry]) => {
+			const targetInfo = entry.boundingClientRect;
+			const rootBoundsInfo = entry.rootBounds;
+			if (!isLoaded && targetInfo.top < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
+				loadMap();
+				// observer.unobserve(entry.target)
+			}
+		}, observerOptions)
+		observer.observe(mapElem)
+	} else {
+		if (mapElem.getBoundingClientRect().top < window.innerHeight) {
+			loadMap();
+		}
+		window.addEventListener("scroll", function () {
+			if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
+				loadMap();
+			}
+		});
+	}
 }
+function addTouchClass() {
+	if (isMobile.any()) {
+		document.body.classList.add('_touch');
+	} else {
+		document.body.classList.add('_pc');
+	}
+}
+addTouchClass();
 
 // Подключение библиотеки для модальных окон
 const modal = new GraphModal(
@@ -702,3 +725,12 @@ if (iconMenu) {
 		menuBody.classList.toggle("open");
 	});
 };
+
+// Поля ввода
+// const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+// [...formInputs].forEach(item => {
+// 	item.addEventListener('change', (e) => {
+// 		e.preventDefault();
+// 		item.classList.add('focus')
+// 	})
+// })

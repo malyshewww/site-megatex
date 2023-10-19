@@ -235,7 +235,7 @@
 			background-color: #001d9a;
 		}
 	}
-	&:focus {
+	&:focus-visible {
 		background: #0d2cb0;
 		box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
 	}
@@ -270,7 +270,7 @@
 			border-color: #0d2cb0;
 		}
 	}
-	&:focus {
+	&:focus-visible {
 		border-color: #b8cff2;
 		box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
 	}
@@ -319,7 +319,7 @@
 				background-color: #001d9a;
 			}
 		}
-		&:focus {
+		&:focus-visible {
 			padding: 8px 16px;
 			border: 1px solid #56b8ff;
 			box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
@@ -376,18 +376,21 @@ input.error {
 		font-size: 16px;
 		font-weight: 500;
 	}
-	&:focus {
-		border-color: #56b8ff;
-		box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
-		&:hover {
-			border-color: #56b8ff;
-		}
-	}
 	@media (any-hover: hover) {
 		&:hover {
 			border-color: #aaacb4;
-			&:focus {
+			&:focus-visible {
 				border-color: #56b8ff;
+			}
+		}
+		&:focus-visible {
+			border-color: #56b8ff;
+			box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
+			&:hover {
+				border-color: #56b8ff;
+			}
+			&::placeholder {
+				color: #181C2D;
 			}
 		}
 	}

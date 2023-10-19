@@ -553,7 +553,7 @@ body.lock {
   transition: background 0.2s ease 0s;
 }
 
-.btn:focus {
+.btn:focus-visible {
   background: #0d2cb0;
   -webkit-box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
   box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
@@ -590,7 +590,7 @@ body.lock {
   cursor: pointer;
 }
 
-.btn-secondary:focus {
+.btn-secondary:focus-visible {
   border-color: #b8cff2;
   -webkit-box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
   box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
@@ -727,18 +727,6 @@ input.error:focus {
   font-family: "Gilroy", sans-serif;
   font-size: 16px;
   font-weight: 500;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  border-color: #56b8ff;
-  -webkit-box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
-  box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
-}
-
-.form-input:focus:hover,
-.form-textarea:focus:hover {
-  border-color: #56b8ff;
 }
 
 .form-input:disabled,
@@ -2459,7 +2447,7 @@ input.error:focus {
 }
 
 .item-about__image img {
-  border-radius: inherit;
+  border-radius: 16px;
 }
 
 .offer {
@@ -4173,10 +4161,9 @@ input.error:focus {
 
   .item-about__image {
     margin-top: auto;
-  }
-
-  .item-about__image::before {
-    content: none;
+    width: 220px;
+    height: 228px;
+    padding: 0;
   }
 
   .offer__body {
@@ -4479,6 +4466,7 @@ input.error:focus {
 
   .item-about {
     padding: 30px 20px;
+    padding-bottom: 40px;
   }
 
   .form__bottom {
@@ -4995,7 +4983,7 @@ input.error:focus {
   }
 
   .item-about {
-    padding: 20px 0;
+    padding: 20px 0 40px;
   }
 
   .item-about__info {
@@ -5005,6 +4993,10 @@ input.error:focus {
   .item-about__title {
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .item-about__image {
+    margin: 0 auto;
   }
 
   .offer {
@@ -5230,7 +5222,7 @@ input.error:focus {
     background-color: #001d9a;
   }
 
-  .btn-more:focus {
+  .btn-more:focus-visible {
     padding: 8px 16px;
     border: 1px solid #56b8ff;
     -webkit-box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
@@ -5243,9 +5235,42 @@ input.error:focus {
     border-color: #aaacb4;
   }
 
-  .form-input:hover:focus,
-  .form-textarea:hover:focus {
+  .form-input:hover:focus-visible,
+  .form-textarea:hover:focus-visible {
     border-color: #56b8ff;
+  }
+
+  .form-input:focus-visible,
+  .form-textarea:focus-visible {
+    border-color: #56b8ff;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
+    box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);
+  }
+
+  .form-input:focus-visible:hover,
+  .form-textarea:focus-visible:hover {
+    border-color: #56b8ff;
+  }
+
+  .form-input:focus-visible::-webkit-input-placeholder, .form-textarea:focus-visible::-webkit-input-placeholder {
+    color: #181C2D;
+  }
+
+  .form-input:focus-visible::-moz-placeholder, .form-textarea:focus-visible::-moz-placeholder {
+    color: #181C2D;
+  }
+
+  .form-input:focus-visible:-ms-input-placeholder, .form-textarea:focus-visible:-ms-input-placeholder {
+    color: #181C2D;
+  }
+
+  .form-input:focus-visible::-ms-input-placeholder, .form-textarea:focus-visible::-ms-input-placeholder {
+    color: #181C2D;
+  }
+
+  .form-input:focus-visible::placeholder,
+  .form-textarea:focus-visible::placeholder {
+    color: #181C2D;
   }
 
   .size-radiobuttons label:hover {

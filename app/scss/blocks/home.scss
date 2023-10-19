@@ -265,9 +265,10 @@
 	}
 	@media screen and (max-width: $lg) {
 		padding: 30px 20px;
+		padding-bottom: 40px;
 	}
 	@media screen and (max-width: $md) {
-		padding: 20px 0;
+		padding: 20px 0 40px;
 	}
 	&__info {
 		display: flex;
@@ -310,13 +311,16 @@
 			z-index: -1;
 		}
 		& img {
-			border-radius: inherit;
+			border-radius: 16px;
 		}
 		@media screen and (max-width: $xxl) {
 			margin-top: auto;
-			&::before {
-				content: none;
-			}
+			width: 220px;
+			height: 228px;
+			padding: 0;
+		}
+		@media screen and (max-width: $md) {
+			margin: 0 auto;
 		}
 	}
 }
