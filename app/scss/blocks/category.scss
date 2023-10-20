@@ -223,7 +223,7 @@
 				}
 			}
 		}
-		&:focus + label {
+		&:focus-visible + label {
 			span {
 				border-color: rgba(86, 184, 255, 1);
 				box-shadow: 0px 0px 8px 0px rgba(86, 184, 255, 0.6);

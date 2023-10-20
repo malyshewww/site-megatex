@@ -30,97 +30,113 @@ if (newSlider) {
 		}
 	});
 };
-// Слайдер категорий
-let categorySwiper = null;
+
+// Слайдер на странице "О компании", на текстовой странице, сладйер категорий
+const aboutSlider = document.querySelector('.slider-about__body');
+const productionSlider = document.querySelector('.production__wrapper');
 const sliderCategories = document.querySelectorAll('.categories__wrapper');
-function initCategorySlider(type) {
-	if (!categorySwiper) {
-		[...sliderCategories].forEach(slider => {
-			if (type == "mobile") {
-				categorySwiper = new Swiper(slider, {
-					slideClass: "categories__item",
-					wrapperClass: "categories__body",
-					slidesPerGroup: 1,
-					// navigation: {
-					// 	prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
-					// 	nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
-					// },
-					speed: 800,
-					simulateTouch: true,
-					breakpoints: {
-						300: {
-							slidesPerView: 1.3,
-							spaceBetween: 8,
-						},
-						576: {
-							slidesPerView: 'auto',
-							spaceBetween: 20,
-						}
-					}
-				});
+let aboutSwiper = null;
+let productionSwiper = null;
+let categorySwiper = null;
+function initializeSwiper() {
+	if (!aboutSwiper && aboutSlider) {
+		aboutSwiper = new Swiper(aboutSlider, {
+			slideClass: 'slider-about__item',
+			wrapperClass: 'slider-about__wrapper',
+			spaceBetween: 20,
+			slidesPerView: 3,
+			speed: 800,
+			breakpoints: {
+				300: {
+					slidesPerView: 1.5,
+					spaceBetween: 8,
+				},
+				767.98: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				}
 			}
 		})
 	}
-}
-initCategorySlider(sliderType);
-// Слайдер на странице "О компании" и на текстовой странице
-const aboutSlider = document.querySelector('.slider-about__body');
-const productionSlider = document.querySelector('.production__wrapper');
-let aboutSwiper = null;
-let productionSwiper = null;
-function initGallerySlider(type) {
-	if (type == "mobile") {
-		if (!aboutSwiper) {
-			aboutSwiper = new Swiper(aboutSlider, {
-				slideClass: 'slider-about__item',
-				wrapperClass: 'slider-about__wrapper',
-				spaceBetween: 20,
-				slidesPerView: 3,
+	if (!productionSwiper && productionSlider) {
+		productionSwiper = new Swiper(productionSlider, {
+			slideClass: 'production__item',
+			wrapperClass: 'production__body',
+			spaceBetween: 20,
+			slidesPerView: 3,
+			speed: 800,
+			breakpoints: {
+				300: {
+					slidesPerView: 1.5,
+					spaceBetween: 8,
+				},
+				767.98: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				}
+			}
+		})
+	}
+	if (!categorySwiper) {
+		[...sliderCategories].forEach(slider => {
+			categorySwiper = new Swiper(slider, {
+				slideClass: "categories__item",
+				wrapperClass: "categories__body",
+				slidesPerGroup: 1,
+				// navigation: {
+				// 	prevEl: slider.previousElementSibling.querySelector('.slider-button-prev'),
+				// 	nextEl: slider.previousElementSibling.querySelector('.slider-button-next'),
+				// },
 				speed: 800,
+				simulateTouch: true,
 				breakpoints: {
 					300: {
-						slidesPerView: 1.5,
+						slidesPerView: 1.3,
 						spaceBetween: 8,
 					},
-					767.98: {
-						slidesPerView: 3,
+					576: {
+						slidesPerView: 'auto',
 						spaceBetween: 20,
 					}
 				}
-			})
-		}
-		if (!productionSwiper) {
-			productionSwiper = new Swiper(productionSlider, {
-				slideClass: 'production__item',
-				wrapperClass: 'production__body',
-				spaceBetween: 20,
-				slidesPerView: 3,
-				speed: 800,
-				breakpoints: {
-					300: {
-						slidesPerView: 1.5,
-						spaceBetween: 8,
-					},
-					767.98: {
-						slidesPerView: 3,
-						spaceBetween: 20,
-					}
-				}
-			})
-		}
+			});
+		})
 	}
 }
-initGallerySlider(sliderType)
+function destroySwiper() {
+	if (aboutSwiper) {
+		aboutSwiper.destroy();
+		aboutSwiper = null;
+	}
+	if (productionSwiper) {
+		productionSwiper.destroy();
+		productionSwiper = null;
+	}
+	if (categorySwiper) {
+		categorySwiper.destroy();
+		categorySwiper = null;
+	}
+}
+function checkScreenWidth() {
+	if (window.matchMedia("(max-width: 991.98px)").matches) {
+		// Инициализация Swiper, если ширина экрана меньше или равна 991.98 пикселей
+		initializeSwiper();
+	} else {
+		// Отмена инициализации Swiper, если ширина экрана больше 991.98 пикселей
+		destroySwiper();
+	}
+}
+// Проверяем при загрузке страницы
+checkScreenWidth();
+// Проверяем при изменении размера экрана
+window.addEventListener('resize', checkScreenWidth);
+
 function stateWindow() {
 	if (window.innerWidth < 991.98 && sliderType == 'desktop') {
 		sliderType = 'mobile';
-		initCategorySlider(sliderType);
-		initGallerySlider(sliderType);
 		initCardSlider(sliderType)
 	} else if (window.innerWidth > 991.98 && sliderType == 'mobile') {
 		sliderType = 'desktop';
-		initCategorySlider(sliderType);
-		initGallerySlider(sliderType);
 		initCardSlider(sliderType);
 	}
 }
@@ -453,6 +469,99 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 // Яндекс карта
+const mapElem = document.getElementById("map");
+var myMap,
+	myPlacemark;
+function mapInit() {
+	const map = document.getElementById('office-ymap');
+	myMap = new ymaps.Map('office-ymap', {
+		center: [56.248821, 43.877393],
+		zoom: 16,
+		controls: ['zoomControl'],
+	}, {
+		searchControlProvider: 'yandex#search'
+	}),
+		myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+			// balloonContent: 'Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304'
+		}, {
+			iconLayout: 'default#image',
+			iconImageHref: './images/icons/location.svg',
+			iconImageSize: [44, 49],
+			iconImageOffset: [-10, -30]
+		});
+	myMap.geoObjects.add(myPlacemark);
+	myMap.controls.remove('geolocationControl'); // удаляем геолокацию
+	myMap.controls.remove('searchControl'); // удаляем поиск
+	myMap.controls.remove('trafficControl'); // удаляем контроль трафика
+	myMap.controls.remove('typeSelector'); // удаляем тип
+	myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+	myMap.controls.remove('rulerControl'); // удаляем контрол правил
+	myMap.behaviors.disable('scrollZoom');
+	if (window.innerWidth < 991.98) {
+		myMap.behaviors.disable('drag');
+		let version = map.firstChild.getAttribute("class").replace('ymaps-', '').replace('-map', '');
+		let pane = document.querySelector(".ymaps-" + version + "-events-pane");
+		pane.innerHTML = "Чтобы переместить карту проведите по ней двумя пальцами";
+		pane.style.cssText = "height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; z-index: 2500; color: #fff; font-size: 22px; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; text-align: center; background-color: rgba(0,0,0,0.45); opacity: 0; transition: opacity 0.45s; padding: 25px; box-sizing: border-box;";
+		// Показать надпись
+		map.addEventListener("touchmove", function (e) {
+			let touches = e.touches.length;
+			if (touches > 1) {
+				// Если точек касания больше одной
+				pane.style.opacity = "0";
+			} else {
+				pane.style.opacity = "1";
+			};
+		});
+		// Скрыть надпись
+		map.addEventListener("touchend", function () {
+			pane.style.opacity = "0";
+		});
+	}
+}
+if (mapElem) {
+	let isLoaded = false;
+	const loadMap = () => {
+		// создаем и вставляем апи карт
+		var script = document.createElement("script");
+		script.src = "https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU";
+		document.body.appendChild(script);
+		isLoaded = true;
+		//инициализируем карту
+		script.onload = function () {
+			if (typeof ymaps === 'undefined') return;
+			ymaps.ready(mapInit);
+			const mapTabTrigger = document.querySelectorAll('[data-map-trigger]');
+			[...mapTabTrigger].forEach(tab => {
+				tab.addEventListener('click', () => {
+					const dataLat = Number(tab.dataset.lat);
+					const dataLing = Number(tab.dataset.ling);
+					const dataZoom = Number(tab.dataset.zoom);
+					// const dataAddress = tab.dataset.address;
+					[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
+					tab.classList.add('isActive');
+					myMap.setCenter([dataLat, dataLing], dataZoom, {
+						checkZoomRange: true
+					});
+					myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
+				})
+			})
+		};
+	}
+	let observerOptions = {
+		// root: по умолчанию window, но можно задать любой элемент-контейнер
+		rootMargin: '0px 0px 0px 0px',
+	}
+	let observer = new IntersectionObserver(([entry]) => {
+		const targetInfo = entry.boundingClientRect;
+		const rootBoundsInfo = entry.rootBounds;
+		if (!isLoaded && targetInfo.top < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
+			loadMap();
+			// observer.unobserve(entry.target)
+		}
+	}, observerOptions)
+	observer.observe(mapElem);
+}
 let isMobile = {
 	Android: function () {
 		return navigator.userAgent.match(/Android/i);
@@ -465,126 +574,22 @@ let isMobile = {
 	Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
 	any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
 };
-const mapElem = document.getElementById("map");
-if (mapElem) {
-	const map = document.getElementById('office-ymap');
-	let myMap,
-		myPlacemark;
-	let isLoaded = false;
-	let options_map = {
-		once: true, //запуск один раз, и удаление наблюдателя сразу
-		passive: true,
-		capture: true
-	};
-	function loadMap() {
-		var script = document.createElement("script");
-		script.src = "https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU";
-		document.body.appendChild(script);
-		isLoaded = true;
-		script.onload = () => {
-			if (typeof ymaps === 'undefined') {
-				return;
-			}
-			ymaps.ready(() => {
-				myMap = new ymaps.Map('office-ymap', {
-					...options_map,
-					center: [56.248821, 43.877393],
-					zoom: 16,
-					controls: ['zoomControl'],
-				}, {
-					searchControlProvider: 'yandex#search'
-				}),
-					myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-						// balloonContent: 'Нижний Новгород, Автозаводский район, проспект Ленина 109, бизнес-центр «Чайка», офис 304'
-					}, {
-						iconLayout: 'default#image',
-						iconImageHref: './images/icons/location.svg',
-						iconImageSize: [44, 49],
-						iconImageOffset: [-10, -30]
-					});
-				myMap.geoObjects.add(myPlacemark);
-				myMap.controls.remove('geolocationControl'); // удаляем геолокацию
-				myMap.controls.remove('searchControl'); // удаляем поиск
-				myMap.controls.remove('trafficControl'); // удаляем контроль трафика
-				myMap.controls.remove('typeSelector'); // удаляем тип
-				myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-				myMap.controls.remove('rulerControl'); // удаляем контрол правил
-				myMap.behaviors.disable('scrollZoom');
-				if (window.innerWidth < 991.98) {
-					myMap.behaviors.disable('drag');
-					let version = map.firstChild.getAttribute("class").replace('ymaps-', '').replace('-map', '');
-					let pane = document.querySelector(".ymaps-" + version + "-events-pane");
-					pane.innerHTML = "Чтобы переместить карту проведите по ней двумя пальцами";
-					pane.style.cssText = "height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; z-index: 2500; color: #fff; font-size: 22px; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; text-align: center; background-color: rgba(0,0,0,0.45); opacity: 0; transition: opacity 0.45s; padding: 25px; box-sizing: border-box;";
-					// Показать надпись
-					map.addEventListener("touchmove", function (e) {
-						let touches = e.touches.length;
-						if (touches > 1) {
-							// Если точек касания больше одной
-							pane.style.opacity = "0";
-						} else {
-							pane.style.opacity = "1";
-						};
-					});
-					// Скрыть надпись
-					map.addEventListener("touchend", function () {
-						pane.style.opacity = "0";
-					});
-				}
-			});
-			const mapTabTrigger = document.querySelectorAll('[data-map-trigger]');
-			[...mapTabTrigger].forEach(tab => {
-				tab.addEventListener('click', () => {
-					const dataLat = Number(tab.dataset.lat);
-					const dataLing = Number(tab.dataset.ling);
-					const dataZoom = Number(tab.dataset.zoom);
-					const dataAddress = tab.dataset.address;
-					[...mapTabTrigger].forEach(item => item.classList.remove('isActive'));
-					tab.classList.add('isActive');
-					myMap.setCenter([dataLat, dataLing], dataZoom, {
-						checkZoomRange: true
-					});
-					myPlacemark.geometry.setCoordinates([dataLat, dataLing]);
-					// myPlacemark.setBalloonContent(dataAddress);
-					// myMap.addOverlay(myPlacemark);
-				})
-			})
-		};
-	}
-	if (document.body.classList.contains('_pc')) {
-		let observerOptions = {
-			// root: по умолчанию window, но можно задать любой элемент-контейнер
-			rootMargin: '0px 0px 0px 0px',
-		}
-		let observer = new IntersectionObserver(([entry]) => {
-			const targetInfo = entry.boundingClientRect;
-			const rootBoundsInfo = entry.rootBounds;
-			if (!isLoaded && targetInfo.top < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
-				loadMap();
-				// observer.unobserve(entry.target)
-			}
-		}, observerOptions)
-		observer.observe(mapElem)
-	} else {
-		if (mapElem.getBoundingClientRect().top < window.innerHeight) {
-			loadMap();
-		}
-		window.addEventListener("scroll", function () {
-			if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
-				loadMap();
-			}
-		});
-	}
-}
 function addTouchClass() {
 	if (isMobile.any()) {
 		document.body.classList.add('_touch');
+		// if (mapElem.getBoundingClientRect().top < window.innerHeight) {
+		// 	loadMap();
+		// }
+		// window.addEventListener("scroll", function () {
+		// 	if (!isLoaded && mapElem.getBoundingClientRect().top < window.innerHeight) {
+		// 		loadMap();
+		// 	}
+		// });
 	} else {
 		document.body.classList.add('_pc');
 	}
 }
 addTouchClass();
-
 // Подключение библиотеки для модальных окон
 const modal = new GraphModal(
 	{
@@ -598,13 +603,11 @@ const modal = new GraphModal(
 		},
 	}
 );
-
 // Подключение кастомного скроллбара
 Array.prototype.forEach.call(
 	document.querySelectorAll('[data-simplebar]'),
 	(el) => new SimpleBar(el)
 );
-
 // Раскрытие информации в тектсовом блоке (в финальной версии - толкьо главаня страница)
 const textBlock = document.querySelector('.text-block');
 if (textBlock) {

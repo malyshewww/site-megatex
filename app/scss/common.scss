@@ -346,7 +346,8 @@
 		}
 	}
 }
-input.error {
+input.error,
+textarea.error {
 	border-color: #d9004e;
 	&:focus {
 		border-color: #d9004e;
