@@ -891,7 +891,8 @@ textarea.error:focus {
   cursor: pointer;
 }
 
-.color-radiobuttons label span {
+.color-radiobuttons label img {
+  display: block;
   border: 1px solid #e8e9ef;
   position: absolute;
   top: 0;
@@ -899,32 +900,10 @@ textarea.error:focus {
   width: 32px;
   height: 32px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  top: 1px;
+  left: 1px;
   border-radius: 4px;
-}
-
-.color-radiobuttons label.color-black span {
-  background-color: #000000;
-}
-
-.color-radiobuttons label.color-white span {
-  background-color: #ffffff;
-}
-
-.color-radiobuttons label.color-green span {
-  background-color: #00c874;
-}
-
-.color-radiobuttons label.color-brown span {
-  background-color: #444444;
-}
-
-.color-radiobuttons label.color-blue span {
-  background-color: #3c7eff;
+  overflow: hidden;
 }
 
 .color-radiobuttons input:checked ~ label {
@@ -2652,6 +2631,18 @@ textarea.error:focus {
   mask-position: center;
 }
 
+.catalog .categories {
+  padding: 60px 0;
+}
+
+.catalog .categories:first-child {
+  padding-top: 0;
+}
+
+.catalog .categories:last-child {
+  padding-bottom: 0;
+}
+
 .categories__body {
   display: -ms-grid;
   display: grid;
@@ -2662,30 +2653,18 @@ textarea.error:focus {
   box-sizing: border-box;
 }
 
-.gloves {
-  padding: 0 0 60px;
-}
-
-.wiping {
-  padding: 60px 0 60px;
-}
-
-.individual {
-  padding: 60px 0 60px;
-}
-
-.packages {
-  padding: 60px 0 0px;
-}
-
 .category-list__body {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: minmax(200px, 285px) 1fr;
-  grid-template-columns: minmax(200px, 285px) 1fr;
+  -ms-grid-columns: 285px 1fr;
+  grid-template-columns: 285px 1fr;
   gap: 20px 70px;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
 
 .category-list__products {
@@ -2696,13 +2675,33 @@ textarea.error:focus {
   gap: 20px 20px;
 }
 
+.filter {
+  position: sticky;
+  top: 20px;
+}
+
+.filter.sticky .filter-form {
+  position: fixed;
+  bottom: 0;
+  width: 285px;
+}
+
 .filter__mobile-btn {
   display: none;
 }
 
-.filter-form {
-  position: sticky;
-  top: 20px;
+.filter-form.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 285px;
+}
+
+.filter-form.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 285px;
 }
 
 .filter__title {
@@ -2729,6 +2728,8 @@ textarea.error:focus {
   gap: 26px;
   text-align: center;
   background-color: #f9f9fb;
+  position: sticky;
+  bottom: 0px;
 }
 
 .filter__button {
@@ -2773,6 +2774,21 @@ textarea.error:focus {
   gap: 27px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.filter-groups::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.filter-groups::-webkit-scrollbar-thumb {
+  width: 0;
+  height: 0;
+}
+
+.filter-groups::-webkit-scrollbar-track {
+  width: 0;
+  height: 0;
 }
 
 .filter-group__btn {
@@ -4498,6 +4514,11 @@ textarea.error:focus {
     gap: 10px;
   }
 
+  .filter {
+    position: relative;
+    top: 0;
+  }
+
   .filter__mobile-btn {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4546,6 +4567,10 @@ textarea.error:focus {
 
   .filter__title {
     display: none;
+  }
+
+  .filter__buttons {
+    position: relative;
   }
 
   .empty-category__title {
@@ -5032,20 +5057,12 @@ textarea.error:focus {
     padding: 50px 0 0;
   }
 
+  .catalog .categories {
+    padding: 30px 0;
+  }
+
   .gloves {
     padding: 0 0 30px;
-  }
-
-  .wiping {
-    padding: 30px 0 30px;
-  }
-
-  .individual {
-    padding: 30px 0 30px;
-  }
-
-  .packages {
-    padding: 30px 0 0;
   }
 
   .product-card__wrapper {
@@ -5251,24 +5268,24 @@ textarea.error:focus {
   }
 
   .form-input:focus-visible::-webkit-input-placeholder, .form-textarea:focus-visible::-webkit-input-placeholder {
-    color: #181C2D;
+    color: #181c2d;
   }
 
   .form-input:focus-visible::-moz-placeholder, .form-textarea:focus-visible::-moz-placeholder {
-    color: #181C2D;
+    color: #181c2d;
   }
 
   .form-input:focus-visible:-ms-input-placeholder, .form-textarea:focus-visible:-ms-input-placeholder {
-    color: #181C2D;
+    color: #181c2d;
   }
 
   .form-input:focus-visible::-ms-input-placeholder, .form-textarea:focus-visible::-ms-input-placeholder {
-    color: #181C2D;
+    color: #181c2d;
   }
 
   .form-input:focus-visible::placeholder,
   .form-textarea:focus-visible::placeholder {
-    color: #181C2D;
+    color: #181c2d;
   }
 
   .size-radiobuttons label:hover {

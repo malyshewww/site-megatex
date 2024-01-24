@@ -1,46 +1,56 @@
 .catalog {
-	&__title {
-	}
-	// & .categories__body {
-	// 	display: flex;
-	// 	flex-wrap: nowrap;
-	// 	gap: 0;
-	// 	box-sizing: border-box;
-	// }
-}
-.categories__wrapper {
+    & .categories {
+        padding: 60px 0;
+        &:first-child {
+            padding-top: 0;
+        }
+        &:last-child {
+            padding-bottom: 0;
+        }
+        @media screen and (max-width: $md) {
+            padding: 30px 0;
+        }
+    }
+    &__title {
+    }
+    // & .categories__body {
+    // 	display: flex;
+    // 	flex-wrap: nowrap;
+    // 	gap: 0;
+    // 	box-sizing: border-box;
+    // }
 }
 .categories__body {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
-	box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    box-sizing: border-box;
 }
 // GLOVES
 .gloves {
-	padding: 0 0 60px;
-	@media screen and (max-width: $md) {
-		padding: 0 0 30px;
-	}
+    // padding: 0 0 60px;
+    @media screen and (max-width: $md) {
+        padding: 0 0 30px;
+    }
 }
 // WIPING
 .wiping {
-	padding: 60px 0 60px;
-	@media screen and (max-width: $md) {
-		padding: 30px 0 30px;
-	}
+    // padding: 60px 0 60px;
+    @media screen and (max-width: $md) {
+        // padding: 30px 0 30px;
+    }
 }
 // INDIVIDUAL
 .individual {
-	padding: 60px 0 60px;
-	@media screen and (max-width: $md) {
-		padding: 30px 0 30px;
-	}
+    // padding: 60px 0 60px;
+    @media screen and (max-width: $md) {
+        // padding: 30px 0 30px;
+    }
 }
 // PACKAGES
 .packages {
-	padding: 60px 0 0px;
-	@media screen and (max-width: $md) {
-		padding: 30px 0 0;
-	}
+    // padding: 60px 0 0px;
+    @media screen and (max-width: $md) {
+        // padding: 30px 0 0;
+    }
 }

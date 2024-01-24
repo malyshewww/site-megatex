@@ -82,14 +82,15 @@ mixin checkbox(title, name, state)
 		span
 	a(href="#" style="display: none;")= title
 
-mixin colorRadio(className, id, name, state)
+mixin colorRadio(colorName, id, name, state)
 	li
 		if state
 			input(type="radio" id=id name=name checked)
 		else
 			input(type="radio" id=id name=name)
-		label(for=id class=className)
-			span
+		label(for=id)
+			picture
+				img(src=`images/colors/${colorName}.png`, alt="цвет")
 mixin sizeRadio(value, id, name, state)
 	li
 		if state
