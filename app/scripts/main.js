@@ -753,7 +753,7 @@ function attachFile(formId) {
             if (files.length === 0) {
                 const emptyListHTML = `<li data-empty-list>
 						<label class="load-file__label">
-							<input type="file" id="upload_file" class="load-file__input visuallyHidden">
+							<input type="file" id="upload_file" class="load-file__input visuallyHidden" data-upload-file>
 							Прикрепить файл
 						</label>
 					</li>`;
@@ -802,25 +802,129 @@ if (iconMenu) {
     });
 }
 
-// const filterBlock = document.querySelector("aside.filter");
-// const categoryBody = document.querySelector(".category-list__body");
-// const filterObserver = new IntersectionObserver(
-//     ([entry]) => {
-//         let targetInfo = entry.boundingClientRect;
-//         let rootBoundsInfo = entry.rootBounds;
-//         const isBottomVisible =
-//             targetInfo.bottom < window.innerHeight && targetInfo.bottom;
-//         console.log(targetInfo.bottom, window.innerHeight, { isBottomVisible });
-//         const isBottom = targetInfo.bottom > window.scrollY + targetInfo.bottom;
-//         console.log(window.scrollY + targetInfo.bottom);
-//         if (isBottom) {
-//             categoryBody.classList.remove("sticky");
-//         } else {
-//             categoryBody.classList.add("sticky");
-//         }
-//     },
-//     {
-//         rootMargin: "0px",
+// var sticky = new Sticky("[data-sticky]", {});
+// console.log(sticky);
+// sticky.options.stickyContainer = ".category-list__body";
+
+// Первая версия с фиксированным фильтром в списке товаров
+const inner = document.querySelector(".category-list__body");
+const filter = document.querySelector(".filter-form");
+let direction = "up";
+let total;
+function scrollDetect() {
+    var lastScroll = 0;
+    window.onscroll = function () {
+        let currentScroll =
+            document.documentElement.scrollTop || window.scrollY; // Get Current Scroll Value
+        if (currentScroll > 0 && lastScroll <= currentScroll) {
+            lastScroll = currentScroll;
+            direction = "down";
+        } else {
+            lastScroll = currentScroll;
+            direction = "up";
+        }
+    };
+}
+// scrollDetect();
+// document.addEventListener("scroll", (e) => {
+//     const { bottom, height, top } = filter.getBoundingClientRect();
+//     let heightOne = inner.scrollTop + window.innerHeight;
+//     let heightTwo = inner.scrollTop + bottom;
+//     let innerBottom = inner.getBoundingClientRect().bottom + window.scrollY;
+//     let innerTop = inner.getBoundingClientRect().top;
+//     let filterTop = top + window.scrollY;
+//     let center = filter.offsetTop - (window.innerHeight - filter.scrollHeight);
+//     if (heightOne >= heightTwo && !filter.classList.contains("work")) {
+//         filter.classList.add("fixed");
+//         filter.classList.add("work");
+//         // filter.style.marginTop = `${inner.scrollTop - top}px`;
 //     }
-// );
-// filterObserver.observe(filterBlock);
+//     if (heightOne + window.scrollY >= innerBottom) {
+//         filter.classList.replace("fixed", "absolute");
+//     }
+//     // if (heightOne + window.scrollY < innerBottom && direction == "up") {
+//     //     filter.style.top = `${innerTop}px`;
+//     // }
+//     if (
+//         window.scrollY <= center &&
+//         filter.classList.contains("work") &&
+//         direction == "up"
+//     ) {
+//         filter.classList.remove("absolute");
+//         filter.classList.remove("fixed");
+//         filter.classList.add("sticky");
+//     }
+//     if (
+//         filterTop <= heightOne &&
+//         filter.classList.contains("work") &&
+//         direction == "up"
+//     ) {
+//         filter.classList.remove("fixed");
+//         filter.classList.remove("absolute");
+//         filter.classList.remove("sticky");
+//         filter.classList.remove("work");
+//     }
+//     // let footerTop = document
+//     //     .querySelector(".footer")
+//     //     .getBoundingClientRect().top;
+//     // if (
+//     //     innerTop + window.scrollY >= window.scrollY &&
+//     //     filter.classList.contains("work") &&
+//     //     direction == "up"
+//     // ) {
+//     //     filter.classList.remove("fixed");
+//     //     filter.classList.remove("absolute");
+//     //     filter.classList.add("sticky");
+//     //     filter.classList.remove("work");
+//     //     var topPosition = Math.min(
+//     //         topPosition,
+//     //         footerTop - window.scrollY - height
+//     //     );
+//     //     filter.style.top = `${topPosition}px`;
+//     // }
+//     // if (
+//     //     top + height > window.innerHeight &&
+//     //     filter.classList.contains("work") &&
+//     //     direction == "up"
+//     // ) {
+//     //     console.log("top filter");
+//     //     total = top - innerTop;
+//     //     filter.style.top = `${total}px`;
+//     // }
+//     // let footerTop = document
+//     //     .querySelector(".footer")
+//     //     .getBoundingClientRect().top;
+//     // if (
+//     //     window.scrollY + height > footerTop &&
+//     //     filter.classList.contains("work") &&
+//     //     direction == "up"
+//     // ) {
+//     //     filter.classList.remove("fixed");
+//     //     filter.classList.remove("absolute");
+//     //     filter.classList.add("sticky");
+//     //     filter.classList.remove("work");
+//     //     var topPosition = Math.min(
+//     //         topPosition,
+//     //         footerTop - window.scrollY - height
+//     //     );
+//     //     filter.style.top = `${topPosition}px`;
+//     // }
+// });
+// window.addEventListener("mousewheel", function (event) {
+//     if (event.wheelDelta >= 0) {
+//         direction = "up";
+//     } else {
+//         direction = "down";
+//     }
+// });
+
+if (window.innerWidth > 991.98) {
+    var sidebar = document.querySelector(".filter");
+    var content = document.querySelector(".category-list__wrapper");
+    var floatSidebar = FloatSidebar({
+        sidebar: sidebar,
+        relative: content,
+        topSpacing: 40,
+        bottomSpacing: 40,
+    });
+}

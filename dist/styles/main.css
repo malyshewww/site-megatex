@@ -2659,9 +2659,6 @@ textarea.error:focus {
   -ms-grid-columns: 285px 1fr;
   grid-template-columns: 285px 1fr;
   gap: 20px 70px;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
@@ -2676,32 +2673,18 @@ textarea.error:focus {
 }
 
 .filter {
-  position: sticky;
-  top: 20px;
-}
-
-.filter.sticky .filter-form {
-  position: fixed;
-  bottom: 0;
-  width: 285px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
 }
 
 .filter__mobile-btn {
   display: none;
-}
-
-.filter-form.absolute {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 285px;
-}
-
-.filter-form.fixed {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 285px;
 }
 
 .filter__title {
@@ -2728,8 +2711,6 @@ textarea.error:focus {
   gap: 26px;
   text-align: center;
   background-color: #f9f9fb;
-  position: sticky;
-  bottom: 0px;
 }
 
 .filter__button {
@@ -4056,6 +4037,13 @@ textarea.error:focus {
   }
 }
 
+@media screen and (min-width: 991.98px) {
+  .filter .filter-form {
+    width: 285px;
+    left: 0;
+  }
+}
+
 @media screen and (max-width: 1399.98px) {
   .top-header__actions {
     gap: 20px 30px;
@@ -4516,7 +4504,6 @@ textarea.error:focus {
 
   .filter {
     position: relative;
-    top: 0;
   }
 
   .filter__mobile-btn {
