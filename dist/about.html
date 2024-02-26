@@ -16,8 +16,8 @@
 	<meta property="twitter:description" content="description">
 	<link rel="canonical" href="https://example.com">
 	<link rel="preload" href="./fonts/MullerRegular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-	<link href="styles/libs.css" rel="stylesheet">
-	<link href="styles/main.min.css" rel="stylesheet">
+	<link href="styles/libs.css?_v=20240226140226" rel="stylesheet">
+	<link href="styles/main.min.css?_v=20240226140226" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
@@ -162,7 +162,10 @@
 							<div class="top-about__description">Компания Мегатекс является крупнейшим производителем и оптовым поставщиком защитных перчаток, спецодежды, средств индивидуальной защиты и сопутствующих товаров.</div>
 						</div>
 						<div class="top-about__image ibg">
-							<img src="images/about/img-banner.jpg" alt="баннер О компании" loading="lazy">
+							<picture>
+								<source srcset="images/about/img-banner.webp" type="image/webp">
+								<img src="images/about/img-banner.jpg" alt="баннер О компании" loading="lazy">
+							</picture>
 						</div>
 					</div>
 				</div>
@@ -179,22 +182,34 @@
 						<div class="slider-about__wrapper">
 							<a class="slider-about__item gallery-item" href="images/about/slide-1.jpg">
 								<div class="slider-about__image ibg">
-									<img src="images/about/slide-1.jpg" alt="изображение слайда" loading="lazy">
+									<picture>
+										<source srcset="images/about/slide-1.webp" type="image/webp">
+										<img src="images/about/slide-1.jpg" alt="изображение слайда" loading="lazy">
+									</picture>
 								</div>
 							</a>
 							<a class="slider-about__item gallery-item" href="images/about/slide-2.jpg">
 								<div class="slider-about__image ibg">
-									<img src="images/about/slide-2.jpg" alt="изображение слайда" loading="lazy">
+									<picture>
+										<source srcset="images/about/slide-2.webp" type="image/webp">
+										<img src="images/about/slide-2.jpg" alt="изображение слайда" loading="lazy">
+									</picture>
 								</div>
 							</a>
 							<a class="slider-about__item gallery-item" href="images/about/slide-3.jpg">
 								<div class="slider-about__image ibg">
-									<img src="images/about/slide-3.jpg" alt="изображение слайда" loading="lazy">
+									<picture>
+										<source srcset="images/about/slide-3.webp" type="image/webp">
+										<img src="images/about/slide-3.jpg" alt="изображение слайда" loading="lazy">
+									</picture>
 								</div>
 							</a>
 							<a class="slider-about__item gallery-item" href="images/about/slide-4.jpg">
 								<div class="slider-about__image ibg">
-									<img src="images/about/slide-4.jpg" alt="изображение слайда" loading="lazy">
+									<picture>
+										<source srcset="images/about/slide-4.webp" type="image/webp">
+										<img src="images/about/slide-4.jpg" alt="изображение слайда" loading="lazy">
+									</picture>
 								</div>
 							</a>
 						</div>
@@ -209,11 +224,17 @@
 				<div class="container">
 					<div class="main-footer__body">
 						<a class="footer__logo-mobile" href="index.html">
-							<img src="images/footer-logo.png" alt="логотип">
+							<picture>
+								<source srcset="images/footer-logo.webp" type="image/webp">
+								<img src="images/footer-logo.png" alt="логотип">
+							</picture>
 						</a>
 						<div class="footer__info">
 							<a class="footer__logo" href="index.html">
-								<img src="images/footer-logo.png" alt="логотип">
+								<picture>
+									<source srcset="images/footer-logo.webp" type="image/webp">
+									<img src="images/footer-logo.png" alt="логотип">
+								</picture>
 							</a>
 							<div class="footer__data">
 								<div class="footer__links">
@@ -462,9 +483,9 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script>
-	<script src="scripts/libs.js"></script>
-	<script src="scripts/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js?_v=20240226140226"> </script>
+	<script src="scripts/libs.js?_v=20240226140226"></script>
+	<script src="scripts/main.js?_v=20240226140226"></script>
 </body>
 
 </html>
